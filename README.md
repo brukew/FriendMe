@@ -83,7 +83,6 @@ FriendMe is a friend finder app that utilizes the API's of various user platform
    * Click button to add more connections
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
 <img src="https://i.imgur.com/kE6J2Vk.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
