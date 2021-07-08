@@ -29,64 +29,58 @@ FriendMe is a friend finder app that utilizes the API's of various user platform
 
 **Required Must-have Stories**
 
-* Log into the app
-* Look up items based on a description
-* Present past items searched for
-* Calculate most optimal price to resell for
-* Currency conversion based on location
+- [] Log in/Sign Up
+- [] Be able to connect to different platforms through their API's and access certain information
+- [] Assign diffferent weights to connected platforms
+- [] Present potential matches through a matching algorithm
+- [] User can match with people
+- [] Profiles for every user
 * ...
 
 **Optional Nice-to-have Stories**
 
-* Post on different resell sites
-* Have the ability to post on the site
-* Update prices for each piece on past searches tab
+- [] Chat with other users
+- [] User can view things that are similar about them and their match
 * ...
 
 ### 2. Screen Archetypes
 
 * Log in
-   * Log in
-   * log in with google/facebook
-* Central Home page - Resell calculator in the center (look at chipotle)
-   * [list associated required story here]
-   * User can swipe left and right to seamlessly got to other tabs
-   * Not clunky on home screen, very clean with calculator button in the middle
-   * Swipe up takes you to calculator
-   * Maybe show trending pieces and the prices for them, similar to the sneaks app
-* Calculator
-    * Look up items based on a description
-    * Calculate most optimal price to resell for
-    * Currency conversion based on location
-    * Post on different resell sites
-    * Clean UI, not chunky
-    * As easy as possible to use
-* Past searches page
-   * Update prices for each piece on past searches tab
-   * Table view displaying all past searches
-   * Need to have that data saved somewhere for each user
+   * User is able to log in or go to sign up page
+* Sign Up
+    * User is able to make an account, inputting information about age and email
+    * User is able to connect to other platforms and assign weights
+* Matches page
+   * User can view all potential matches filtered by the matching algorithm
+   * User can click on math cell and view information about match, such as bio, and info about things they like through the connected platforms
+   * User can view things that are similar about them and their match
+   * User can view images of matches
+   * User can save other users
+* Platforms Page
+    * User can connect more platforms to their profile
+    * User can view all current connections, adjust weights, or disconnect them
 * Profile
-   * Post on different resell sites
-   * Have the ability to post on the site
-   * Least necessary, maybe combine w max idea
+   * User can update bio, upload images, and see what is displayed to other users
+* Chat
+   * User can chat with matches
+   * [Stretch user story]
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* Home w calculator
-* past searches <-- maybe updatye the optimal price on those
-* profile 
+* Platforms Page
+* Matches Page
+* Chat 
+* Profile
 * Seamless navigation, swipe to the right moves u to next tab
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Matches Page
+   * Click user cell to view user profile
+* Platforms Page
+   * Click button to add more connections
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
