@@ -90,9 +90,22 @@ FriendMe is a friend finder app that utilizes the API's of various user platform
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
+
 ### Models
-[Add table of models]
+
+**User**
+| Property | Type | Description |
+| -------- | -------- | -------- |
+| objectId     | String     | String	unique id for the user post (default field) 
+| username | String | unique username for the user (default field) |
+| password | String | password for the user (default field) |
+| email | String | unique email for the user (default field) |
+| age | Integer | age of user |
+| bio | String | bio of user |
+| pictures | Array | pictures displayed on user profile |
+| platforms | Dictionary | platforms that user has connected to mapped to its weights |
+| mactches | Array | users that current user has matched to |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
