@@ -105,6 +105,7 @@ FriendMe is a friend finder app that utilizes the API's of various user platform
 | pictures | Array | pictures displayed on user profile |
 | platforms | Dictionary | platforms that user has connected to mapped to its weights |
 | mactches | Array | users that current user has matched to |
+| weights | Dictionary | weights assigned to each platform |
 
 ### Networking
 - [Add list of network requests by screen ]
