@@ -96,15 +96,22 @@ FriendMe is a friend finder app that utilizes the API's of various user platform
 **User**
 | Property | Type | Description |
 | -------- | -------- | -------- |
-| objectId     | String     | String	unique id for the user post (default field) 
+| objectId     | String  | unique id for the user  (default field) |
 | username | String | unique username for the user (default field) |
 | password | String | password for the user (default field) |
 | email | String | unique email for the user (default field) |
 | age | Integer | age of user |
 | bio | String | bio of user |
 | pictures | Array | pictures displayed on user profile |
-| platforms | Dictionary | platforms that user has connected to mapped to its weights |
-| mactches | Array | users that current user has matched to |
+| platforms | Array | platforms that user has connected (array of objects) |
+| matches | Array | users that current user has matched to |
+
+**Platform**
+| Property | Type | Description |
+| -------- | -------- | -------- |
+| name    | String   | name of platforms | 
+| weight | Integer | weight assigned to the platform |
+
 
 ### Networking
 - [Add list of network requests by screen ]
