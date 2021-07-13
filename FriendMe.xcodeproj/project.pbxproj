@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,12 @@
 		1A62D525269CAE85000AA0A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D524269CAE85000AA0A2 /* main.m */; };
 		1A62D52F269CAE86000AA0A2 /* FriendMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D52E269CAE86000AA0A2 /* FriendMeTests.m */; };
 		1A62D53A269CAE86000AA0A2 /* FriendMeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D539269CAE86000AA0A2 /* FriendMeUITests.m */; };
+		1A62D54A269CB263000AA0A2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D549269CB263000AA0A2 /* User.m */; };
+		1A62D54E269CCF40000AA0A2 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D54D269CCF40000AA0A2 /* LogInViewController.m */; };
+		1A62D555269CD9C3000AA0A2 /* GenInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D554269CD9C3000AA0A2 /* GenInfoViewController.m */; };
+		1A62D558269CDDA0000AA0A2 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D557269CDDA0000AA0A2 /* SignUpViewController.m */; };
+		1A62D562269D032D000AA0A2 /* PlatformCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D561269D032D000AA0A2 /* PlatformCell.m */; };
+		1A62D565269D0826000AA0A2 /* PlatformsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D564269D0826000AA0A2 /* PlatformsViewController.m */; };
 		314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */; };
 		ADA667FE3D56B78E68565DA1 /* Pods_FriendMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70131C754453471251F59F52 /* Pods_FriendMeTests.framework */; };
 		CF1C9A59D3A2C195E23731EC /* Pods_FriendMe_FriendMeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AC7E03C405140B6549E1A6 /* Pods_FriendMe_FriendMeUITests.framework */; };
@@ -59,6 +65,18 @@
 		1A62D535269CAE86000AA0A2 /* FriendMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FriendMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A62D539269CAE86000AA0A2 /* FriendMeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendMeUITests.m; sourceTree = "<group>"; };
 		1A62D53B269CAE86000AA0A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A62D548269CB263000AA0A2 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		1A62D549269CB263000AA0A2 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		1A62D54C269CCF40000AA0A2 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		1A62D54D269CCF40000AA0A2 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		1A62D553269CD9C3000AA0A2 /* GenInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenInfoViewController.h; sourceTree = "<group>"; };
+		1A62D554269CD9C3000AA0A2 /* GenInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenInfoViewController.m; sourceTree = "<group>"; };
+		1A62D556269CDDA0000AA0A2 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		1A62D557269CDDA0000AA0A2 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		1A62D560269D032D000AA0A2 /* PlatformCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformCell.h; sourceTree = "<group>"; };
+		1A62D561269D032D000AA0A2 /* PlatformCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformCell.m; sourceTree = "<group>"; };
+		1A62D563269D0826000AA0A2 /* PlatformsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformsViewController.h; sourceTree = "<group>"; };
+		1A62D564269D0826000AA0A2 /* PlatformsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformsViewController.m; sourceTree = "<group>"; };
 		21D99E4D5D230996B5F42202 /* Pods-FriendMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMeTests.debug.xcconfig"; path = "Target Support Files/Pods-FriendMeTests/Pods-FriendMeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E99CE30466AF0F905FA4984 /* Pods-FriendMe-FriendMeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe-FriendMeUITests.release.xcconfig"; path = "Target Support Files/Pods-FriendMe-FriendMeUITests/Pods-FriendMe-FriendMeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		65AC7E03C405140B6549E1A6 /* Pods_FriendMe_FriendMeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FriendMe_FriendMeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +139,9 @@
 		1A62D511269CAE84000AA0A2 /* FriendMe */ = {
 			isa = PBXGroup;
 			children = (
+				1A62D55F269D0319000AA0A2 /* Views */,
+				1A62D54B269CB4ED000AA0A2 /* View Controllers */,
+				1A62D547269CB24E000AA0A2 /* Models */,
 				1A62D512269CAE84000AA0A2 /* AppDelegate.h */,
 				1A62D513269CAE84000AA0A2 /* AppDelegate.m */,
 				1A62D515269CAE84000AA0A2 /* SceneDelegate.h */,
@@ -154,6 +175,47 @@
 			path = FriendMeUITests;
 			sourceTree = "<group>";
 		};
+		1A62D547269CB24E000AA0A2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A62D548269CB263000AA0A2 /* User.h */,
+				1A62D549269CB263000AA0A2 /* User.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1A62D54B269CB4ED000AA0A2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1A62D54F269CD476000AA0A2 /* Sign Up */,
+				1A62D54C269CCF40000AA0A2 /* LogInViewController.h */,
+				1A62D54D269CCF40000AA0A2 /* LogInViewController.m */,
+				1A62D563269D0826000AA0A2 /* PlatformsViewController.h */,
+				1A62D564269D0826000AA0A2 /* PlatformsViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1A62D54F269CD476000AA0A2 /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				1A62D553269CD9C3000AA0A2 /* GenInfoViewController.h */,
+				1A62D554269CD9C3000AA0A2 /* GenInfoViewController.m */,
+				1A62D556269CDDA0000AA0A2 /* SignUpViewController.h */,
+				1A62D557269CDDA0000AA0A2 /* SignUpViewController.m */,
+			);
+			path = "Sign Up";
+			sourceTree = "<group>";
+		};
+		1A62D55F269D0319000AA0A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A62D560269D032D000AA0A2 /* PlatformCell.h */,
+				1A62D561269D032D000AA0A2 /* PlatformCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7A6217908209B4B42A319DF2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +226,6 @@
 				21D99E4D5D230996B5F42202 /* Pods-FriendMeTests.debug.xcconfig */,
 				F8F43CA89ACEAF747954D854 /* Pods-FriendMeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -415,9 +476,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A62D562269D032D000AA0A2 /* PlatformCell.m in Sources */,
+				1A62D54A269CB263000AA0A2 /* User.m in Sources */,
 				1A62D51A269CAE84000AA0A2 /* ViewController.m in Sources */,
+				1A62D54E269CCF40000AA0A2 /* LogInViewController.m in Sources */,
 				1A62D514269CAE84000AA0A2 /* AppDelegate.m in Sources */,
+				1A62D565269D0826000AA0A2 /* PlatformsViewController.m in Sources */,
+				1A62D555269CD9C3000AA0A2 /* GenInfoViewController.m in Sources */,
 				1A62D525269CAE85000AA0A2 /* main.m in Sources */,
+				1A62D558269CDDA0000AA0A2 /* SignUpViewController.m in Sources */,
 				1A62D517269CAE84000AA0A2 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
