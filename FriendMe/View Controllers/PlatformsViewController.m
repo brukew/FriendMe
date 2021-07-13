@@ -7,6 +7,8 @@
 
 #import "PlatformsViewController.h"
 #import "PlatformCell.h"
+#import "Parse/Parse.h"
+#import "Platform.h"
 
 @interface PlatformsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -14,12 +16,17 @@
 
 @implementation PlatformsViewController
 
+static NSArray *arrayOfPlatforms;
+
+//TODO: add platforms to user[@"platforms"] array after authentication after clicking cell
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    self.arrayOfPlatforms = [NSArray arrayWithObjects: @"Spotify", @"Twitter", @"Instagram", @"Facebook", @"Youtube", @"Reddit", @"Steam", @"Doordash", @"Netflix", nil];
+    arrayOfPlatforms = [NSArray arrayWithObjects: @"Spotify", @"Twitter", @"Instagram", @"Facebook", @"Youtube", @"Reddit", @"Steam", @"Doordash", @"Netflix", nil];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
             
@@ -33,24 +40,38 @@
     [self.collectionView reloadData];
 }
 
+- (IBAction)continueTapped:(id)sender {
+    PFUser *current = [PFUser currentUser];
+    if (current[@"platforms"]){
+        [self performSegueWithIdentifier:@"toWeightsSegue" sender:nil];
+    }
+    else{
+        [self performSegueWithIdentifier:@"toPicsSegue" sender:nil];
+    }
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.arrayOfPlatforms.count;
+    return arrayOfPlatforms.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     PlatformCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlatformCell" forIndexPath:indexPath];
     
-    cell.platform = self.arrayOfPlatforms[indexPath.item];
+    cell.platform = arrayOfPlatforms[indexPath.item];
     [cell loadData];
     return cell;
     
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [Platform addPlatform: arrayOfPlatforms[indexPath.item] withCompletion: nil];
+    
+}
 
 
 

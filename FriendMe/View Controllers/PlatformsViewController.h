@@ -11,7 +11,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PlatformsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic) NSArray *arrayOfPlatforms;
 @end
 
 NS_ASSUME_NONNULL_END
