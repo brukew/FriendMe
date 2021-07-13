@@ -9,6 +9,7 @@
 #import "PlatformCell.h"
 #import "Parse/Parse.h"
 #import "Platform.h"
+#import "AppDelegate.h"
 
 @interface PlatformsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -69,6 +70,9 @@ static NSArray *arrayOfPlatforms;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//    if ([arrayOfPlatforms[indexPath.item]  isEqual: @"Spotify"]){
+//        [AppDelegate setUpSpotify];
+//    }
     [Platform addPlatform: arrayOfPlatforms[indexPath.item] withCompletion: nil];
     
 }

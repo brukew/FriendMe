@@ -27,6 +27,8 @@
     self.platformTitle.text = self.platform[@"name"];
     NSString *imageName = [self.platform[@"name"] stringByAppendingString:@".png"];
     [self.platformImageView setImage:[UIImage imageNamed:imageName]];
+    self.platformSlider.maximumValue = 1;
+    self.platformSlider.minimumValue = 0;
 }
 
 @end

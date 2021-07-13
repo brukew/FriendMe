@@ -8,13 +8,14 @@
 #import "WeightsViewController.h"
 #import "Parse/Parse.h"
 #import "PlatformWeightCell.h"
+#import "Platform.h"
+#import <math.h>
 
 @interface WeightsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
 //TODO: Adjust tbale view height + constraints based on number of platforms
-//TODO: Addd weights functionality
 
 @implementation WeightsViewController
 
@@ -25,8 +26,24 @@
 }
 
 - (IBAction)saveData:(id)sender {
-    
+    NSMutableArray *cells = [[NSMutableArray alloc] init];
+    for (NSInteger section = 0; section < [self.tableView numberOfSections]; ++section)
+    {
+        for (NSInteger row = 0; row < [self.tableView numberOfRowsInSection:section]; ++row)
+        {
+            [cells addObject:[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]]];
+        }
+    }
+    PFUser *current = [PFUser currentUser];
+    NSArray *platformArray = current[@"platforms"]; //make sure platforms are saved!
+    NSLog(@"%@", platformArray);
+    for (PlatformWeightCell *cell in cells)
+    {
+
+        [Platform updateWeights:@(roundf(cell.platformSlider.value*100)/100) ofPlatform:cell.platform withCompletion:nil];
+    }
     //run through table view cells and collect data
+    // segue
 }
 
 

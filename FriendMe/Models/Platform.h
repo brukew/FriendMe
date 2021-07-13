@@ -12,11 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Platform : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString * _Nonnull name;
-@property (nonatomic) NSInteger * _Nonnull weight;
+@property (nonatomic) NSNumber * _Nonnull weight;
 
 + (void) addPlatform: ( NSString * _Nullable )name withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
-+ (void) updateWeights: (NSInteger * _Nullable)weight ofPlatform: (Platform * _Nullable)platform withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void) updateWeights: (NSNumber * _Nullable)weight ofPlatform: (Platform * _Nullable)platform withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

@@ -32,7 +32,7 @@ return @"Platform";
 [newPlatform saveInBackgroundWithBlock: completion];
 }
 
-+ (void) updateWeights: (NSInteger * _Nullable)weight ofPlatform: (Platform * _Nullable)platform withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void) updateWeights: (NSNumber * _Nullable)weight ofPlatform: (Platform * _Nullable)platform withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     platform.weight = weight;
     [platform saveInBackgroundWithBlock: completion];
