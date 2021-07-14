@@ -26,32 +26,61 @@
     return YES;
 }
 
-- (void) setUpSpotify{
++ (instancetype)shared {
+    static AppDelegate *sharedManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedManager = [[self alloc] init];
+    });
+    return sharedManager;
+}
+
+- (void) setUpSpotifyWithCompletion:(void (^)(NSDictionary *, NSError*))completion{
     
     NSString *spotifyClientID = @"cad3439e0ad84169a65d5ed857f5e936";
     NSURL *spotifyRedirectURL = [NSURL URLWithString:@"spotify-ios-quick-start://spotify-login-callback"];
-
-    self.configuration  = [[SPTConfiguration alloc] initWithClientID:spotifyClientID redirectURL:spotifyRedirectURL];
-
-    NSURL *tokenSwapURL = [NSURL URLWithString:@"https://glitch.com/edit/#!/metal-bedecked-cave/api/token"];
-    NSURL *tokenRefreshURL = [NSURL URLWithString:@"https://glitch.com/edit/#!/metal-bedecked-cave/api/refresh_token"];
-
-    self.configuration.tokenSwapURL = tokenSwapURL;
-    self.configuration.tokenRefreshURL = tokenRefreshURL;
-    self.configuration.playURI = @"";
-
-    self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
     
-    SPTScope requestedScope = SPTAppRemoteControlScope;
-    [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
+    SPTConfiguration *configuration =
+        [[SPTConfiguration alloc] initWithClientID:spotifyClientID redirectURL:spotifyRedirectURL];
+    
+    configuration.tokenSwapURL = [NSURL URLWithString:@"https://glitch.com/edit/#!/metal-bedecked-cave/api/token"];
+    configuration.tokenRefreshURL = [NSURL URLWithString:@"https://glitch.com/edit/#!/metal-bedecked-cave/api/refresh_token"];
+    
+    self.sessionManager = [SPTSessionManager sessionManagerWithConfiguration:configuration delegate:self];
+    
+    SPTScope scope = SPTUserFollowReadScope | SPTUserTopReadScope | SPTUserFollowModifyScope ;
+
+    if (@available(iOS 11, *)) {
+        // Use this on iOS 11 and above to take advantage of SFAuthenticationSession
+        [self.sessionManager initiateSessionWithScope:scope options:SPTDefaultAuthorizationOption];
+    } else {
+        // Use this on iOS versions < 11 to use SFSafariViewController
+        [self.sessionManager initiateSessionWithScope:scope options:SPTDefaultAuthorizationOption presentingViewController:self];
+    }
 
 }
+
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
     [self.sessionManager application:app openURL:url options:options];
     return true;
 }
+
+- (void)getFollowingWithCompletion:(void(^)(NSMutableArray *tweets, NSError *error))completion {
+//    NSDictionary *parameters = @{@"tweet_mode":@"extended"};
+//
+//    [self GET:@"https://api.spotify.com/v1/me/following"
+//       parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+//           // Success
+//           NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
+//           completion(tweets, nil);
+//       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//           // There was a problem
+//           completion(nil, error);
+//    }];
+}
+
 
 #pragma mark - UISceneSession lifecycle
 

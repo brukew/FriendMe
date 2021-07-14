@@ -20,6 +20,7 @@
 static NSArray *arrayOfPlatforms;
 
 //TODO: add platforms to user[@"platforms"] array after authentication after clicking cell
+//TODO: make sure user can only click each platform once
 
 
 - (void)viewDidLoad {
@@ -70,9 +71,19 @@ static NSArray *arrayOfPlatforms;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    if ([arrayOfPlatforms[indexPath.item]  isEqual: @"Spotify"]){
-//        [AppDelegate setUpSpotify];
-//    }
+    if ([arrayOfPlatforms[indexPath.item]  isEqual: @"Spotify"]){
+        AppDelegate *api = [AppDelegate shared];
+        
+        [api setUpSpotifyWithCompletion:^(NSDictionary *data, NSError *error) {
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            else{
+                NSLog(@"Success");
+            }
+        }];
+
+    }
     [Platform addPlatform: arrayOfPlatforms[indexPath.item] withCompletion: nil];
     
 }

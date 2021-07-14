@@ -9,6 +9,7 @@ target 'FriendMe' do
   pod 'Parse'
   pod 'Parse/UI'
   pod 'AFNetworking'
+  pod 'GMImagePicker', '~> 0.0'
 
   target 'FriendMeTests' do
     inherit! :search_paths

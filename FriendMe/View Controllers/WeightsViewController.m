@@ -42,7 +42,7 @@
 
         [Platform updateWeights:@(roundf(cell.platformSlider.value*100)/100) ofPlatform:cell.platform withCompletion:nil];
     }
-    //run through table view cells and collect data
+    [self performSegueWithIdentifier:@"weightsToPicsSegue" sender:nil];
     // segue
 }
 

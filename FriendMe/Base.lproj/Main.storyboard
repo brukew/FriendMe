@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aXR-Pc-1Va">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7dh-YO-0dr">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -227,10 +227,10 @@
             </objects>
             <point key="canvasLocation" x="1502" y="906"/>
         </scene>
-        <!--View Controller-->
+        <!--Photos View Controller-->
         <scene sceneID="EOY-Ta-aa7">
             <objects>
-                <viewController id="7dh-YO-0dr" sceneMemberID="viewController">
+                <viewController id="7dh-YO-0dr" customClass="PhotosViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DCq-Bv-dak">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,12 +247,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <segue destination="4PS-eF-Gfd" kind="presentation" identifier="toTabBarSegue" modalPresentationStyle="fullScreen" id="kv5-Vn-Gdi"/>
+                        <segue destination="4PS-eF-Gfd" kind="presentation" identifier="toTabBarSegue" modalPresentationStyle="fullScreen" id="dYe-fd-nUj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFu-SL-jLy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2060" y="1643.6018957345971"/>
+            <point key="canvasLocation" x="1138" y="1623"/>
         </scene>
         <!--Matches-->
         <scene sceneID="sWN-nd-Id7">
@@ -305,10 +305,92 @@
             </objects>
             <point key="canvasLocation" x="-1233.8461538461538" y="1622.9857819905212"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="Aa1-Ec-0eo">
+            <objects>
+                <viewController id="7dU-NE-Zkt" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f0V-Wh-RZJ">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qon-gM-NYI">
+                                <rect key="frame" x="0.0" y="71" width="390" height="285"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="l2o-L1-sxf">
+                                        <rect key="frame" x="0.0" y="258" width="390" height="27"/>
+                                    </pageControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="l2o-L1-sxf" firstAttribute="leading" secondItem="61c-Ce-ES5" secondAttribute="leading" constant="8" id="2Ng-5L-aNS"/>
+                                    <constraint firstItem="l2o-L1-sxf" firstAttribute="top" secondItem="61c-Ce-ES5" secondAttribute="top" constant="258" id="J8h-sm-CPR"/>
+                                    <constraint firstItem="l2o-L1-sxf" firstAttribute="bottom" secondItem="61c-Ce-ES5" secondAttribute="bottom" id="f5y-RK-uEn"/>
+                                    <constraint firstItem="61c-Ce-ES5" firstAttribute="trailing" secondItem="l2o-L1-sxf" secondAttribute="trailing" constant="8" id="rdD-bp-s1y"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Sc2-Pz-toO"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="61c-Ce-ES5"/>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bruke Wossenseged" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfH-VP-tLq">
+                                <rect key="frame" x="16" y="373" width="179.33333333333334" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcZ-lk-597">
+                                <rect key="frame" x="16" y="401" width="21" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Bio" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZQP-ek-9zc">
+                                <rect key="frame" x="16" y="433" width="358" height="178"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cru-bv-szN">
+                                <rect key="frame" x="336" y="39" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <segue destination="7dh-YO-0dr" kind="presentation" modalPresentationStyle="fullScreen" id="Y9O-5K-BTN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BWF-zK-UcO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZQP-ek-9zc" firstAttribute="leading" secondItem="kfH-VP-tLq" secondAttribute="leading" id="1I0-BT-Y0v"/>
+                            <constraint firstItem="FcZ-lk-597" firstAttribute="leading" secondItem="kfH-VP-tLq" secondAttribute="leading" id="7pU-aR-x1z"/>
+                            <constraint firstItem="BWF-zK-UcO" firstAttribute="bottom" secondItem="ZQP-ek-9zc" secondAttribute="bottom" constant="150" id="HrJ-GR-fp9"/>
+                            <constraint firstItem="Qon-gM-NYI" firstAttribute="leading" secondItem="BWF-zK-UcO" secondAttribute="leading" id="IBE-8X-6Zw"/>
+                            <constraint firstItem="Qon-gM-NYI" firstAttribute="trailing" secondItem="BWF-zK-UcO" secondAttribute="trailing" id="LRg-RI-IfM"/>
+                            <constraint firstItem="FcZ-lk-597" firstAttribute="top" secondItem="kfH-VP-tLq" secondAttribute="bottom" constant="4" id="ODz-YR-Zhm"/>
+                            <constraint firstItem="BWF-zK-UcO" firstAttribute="trailing" secondItem="ZQP-ek-9zc" secondAttribute="trailing" constant="16" id="QDU-h5-1lD"/>
+                            <constraint firstItem="ZQP-ek-9zc" firstAttribute="top" secondItem="FcZ-lk-597" secondAttribute="bottom" constant="8" id="ZhW-Rz-ZgF"/>
+                            <constraint firstItem="BWF-zK-UcO" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FcZ-lk-597" secondAttribute="trailing" constant="10" id="ZsS-cW-fvo"/>
+                            <constraint firstItem="BWF-zK-UcO" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kfH-VP-tLq" secondAttribute="trailing" constant="10" id="evA-14-oJv"/>
+                            <constraint firstItem="Qon-gM-NYI" firstAttribute="top" secondItem="BWF-zK-UcO" secondAttribute="top" constant="27" id="i4w-qa-Wd5"/>
+                            <constraint firstItem="kfH-VP-tLq" firstAttribute="top" secondItem="Qon-gM-NYI" secondAttribute="bottom" constant="17" id="t46-4a-0r1"/>
+                            <constraint firstItem="BWF-zK-UcO" firstAttribute="bottom" secondItem="Qon-gM-NYI" secondAttribute="bottom" constant="405" id="tFi-te-Cq3"/>
+                            <constraint firstItem="FcZ-lk-597" firstAttribute="top" secondItem="kfH-VP-tLq" secondAttribute="bottom" constant="4" id="uxW-LF-Zku"/>
+                            <constraint firstItem="kfH-VP-tLq" firstAttribute="leading" secondItem="BWF-zK-UcO" secondAttribute="leading" constant="16" id="y4Z-sW-eye"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="luN-df-IZd"/>
+                    <connections>
+                        <outlet property="pageControl" destination="l2o-L1-sxf" id="haS-DU-oZo"/>
+                        <outlet property="scrollView" destination="Qon-gM-NYI" id="mDZ-cC-jkH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5mi-qA-OcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-346.15384615384613" y="1622.9857819905212"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jGI-63-czn">
             <objects>
-                <tabBarController id="4PS-eF-Gfd" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4PS-eF-Gfd" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JpT-4o-phH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -316,6 +398,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="S7c-dg-BcU" kind="relationship" relationship="viewControllers" id="H4L-gB-j20"/>
+                        <segue destination="7dU-NE-Zkt" kind="relationship" relationship="viewControllers" id="2Cz-Ve-jN0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJ7-nk-tNu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -410,7 +493,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="SUE-ue-dqc" id="lba-vR-u4Y"/>
-                        <segue destination="7dh-YO-0dr" kind="presentation" modalPresentationStyle="fullScreen" id="YqF-2z-bm7"/>
+                        <segue destination="7dh-YO-0dr" kind="presentation" identifier="weightsToPicsSegue" modalPresentationStyle="fullScreen" id="YqF-2z-bm7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kws-U0-Qu1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -475,11 +558,11 @@
             </objects>
             <point key="canvasLocation" x="697" y="144"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="HwS-Vp-cZC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S7c-dg-BcU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="b3p-Kz-lYy"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="globe" catalog="system" id="b3p-Kz-lYy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wvG-uw-S7T">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -496,10 +579,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YqF-2z-bm7"/>
+        <segue reference="Y9O-5K-BTN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Facebook" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="globe" catalog="system" width="128" height="121"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

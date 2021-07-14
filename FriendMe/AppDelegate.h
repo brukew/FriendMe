@@ -10,10 +10,12 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, SPTSessionManagerDelegate>
 
++ (instancetype)shared;
+
 @property (nonatomic, strong) SPTSessionManager *sessionManager;
 @property (nonatomic, strong) SPTConfiguration *configuration;
 
-- (void) setUpSpotify;
+- (void) setUpSpotifyWithCompletion:(void (^)(NSDictionary *, NSError*))completion;
 
 @end
 
