@@ -61,8 +61,6 @@
 -(NSMutableArray*) convertImages:(NSArray *)assets{
     PHImageManager *manager = [PHImageManager defaultManager];
 
-    CGFloat scale = UIScreen.mainScreen.scale;
-
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:[assets count]];
     PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
     requestOptions.resizeMode   = PHImageRequestOptionsResizeModeExact;
@@ -73,10 +71,8 @@
     
     for (int i = 0; i < [assets count]; i++) {
 
-        CGSize targetSize = CGSizeMake(scale, scale);
-
         [manager requestImageForAsset:[assets objectAtIndex:i]
-                           targetSize:targetSize
+                           targetSize:CGSizeMake(390, 335)
                           contentMode:PHImageContentModeAspectFill
                               options:requestOptions
                         resultHandler:^(UIImage *image, NSDictionary *info){
