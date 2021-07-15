@@ -1,3 +1,4 @@
+
 //
 //  LogInViewController.m
 //  FriendMe
@@ -6,6 +7,7 @@
 //
 
 #import "LogInViewController.h"
+#import <Parse/Parse.h>
 
 @interface LogInViewController ()
 
@@ -17,6 +19,50 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+- (IBAction)logIn:(id)sender {
+    
+    NSString *username = self.usernameField.text;
+    NSString *password = self.passwordField.text;
+    if ([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]){
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Login"
+                                                                       message:@"Username and password required."
+                                                                       preferredStyle:(UIAlertControllerStyleAlert)];
+
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                         }];
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{
+        }];
+        
+        
+    }
+    
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        if (error == nil) {
+
+            [self performSegueWithIdentifier:@"LogInSegue" sender:nil];
+        }
+        else{
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Invalid Login"
+                                                                           message:@"Username and/or password incorrect."
+                                                                           preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                             }];
+            
+            [alert addAction:okAction];
+            
+            [self presentViewController:alert animated:YES completion:^{
+            }];
+        }
+    }];
+}
+
 
 /*
 #pragma mark - Navigation

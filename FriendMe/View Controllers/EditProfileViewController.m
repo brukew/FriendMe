@@ -21,6 +21,7 @@
 //TODO: Refactor GMImagePicker so code is only written once
 //TODO: Somehow display all chosen profile pictures and let user change one by one
 //TODO: Cancel button dismisses parent view controller as well
+//TODO: Be able to delete profile pictures
 
 
 - (void)viewDidLoad {

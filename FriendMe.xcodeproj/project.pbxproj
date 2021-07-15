@@ -29,6 +29,9 @@
 		1A62D57A269F68BA000AA0A2 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D579269F68BA000AA0A2 /* ProfileViewController.m */; };
 		1A62D57D269F7C7B000AA0A2 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D57C269F7C7B000AA0A2 /* PhotosViewController.m */; };
 		1A62D580269FB234000AA0A2 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D57F269FB234000AA0A2 /* EditProfileViewController.m */; };
+		1A62D58326A0C130000AA0A2 /* MatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D58226A0C130000AA0A2 /* MatchesViewController.m */; };
+		1A62D58626A0C5A7000AA0A2 /* BeginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D58526A0C5A7000AA0A2 /* BeginViewController.m */; };
+		1A62D58926A0C89E000AA0A2 /* MatchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D58826A0C89E000AA0A2 /* MatchCell.m */; };
 		314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */; };
 		ADA667FE3D56B78E68565DA1 /* Pods_FriendMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70131C754453471251F59F52 /* Pods_FriendMeTests.framework */; };
 		CF1C9A59D3A2C195E23731EC /* Pods_FriendMe_FriendMeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AC7E03C405140B6549E1A6 /* Pods_FriendMe_FriendMeUITests.framework */; };
@@ -97,6 +100,12 @@
 		1A62D57C269F7C7B000AA0A2 /* PhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
 		1A62D57E269FB234000AA0A2 /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		1A62D57F269FB234000AA0A2 /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		1A62D58126A0C130000AA0A2 /* MatchesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchesViewController.h; sourceTree = "<group>"; };
+		1A62D58226A0C130000AA0A2 /* MatchesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchesViewController.m; sourceTree = "<group>"; };
+		1A62D58426A0C5A7000AA0A2 /* BeginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeginViewController.h; sourceTree = "<group>"; };
+		1A62D58526A0C5A7000AA0A2 /* BeginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeginViewController.m; sourceTree = "<group>"; };
+		1A62D58726A0C89E000AA0A2 /* MatchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchCell.h; sourceTree = "<group>"; };
+		1A62D58826A0C89E000AA0A2 /* MatchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchCell.m; sourceTree = "<group>"; };
 		21D99E4D5D230996B5F42202 /* Pods-FriendMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMeTests.debug.xcconfig"; path = "Target Support Files/Pods-FriendMeTests/Pods-FriendMeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E99CE30466AF0F905FA4984 /* Pods-FriendMe-FriendMeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe-FriendMeUITests.release.xcconfig"; path = "Target Support Files/Pods-FriendMe-FriendMeUITests/Pods-FriendMe-FriendMeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		65AC7E03C405140B6549E1A6 /* Pods_FriendMe_FriendMeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FriendMe_FriendMeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +231,10 @@
 				1A62D57C269F7C7B000AA0A2 /* PhotosViewController.m */,
 				1A62D57E269FB234000AA0A2 /* EditProfileViewController.h */,
 				1A62D57F269FB234000AA0A2 /* EditProfileViewController.m */,
+				1A62D58126A0C130000AA0A2 /* MatchesViewController.h */,
+				1A62D58226A0C130000AA0A2 /* MatchesViewController.m */,
+				1A62D58426A0C5A7000AA0A2 /* BeginViewController.h */,
+				1A62D58526A0C5A7000AA0A2 /* BeginViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -244,6 +257,8 @@
 				1A62D561269D032D000AA0A2 /* PlatformCell.m */,
 				1A62D569269E06F2000AA0A2 /* PlatformWeightCell.h */,
 				1A62D56A269E06F2000AA0A2 /* PlatformWeightCell.m */,
+				1A62D58726A0C89E000AA0A2 /* MatchCell.h */,
+				1A62D58826A0C89E000AA0A2 /* MatchCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -521,6 +536,7 @@
 				1A62D56B269E06F2000AA0A2 /* PlatformWeightCell.m in Sources */,
 				1A62D562269D032D000AA0A2 /* PlatformCell.m in Sources */,
 				1A62D51A269CAE84000AA0A2 /* ViewController.m in Sources */,
+				1A62D58326A0C130000AA0A2 /* MatchesViewController.m in Sources */,
 				1A62D54E269CCF40000AA0A2 /* LogInViewController.m in Sources */,
 				1A62D57A269F68BA000AA0A2 /* ProfileViewController.m in Sources */,
 				1A62D514269CAE84000AA0A2 /* AppDelegate.m in Sources */,
@@ -531,8 +547,10 @@
 				1A62D577269F3DD4000AA0A2 /* APIManager.m in Sources */,
 				1A62D568269E01E4000AA0A2 /* WeightsViewController.m in Sources */,
 				1A62D580269FB234000AA0A2 /* EditProfileViewController.m in Sources */,
+				1A62D58926A0C89E000AA0A2 /* MatchCell.m in Sources */,
 				1A62D56E269E0ACF000AA0A2 /* Platform.m in Sources */,
 				1A62D57D269F7C7B000AA0A2 /* PhotosViewController.m in Sources */,
+				1A62D58626A0C5A7000AA0A2 /* BeginViewController.m in Sources */,
 				1A62D517269CAE84000AA0A2 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

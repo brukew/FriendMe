@@ -27,6 +27,7 @@
     self.picker.displayAlbumsNumberOfAssets = YES;
 
     self.picker.customNavigationBarPrompt = @"Choose photos to be featured on your profile!";
+    self.picker.title = @"FriendMe";
 
     self.picker.colsInPortrait = 3;
     self.picker.colsInLandscape = 5;

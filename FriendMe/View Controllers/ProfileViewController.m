@@ -20,7 +20,7 @@
 
 //TODO: Clean up page
 //TODO: Add api data
-//TODO: Gallery doesnt display till after editing, page cotnrol off by one?, 
+//TODO: Gallery doesnt display till after editing, page cotnrol off by one?,
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,20 +42,14 @@
         for( ix = 0; ix < images.count; ix+=1 ) {
             CGRect frame;
             frame.origin.x = self.scrollView.frame.size.width * (CGFloat)ix;
+            frame.origin.y = 0;
             frame.size = self.scrollView.frame.size;
             
             UIImageView *imageView = [[PFImageView alloc] initWithFrame:frame];
-            
-            //NSString *imageName = [self.platform stringByAppendingString:@".png"];
-            //[imageView setImage:[UIImage imageNamed:@"Twitter.png"]];
             PFFileObject * profileImage = [images objectAtIndex:ix];
             NSURL * imageURL = [NSURL URLWithString:profileImage.url];
             [imageView setImageWithURL:imageURL];
-//            imageView.file = [images objectAtIndex:ix];
-//            [imageView loadInBackground];
-            [self.scrollView insertSubview:imageView atIndex:0];
-//            imageView.contentMode = UIViewContentModeScaleAspectFit;
-//            imageView.clipsToBounds = YES;
+            [self.scrollView addSubview:imageView];
         }
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * (CGFloat)images.count, self.scrollView.frame.size.height);
     }
@@ -81,6 +75,8 @@
     if (current[@"bio"]){
         self.bioLabel.text = current[@"bio"];
     }
+    self.pageControl.numberOfPages = [current[@"pictures"] count];
+    [self.scrollView bringSubviewToFront:self.pageControl];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
