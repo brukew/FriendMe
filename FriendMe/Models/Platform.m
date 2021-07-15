@@ -29,7 +29,8 @@ return @"Platform";
     else{
         [current[@"platforms"] addObject:newPlatform];
     }
-[newPlatform saveInBackgroundWithBlock: completion];
+    [newPlatform saveInBackgroundWithBlock: completion];
+    [current saveInBackgroundWithBlock: completion];
 }
 
 + (void) updateWeights: (NSNumber * _Nullable)weight ofPlatform: (Platform * _Nullable)platform withCompletion: (PFBooleanResultBlock  _Nullable)completion {

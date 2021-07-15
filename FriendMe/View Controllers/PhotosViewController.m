@@ -8,6 +8,7 @@
 #import "PhotosViewController.h"
 #import "GMImagePickerController.h"
 #import <Photos/Photos.h>
+#import <Parse/Parse.h>
 
 @interface PhotosViewController () <GMImagePickerControllerDelegate>
 
@@ -21,23 +22,19 @@
     [super viewDidLoad];
     self.picker = [[GMImagePickerController alloc] init];
     self.picker.delegate = self;
-    //Display or not the selection info Toolbar:
     self.picker.displaySelectionInfoToolbar = YES;
 
-    //Display or not the number of assets in each album:
     self.picker.displayAlbumsNumberOfAssets = YES;
 
-    //Customize the picker title and prompt (helper message over the title)
-    self.picker.title = @"Custom title";
-    self.picker.customNavigationBarPrompt = @"Custom helper message!";
+    self.picker.customNavigationBarPrompt = @"Choose photos to be featured on your profile!";
 
-    //Customize the number of cols depending on orientation and the inter-item spacing
     self.picker.colsInPortrait = 3;
     self.picker.colsInLandscape = 5;
     self.picker.minimumInteritemSpacing = 2.0;
 
 }
-- (void)viewDidAppear:(BOOL)animated{
+
+- (IBAction)chooseImages:(id)sender {
     [self presentViewController:self.picker animated:YES completion:nil];
 }
 
@@ -45,20 +42,58 @@
 {
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"GMImagePicker: User ended picking assets. Number of selected items is: %lu", (unsigned long)assetArray.count);
+    NSLog(@"%@", assetArray);
+    PFUser *current = [PFUser currentUser];
+    current[@"pictures"] = [self convertImages: assetArray];
+    [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    }];
+    NSLog(@"Pics, %@", current[@"pictures"]);
+    NSLog(@"%@", current[@"platforms"]);
+    [self performSegueWithIdentifier:@"toTabBar" sender:nil];
 }
 
 -(void)assetsPickerControllerDidCancel:(GMImagePickerController *)picker
 {
     NSLog(@"GMImagePicker: User pressed cancel button");
+    [self performSegueWithIdentifier:@"toTabBar" sender:nil];
+}
+
+-(NSMutableArray*) convertImages:(NSArray *)assets{
+    PHImageManager *manager = [PHImageManager defaultManager];
+
+    CGFloat scale = UIScreen.mainScreen.scale;
+
+    NSMutableArray *images = [NSMutableArray arrayWithCapacity:[assets count]];
+    PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
+    requestOptions.resizeMode   = PHImageRequestOptionsResizeModeExact;
+    requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+
+    // this one is key
+    requestOptions.synchronous = YES;
+    
+    for (int i = 0; i < [assets count]; i++) {
+
+        CGSize targetSize = CGSizeMake(scale, scale);
+
+        [manager requestImageForAsset:[assets objectAtIndex:i]
+                           targetSize:targetSize
+                          contentMode:PHImageContentModeAspectFill
+                              options:requestOptions
+                        resultHandler:^(UIImage *image, NSDictionary *info){
+                            NSData *imageData = UIImagePNGRepresentation(image);
+                            PFFileObject *fileObj = [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+                            [images addObject:fileObj];
+                        }];
+    }
+    return images;
 }
 /*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
+*/
 @end
