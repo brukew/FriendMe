@@ -33,9 +33,6 @@
 
 -(void) loadData{
     PFUser *current = [PFUser currentUser];
-//    PFFileObject * profileImage = [current[@"pictures"] objectAtIndex:0];
-//    NSURL * imageURL = [NSURL URLWithString:profileImage.url];
-//    [self.randomTest setImageWithURL:imageURL];
     if (current[@"pictures"]){
         NSMutableArray *images = current[@"pictures"];
         NSInteger ix;

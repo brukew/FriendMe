@@ -10,8 +10,11 @@
 #import "BeginViewController.h"
 #import <Parse/Parse.h>
 #import "MatchCell.h"
+#import "APIManager.h"
 
 @interface MatchesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (nonatomic, strong) NSMutableArray *matches;
 
 @end
 
@@ -53,9 +56,8 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     PFUser *current = [PFUser currentUser];
-    NSMutableArray *matches = current[@"matches"];
     //TODO: Implement matching algo?
-    return matches.count;
+    return self.matches.count; //matches.count
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -71,15 +73,25 @@
     PFUser *current = [PFUser currentUser];
     PFQuery *query = [PFUser query];
     NSArray *users = [query findObjects];
-    NSMutableArray *matches = [[NSMutableArray alloc] init];
+    self.matches = [[NSMutableArray alloc] init];
     for (PFUser *user in users){
         if (user!=current){
-            [matches addObject:user];
+            [self.matches addObject:user];
         }
     }
-    NSLog(@"Users %@", matches);
-    current[@"matches"] = matches;
+    NSLog(@"Users %@", self.matches);
+//    current[@"matches"] = matches;
     [self.collectionView reloadData];
+//    APIManager *api = [APIManager shared];
+//
+//    [api setUpSpotifyWithCompletion:^(NSDictionary *data, NSError *error) {
+//        if (error) {
+//            NSLog(@"%@", [error localizedDescription]);
+//        }
+//        else{
+//            NSLog(@"Success");
+//        }
+//    }];
 }
 
 /*

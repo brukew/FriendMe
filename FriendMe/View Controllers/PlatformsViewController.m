@@ -9,7 +9,7 @@
 #import "PlatformCell.h"
 #import "Parse/Parse.h"
 #import "Platform.h"
-#import "AppDelegate.h"
+#import "APIManager.h"
 
 @interface PlatformsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -72,7 +72,7 @@ static NSArray *arrayOfPlatforms;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([arrayOfPlatforms[indexPath.item]  isEqual: @"Spotify"]){
-        AppDelegate *api = [AppDelegate shared];
+        APIManager *api = [APIManager shared];
         
         [api setUpSpotifyWithCompletion:^(NSDictionary *data, NSError *error) {
             if (error) {
@@ -87,6 +87,8 @@ static NSArray *arrayOfPlatforms;
     [Platform addPlatform: arrayOfPlatforms[indexPath.item] withCompletion: nil];
     
 }
+
+
 
 
 
