@@ -36,6 +36,8 @@
 		1A62D58F26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D58E26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m */; };
 		1A62D59126A5FA2A000AA0A2 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A62D59026A5FA2A000AA0A2 /* Keys.plist */; };
 		1A62D59426A5FAEB000AA0A2 /* APIManager2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59326A5FAEB000AA0A2 /* APIManager2.m */; };
+		1A62D59726A627E0000AA0A2 /* PlatformChangeWeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59626A627E0000AA0A2 /* PlatformChangeWeightCell.m */; };
+		1A62D59A26A64412000AA0A2 /* MatchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59926A64412000AA0A2 /* MatchProfileViewController.m */; };
 		314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +116,10 @@
 		1A62D59026A5FA2A000AA0A2 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		1A62D59226A5FAEA000AA0A2 /* APIManager2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager2.h; sourceTree = "<group>"; };
 		1A62D59326A5FAEB000AA0A2 /* APIManager2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager2.m; sourceTree = "<group>"; };
+		1A62D59526A627E0000AA0A2 /* PlatformChangeWeightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformChangeWeightCell.h; sourceTree = "<group>"; };
+		1A62D59626A627E0000AA0A2 /* PlatformChangeWeightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformChangeWeightCell.m; sourceTree = "<group>"; };
+		1A62D59826A64412000AA0A2 /* MatchProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchProfileViewController.h; sourceTree = "<group>"; };
+		1A62D59926A64412000AA0A2 /* MatchProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchProfileViewController.m; sourceTree = "<group>"; };
 		7A89400C6FDA2200E862CB7D /* Pods-FriendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.debug.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.debug.xcconfig"; sourceTree = "<group>"; };
 		8C56027D1DDC23A0C7BA7064 /* Pods-FriendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.release.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,6 +245,8 @@
 				1A62D58526A0C5A7000AA0A2 /* BeginViewController.m */,
 				1A62D58A26A23930000AA0A2 /* ManagePlatformsViewController.h */,
 				1A62D58B26A23930000AA0A2 /* ManagePlatformsViewController.m */,
+				1A62D59826A64412000AA0A2 /* MatchProfileViewController.h */,
+				1A62D59926A64412000AA0A2 /* MatchProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -263,6 +271,8 @@
 				1A62D56A269E06F2000AA0A2 /* PlatformWeightCell.m */,
 				1A62D58726A0C89E000AA0A2 /* MatchCell.h */,
 				1A62D58826A0C89E000AA0A2 /* MatchCell.m */,
+				1A62D59526A627E0000AA0A2 /* PlatformChangeWeightCell.h */,
+				1A62D59626A627E0000AA0A2 /* PlatformChangeWeightCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -480,9 +490,11 @@
 				1A62D54E269CCF40000AA0A2 /* LogInViewController.m in Sources */,
 				1A62D57A269F68BA000AA0A2 /* ProfileViewController.m in Sources */,
 				1A62D58C26A23930000AA0A2 /* ManagePlatformsViewController.m in Sources */,
+				1A62D59726A627E0000AA0A2 /* PlatformChangeWeightCell.m in Sources */,
 				1A62D514269CAE84000AA0A2 /* AppDelegate.m in Sources */,
 				1A62D565269D0826000AA0A2 /* PlatformsViewController.m in Sources */,
 				1A62D555269CD9C3000AA0A2 /* GenInfoViewController.m in Sources */,
+				1A62D59A26A64412000AA0A2 /* MatchProfileViewController.m in Sources */,
 				1A62D525269CAE85000AA0A2 /* main.m in Sources */,
 				1A62D558269CDDA0000AA0A2 /* SignUpViewController.m in Sources */,
 				1A62D577269F3DD4000AA0A2 /* APIManager.m in Sources */,

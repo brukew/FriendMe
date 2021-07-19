@@ -36,7 +36,6 @@
     }
     PFUser *current = [PFUser currentUser];
     NSArray *platformArray = current[@"platforms"]; //make sure platforms are saved!
-    NSLog(@"%@", platformArray);
     for (PlatformWeightCell *cell in cells)
     {
 
@@ -56,10 +55,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     PlatformWeightCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlatformWeightCell" forIndexPath:indexPath];
     PFUser *current = [PFUser currentUser];
-    cell.platform = current[@"platforms"][indexPath.row];
-    [cell loadData];
+    PFQuery *query = [PFQuery queryWithClassName:@"Platform"];
+    [query getObjectInBackgroundWithId:current[@"platforms"][indexPath.row] block:^(PFObject *platform, NSError *error) {
+        if (!error) {
+            cell.platform = platform;
+            [cell loadData];
+        } else {
+            NSLog(@"Error %@", error.localizedDescription);
+        }
+    }];
     return cell;
-    
 }
 
 

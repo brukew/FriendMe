@@ -6,8 +6,12 @@
 //
 
 #import "ManagePlatformsViewController.h"
+#import <Parse/Parse.h>
+#import "Platform.h"
+#import "UIImageView+AFNetworking.h"
+#import "PlatformChangeWeightCell.h"
 
-@interface ManagePlatformsViewController ()
+@interface ManagePlatformsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -15,8 +19,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    PFUser *current = [PFUser currentUser];
+    NSMutableArray *platforms = current[@"platforms"];
+    return platforms.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    PlatformChangeWeightCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlatformChangeWeightCell" forIndexPath:indexPath];
+    PFUser *current = [PFUser currentUser];
+    NSString *platformID= current[@"platforms"][indexPath.row];
+    PFQuery *query = [PFQuery queryWithClassName:@"Platform"];
+    [query getObjectInBackgroundWithId:platformID block:^(PFObject *platform, NSError *error) {
+        if (!error) {
+            cell.platform = platform;
+            [cell loadData];
+        } else {
+            NSLog(@"Error %@", error.localizedDescription);
+        }
+    }];
+    return cell;
+}
+
 
 /*
 #pragma mark - Navigation

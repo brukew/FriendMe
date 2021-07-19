@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *platformTitle;
 @property (strong, nonatomic) IBOutlet UIImageView *platformImageView;
 @property (strong, nonatomic) IBOutlet UISlider *platformSlider;
-@property (weak, nonatomic) Platform *platform;
+@property (weak, nonatomic) PFObject *platform;
 
 - (void) loadData;
 

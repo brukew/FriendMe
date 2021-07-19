@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "MatchCell.h"
 #import "APIManager.h"
+#import "MatchProfileViewController.h"
 
 @interface MatchesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -57,16 +58,22 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     PFUser *current = [PFUser currentUser];
     //TODO: Implement matching algo?
-    current[@"matches"] = [[NSMutableArray alloc] init];
-    self.matches =current[@"matches"];
+    self.matches = current[@"matches"];
     return self.matches.count; //matches.count
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MatchCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MatchCell" forIndexPath:indexPath];
     PFUser *current = [PFUser currentUser];
-    cell.currentMatch = current[@"matches"][indexPath.item];
-    [cell loadData];
+    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    [query getObjectInBackgroundWithId:current[@"matches"][indexPath.row] block:^(PFObject *match, NSError *error) {
+        if (!error) {
+            cell.currentMatch = match;
+            [cell loadData];
+        } else {
+            NSLog(@"Error %@", error.localizedDescription);
+        }
+    }];
     return cell;
     
 }
@@ -78,10 +85,9 @@
     self.matches = [[NSMutableArray alloc] init];
     for (PFUser *user in users){
         if (user!=current){
-            [self.matches addObject:user];
+            [self.matches addObject:user.objectId];
         }
     }
-    NSLog(@"Users %@", self.matches[0][@"username"]);
     current[@"matches"] = self.matches;
     [self.collectionView reloadData];
 //    APIManager *api = [APIManager shared];
@@ -96,14 +102,26 @@
 //    }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqual:@"toProfile"]){
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+        MatchProfileViewController *matchProfileController = [segue destinationViewController];
+        PFUser *current = [PFUser currentUser];
+        PFQuery *query = [PFQuery queryWithClassName:@"User"];
+        [query getObjectInBackgroundWithId:current[@"matches"][indexPath.item] block:^(PFObject *user, NSError *error) {
+            if (!error) {
+                matchProfileController.user = user;
+            }
+            else {
+                NSLog(@"Error %@", error.localizedDescription);
+            }
+        }];
+    }
 }
-*/
 
 @end

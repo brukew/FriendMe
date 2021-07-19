@@ -1,25 +1,20 @@
 //
-//  ProfileViewController.m
+//  MatchProfileViewController.m
 //  FriendMe
 //
-//  Created by Bruke Wossenseged on 7/14/21.
+//  Created by Bruke Wossenseged on 7/19/21.
 //
 
-#import "ProfileViewController.h"
+#import "MatchProfileViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import <Parse/Parse.h>
 #import "Parse/PFImageView.h"
-#import "EditProfileViewController.h"
 
-
-@interface ProfileViewController () <UIScrollViewDelegate, EditProfileViewControllerDelegate>
+@interface MatchProfileViewController () <UIScrollViewDelegate>
 
 @end
 
-@implementation ProfileViewController
-
-//TODO: Clean up page
-//TODO: Add api data
+@implementation MatchProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,9 +26,8 @@
 }
 
 -(void) loadData{
-    PFUser *current = [PFUser currentUser];
-    if (current[@"pictures"]){
-        NSMutableArray *images = current[@"pictures"];
+    if (self.user[@"pictures"]){
+        NSMutableArray *images = self.user[@"pictures"];
         NSInteger ix;
         for( ix = 0; ix < images.count; ix+=1 ) {
             CGRect frame;
@@ -60,18 +54,18 @@
     }
     
     self.scrollView.delegate = self;
-    self.nameLabel.text = [[current[@"firstName"] stringByAppendingString:@" "] stringByAppendingString:current[@"lastName"]];
+    self.nameLabel.text = [[self.user[@"firstName"] stringByAppendingString:@" "] stringByAppendingString:self.user[@"lastName"]];
     NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
                                        components:NSCalendarUnitYear
-                                       fromDate:current[@"DOB"]
+                                       fromDate:self.user[@"DOB"]
                                        toDate:[NSDate date]
                                        options:0];
     NSInteger age = [ageComponents year];
     self.ageLabel.text = [NSString stringWithFormat:@"%ld",(long)age];
-    if (current[@"bio"]){
-        self.bioLabel.text = current[@"bio"];
+    if (self.user[@"bio"]){
+        self.bioLabel.text = self.user[@"bio"];
     }
-    self.pageControl.numberOfPages = [current[@"pictures"] count];
+    self.pageControl.numberOfPages = [self.user[@"pictures"] count];
     [self.scrollView bringSubviewToFront:self.pageControl];
 }
 
@@ -81,20 +75,15 @@
     self.pageControl.currentPage = (int)page;
 }
 
-- (void)didEdit{
-    [self loadData];
-}
 
-
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqual:@"editProfile"]){
-        EditProfileViewController *editProfileController = [segue destinationViewController];
-        editProfileController.delegate = self;
-    }
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-
+*/
 
 @end

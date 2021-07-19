@@ -43,13 +43,10 @@
 {
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"GMImagePicker: User ended picking assets. Number of selected items is: %lu", (unsigned long)assetArray.count);
-    NSLog(@"%@", assetArray);
     PFUser *current = [PFUser currentUser];
     current[@"pictures"] = [self convertImages: assetArray];
     [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
     }];
-    NSLog(@"Pics, %@", current[@"pictures"]);
-    NSLog(@"%@", current[@"platforms"]);
     [self performSegueWithIdentifier:@"toTabBar" sender:nil];
 }
 
