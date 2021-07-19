@@ -57,6 +57,8 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     PFUser *current = [PFUser currentUser];
     //TODO: Implement matching algo?
+    current[@"matches"] = [[NSMutableArray alloc] init];
+    self.matches =current[@"matches"];
     return self.matches.count; //matches.count
 }
 
@@ -79,8 +81,8 @@
             [self.matches addObject:user];
         }
     }
-    NSLog(@"Users %@", self.matches);
-//    current[@"matches"] = matches;
+    NSLog(@"Users %@", self.matches[0][@"username"]);
+    current[@"matches"] = self.matches;
     [self.collectionView reloadData];
 //    APIManager *api = [APIManager shared];
 //

@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 
+
 @implementation APIManager
 
 + (instancetype)shared {
@@ -24,8 +25,6 @@ static NSString * const SpotifyClientID = @"cad3439e0ad84169a65d5ed857f5e936";
 static NSString * const SpotifySecretID = @"88fa106db16141f182474f18216ca6c9";
 static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://spotify-login-callback";
 
-
-#pragma mark - Authorization example
 
 #pragma mark - Actions
 
@@ -60,12 +59,32 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     }
 }
 
+- (void) setUpSpotifyWithCompletion2:(void (^)(NSDictionary *, NSError *))completion{
+    NSString *beforeURL = [@"https://accounts.spotify.com/authorize?" stringByAppendingString:@"client_id=cad3439e0ad84169a65d5ed857f5e936&response_type=code&redirect_uri=spotify-ios-quick-start://spotify-login-callback&scope=user-library-read%20user-top-read%20playlist-read-private&state=34fFs29kd09"];
+    NSURL *url = [NSURL URLWithString:beforeURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+           if (error != nil) {
+               NSLog(@"error: %@", [error localizedDescription]);
+           }
+           else {
+               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+               NSLog(@"success: %@", dataDictionary);
+               
+           }
+       }];
+    //[self.refreshControl endRefreshing];
+    [task resume];
+}
+
 #pragma mark - SPTSessionManagerDelegate
 
 - (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
 {
     NSLog(@"success: %@", session.description);
-    self.token = session.refreshToken;
+    self.token = session.accessToken;
     [self getSpotifyTracksArtists:^(NSDictionary *dict, NSError *error) {
         if (error){
             NSLog(@"fail3: %@", error);
@@ -96,14 +115,17 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     NSURL *url = [NSURL URLWithString:@"https://api.spotify.com/v1/me/top/artists"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    [request addValue:[@"Basic " stringByAppendingString:self.token] forHTTPHeaderField:@"Authorization"];
+    [request setHTTPMethod:@"GET"];
+    [request addValue:[@"Bearer " stringByAppendingString:self.token] forHTTPHeaderField:@"Authorization"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
            if (error != nil) {
                NSLog(@"error: %@", [error localizedDescription]);
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               NSLog(@"success: %@", dataDictionary);
+               NSLog(@"success: %@", data);
                
            }
        }];

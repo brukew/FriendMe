@@ -10,7 +10,7 @@
 #import "Parse/Parse.h"
 #import "Platform.h"
 #import "APIManager.h"
-
+#import "APIManager2.h"
 @interface PlatformsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
@@ -75,6 +75,20 @@ static NSArray *arrayOfPlatforms;
         APIManager *api = [APIManager shared];
         
         [api setUpSpotifyWithCompletion:^(NSDictionary *data, NSError *error) {
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            else{
+                NSLog(@"Success");
+            }
+        }];
+
+    }
+    
+    if ([arrayOfPlatforms[indexPath.item]  isEqual: @"Twitter"]){
+        APIManager *api = [APIManager shared];
+        
+        [[APIManager2 shared] loginWithCompletion:^(BOOL success, NSError *error) {
             if (error) {
                 NSLog(@"%@", [error localizedDescription]);
             }

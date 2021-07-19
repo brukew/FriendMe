@@ -33,9 +33,10 @@
 		1A62D58626A0C5A7000AA0A2 /* BeginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D58526A0C5A7000AA0A2 /* BeginViewController.m */; };
 		1A62D58926A0C89E000AA0A2 /* MatchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D58826A0C89E000AA0A2 /* MatchCell.m */; };
 		1A62D58C26A23930000AA0A2 /* ManagePlatformsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D58B26A23930000AA0A2 /* ManagePlatformsViewController.m */; };
+		1A62D58F26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D58E26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m */; };
+		1A62D59126A5FA2A000AA0A2 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A62D59026A5FA2A000AA0A2 /* Keys.plist */; };
+		1A62D59426A5FAEB000AA0A2 /* APIManager2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59326A5FAEB000AA0A2 /* APIManager2.m */; };
 		314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */; };
-		ADA667FE3D56B78E68565DA1 /* Pods_FriendMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70131C754453471251F59F52 /* Pods_FriendMeTests.framework */; };
-		CF1C9A59D3A2C195E23731EC /* Pods_FriendMe_FriendMeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AC7E03C405140B6549E1A6 /* Pods_FriendMe_FriendMeUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E1D83E04443B0D23FC80BAC /* Pods-FriendMe-FriendMeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe-FriendMeUITests.debug.xcconfig"; path = "Target Support Files/Pods-FriendMe-FriendMeUITests/Pods-FriendMe-FriendMeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FriendMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A62D50F269CAE84000AA0A2 /* FriendMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A62D512269CAE84000AA0A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -109,13 +109,13 @@
 		1A62D58826A0C89E000AA0A2 /* MatchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchCell.m; sourceTree = "<group>"; };
 		1A62D58A26A23930000AA0A2 /* ManagePlatformsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagePlatformsViewController.h; sourceTree = "<group>"; };
 		1A62D58B26A23930000AA0A2 /* ManagePlatformsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagePlatformsViewController.m; sourceTree = "<group>"; };
-		21D99E4D5D230996B5F42202 /* Pods-FriendMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMeTests.debug.xcconfig"; path = "Target Support Files/Pods-FriendMeTests/Pods-FriendMeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2E99CE30466AF0F905FA4984 /* Pods-FriendMe-FriendMeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe-FriendMeUITests.release.xcconfig"; path = "Target Support Files/Pods-FriendMe-FriendMeUITests/Pods-FriendMe-FriendMeUITests.release.xcconfig"; sourceTree = "<group>"; };
-		65AC7E03C405140B6549E1A6 /* Pods_FriendMe_FriendMeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FriendMe_FriendMeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70131C754453471251F59F52 /* Pods_FriendMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FriendMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A62D58D26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BDBOAuth1SessionManager+SFAuthenticationSession.h"; sourceTree = "<group>"; };
+		1A62D58E26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BDBOAuth1SessionManager+SFAuthenticationSession.m"; sourceTree = "<group>"; };
+		1A62D59026A5FA2A000AA0A2 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		1A62D59226A5FAEA000AA0A2 /* APIManager2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager2.h; sourceTree = "<group>"; };
+		1A62D59326A5FAEB000AA0A2 /* APIManager2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager2.m; sourceTree = "<group>"; };
 		7A89400C6FDA2200E862CB7D /* Pods-FriendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.debug.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.debug.xcconfig"; sourceTree = "<group>"; };
 		8C56027D1DDC23A0C7BA7064 /* Pods-FriendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.release.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.release.xcconfig"; sourceTree = "<group>"; };
-		F8F43CA89ACEAF747954D854 /* Pods-FriendMeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMeTests.release.xcconfig"; path = "Target Support Files/Pods-FriendMeTests/Pods-FriendMeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +132,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADA667FE3D56B78E68565DA1 /* Pods_FriendMeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +139,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF1C9A59D3A2C195E23731EC /* Pods_FriendMe_FriendMeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +185,7 @@
 				1A62D520269CAE85000AA0A2 /* LaunchScreen.storyboard */,
 				1A62D523269CAE85000AA0A2 /* Info.plist */,
 				1A62D524269CAE85000AA0A2 /* main.m */,
+				1A62D59026A5FA2A000AA0A2 /* Keys.plist */,
 			);
 			path = FriendMe;
 			sourceTree = "<group>";
@@ -273,6 +272,10 @@
 			children = (
 				1A62D575269F3DD4000AA0A2 /* APIManager.h */,
 				1A62D576269F3DD4000AA0A2 /* APIManager.m */,
+				1A62D58D26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.h */,
+				1A62D58E26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m */,
+				1A62D59226A5FAEA000AA0A2 /* APIManager2.h */,
+				1A62D59326A5FAEB000AA0A2 /* APIManager2.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -282,10 +285,6 @@
 			children = (
 				7A89400C6FDA2200E862CB7D /* Pods-FriendMe.debug.xcconfig */,
 				8C56027D1DDC23A0C7BA7064 /* Pods-FriendMe.release.xcconfig */,
-				0E1D83E04443B0D23FC80BAC /* Pods-FriendMe-FriendMeUITests.debug.xcconfig */,
-				2E99CE30466AF0F905FA4984 /* Pods-FriendMe-FriendMeUITests.release.xcconfig */,
-				21D99E4D5D230996B5F42202 /* Pods-FriendMeTests.debug.xcconfig */,
-				F8F43CA89ACEAF747954D854 /* Pods-FriendMeTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -294,8 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */,
-				65AC7E03C405140B6549E1A6 /* Pods_FriendMe_FriendMeUITests.framework */,
-				70131C754453471251F59F52 /* Pods_FriendMeTests.framework */,
 				1A62D56F269E3086000AA0A2 /* SpotifyiOS.xcframework */,
 			);
 			name = Frameworks;
@@ -327,7 +324,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A62D541269CAE86000AA0A2 /* Build configuration list for PBXNativeTarget "FriendMeTests" */;
 			buildPhases = (
-				AEFAE0CC0C29A8E025221755 /* [CP] Check Pods Manifest.lock */,
 				1A62D526269CAE86000AA0A2 /* Sources */,
 				1A62D527269CAE86000AA0A2 /* Frameworks */,
 				1A62D528269CAE86000AA0A2 /* Resources */,
@@ -346,11 +342,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A62D544269CAE86000AA0A2 /* Build configuration list for PBXNativeTarget "FriendMeUITests" */;
 			buildPhases = (
-				D11BEA90ADF5AD3D0EFBB8DF /* [CP] Check Pods Manifest.lock */,
 				1A62D531269CAE86000AA0A2 /* Sources */,
 				1A62D532269CAE86000AA0A2 /* Frameworks */,
 				1A62D533269CAE86000AA0A2 /* Resources */,
-				79F5A924B95478E4CB22C2E9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -408,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A62D59126A5FA2A000AA0A2 /* Keys.plist in Resources */,
 				1A62D522269CAE85000AA0A2 /* LaunchScreen.storyboard in Resources */,
 				1A62D51F269CAE85000AA0A2 /* Assets.xcassets in Resources */,
 				1A62D51D269CAE84000AA0A2 /* Main.storyboard in Resources */,
@@ -470,67 +465,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		79F5A924B95478E4CB22C2E9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FriendMe-FriendMeUITests/Pods-FriendMe-FriendMeUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FriendMe-FriendMeUITests/Pods-FriendMe-FriendMeUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FriendMe-FriendMeUITests/Pods-FriendMe-FriendMeUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AEFAE0CC0C29A8E025221755 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FriendMeTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D11BEA90ADF5AD3D0EFBB8DF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FriendMe-FriendMeUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -542,6 +476,7 @@
 				1A62D562269D032D000AA0A2 /* PlatformCell.m in Sources */,
 				1A62D51A269CAE84000AA0A2 /* ViewController.m in Sources */,
 				1A62D58326A0C130000AA0A2 /* MatchesViewController.m in Sources */,
+				1A62D58F26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				1A62D54E269CCF40000AA0A2 /* LogInViewController.m in Sources */,
 				1A62D57A269F68BA000AA0A2 /* ProfileViewController.m in Sources */,
 				1A62D58C26A23930000AA0A2 /* ManagePlatformsViewController.m in Sources */,
@@ -554,6 +489,7 @@
 				1A62D568269E01E4000AA0A2 /* WeightsViewController.m in Sources */,
 				1A62D580269FB234000AA0A2 /* EditProfileViewController.m in Sources */,
 				1A62D58926A0C89E000AA0A2 /* MatchCell.m in Sources */,
+				1A62D59426A5FAEB000AA0A2 /* APIManager2.m in Sources */,
 				1A62D56E269E0ACF000AA0A2 /* Platform.m in Sources */,
 				1A62D57D269F7C7B000AA0A2 /* PhotosViewController.m in Sources */,
 				1A62D58626A0C5A7000AA0A2 /* BeginViewController.m in Sources */,
@@ -834,7 +770,6 @@
 		};
 		1A62D542269CAE86000AA0A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21D99E4D5D230996B5F42202 /* Pods-FriendMeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -855,7 +790,6 @@
 		};
 		1A62D543269CAE86000AA0A2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8F43CA89ACEAF747954D854 /* Pods-FriendMeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -876,7 +810,6 @@
 		};
 		1A62D545269CAE86000AA0A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E1D83E04443B0D23FC80BAC /* Pods-FriendMe-FriendMeUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8FF9MKP5LW;
@@ -895,7 +828,6 @@
 		};
 		1A62D546269CAE86000AA0A2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E99CE30466AF0F905FA4984 /* Pods-FriendMe-FriendMeUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8FF9MKP5LW;

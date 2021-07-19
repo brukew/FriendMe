@@ -1,5 +1,5 @@
 // UIButton+AFNetworking.m
-// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
+// Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -103,11 +103,14 @@ static const char * af_backgroundImageDownloadReceiptKeyForState(UIControlState 
 
 + (AFImageDownloader *)sharedImageDownloader {
 
-    return objc_getAssociatedObject([UIButton class], @selector(sharedImageDownloader)) ?: [AFImageDownloader defaultInstance];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wgnu"
+    return objc_getAssociatedObject(self, @selector(sharedImageDownloader)) ?: [AFImageDownloader defaultInstance];
+#pragma clang diagnostic pop
 }
 
 + (void)setSharedImageDownloader:(AFImageDownloader *)imageDownloader {
-    objc_setAssociatedObject([UIButton class], @selector(sharedImageDownloader), imageDownloader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(sharedImageDownloader), imageDownloader, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 #pragma mark -
@@ -168,7 +171,7 @@ static const char * af_backgroundImageDownloadReceiptKeyForState(UIControlState 
                        if ([[strongSelf af_imageDownloadReceiptForState:state].receiptID isEqual:downloadID]) {
                            if (success) {
                                success(request, response, responseObject);
-                           } else if (responseObject) {
+                           } else if(responseObject) {
                                [strongSelf setImage:responseObject forState:state];
                            }
                            [strongSelf af_setImageDownloadReceipt:nil forState:state];
@@ -217,7 +220,7 @@ static const char * af_backgroundImageDownloadReceiptKeyForState(UIControlState 
         return;
     }
 
-    [self cancelBackgroundImageDownloadTaskForState:state];
+    [self cancelImageDownloadTaskForState:state];
 
     AFImageDownloader *downloader = [[self class] sharedImageDownloader];
     id <AFImageRequestCache> imageCache = downloader.imageCache;
@@ -247,10 +250,10 @@ static const char * af_backgroundImageDownloadReceiptKeyForState(UIControlState 
                        if ([[strongSelf af_backgroundImageDownloadReceiptForState:state].receiptID isEqual:downloadID]) {
                            if (success) {
                                success(request, response, responseObject);
-                           } else if (responseObject) {
+                           } else if(responseObject) {
                                [strongSelf setBackgroundImage:responseObject forState:state];
                            }
-                           [strongSelf af_setBackgroundImageDownloadReceipt:nil forState:state];
+                           [strongSelf af_setImageDownloadReceipt:nil forState:state];
                        }
 
                    }

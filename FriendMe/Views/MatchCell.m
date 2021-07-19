@@ -11,10 +11,6 @@
 @implementation MatchCell
 
 - (void) loadData{
-    NSLog(@"%@", self.currentMatch.objectId);
-    [PFObject fetchAll:[self.currentMatch objectForKey:@"firstName"]];
-    NSLog(@"%@", [self.currentMatch objectForKey:@"firstName"]);
-
     self.nameLabel.text = [[self.currentMatch[@"firstName"] stringByAppendingString:@" "] stringByAppendingString:self.currentMatch[@"lastName"]];
     NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
                                        components:NSCalendarUnitYear

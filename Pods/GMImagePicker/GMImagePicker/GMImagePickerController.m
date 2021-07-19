@@ -214,7 +214,6 @@
         [self.delegate assetsPickerControllerDidCancel:self];
     }
     
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 
