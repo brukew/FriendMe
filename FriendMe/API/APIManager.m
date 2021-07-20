@@ -29,54 +29,35 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 #pragma mark - Actions
 
 - (void) setUpSpotifyWithCompletion:(void (^)(NSDictionary *, NSError*))completion{
-    SPTConfiguration *configuration = [SPTConfiguration configurationWithClientID:SpotifyClientID
-                                                                      redirectURL:[NSURL URLWithString:SpotifyRedirectURLString]];
-    
-//    configuration.tokenSwapURL = [NSURL URLWithString:@"https://glitch.com/edit/#!/metal-bedecked-cave/api/token"];
-//    configuration.tokenRefreshURL = [NSURL URLWithString:@"https://glitch.com/edit/#!/metal-bedecked-cave/api/refresh_token"];
-    /*
-     The session manager lets you authorize, get access tokens, and so on.
-     */
-    self.sessionManager = [SPTSessionManager sessionManagerWithConfiguration:configuration
-                                                                    delegate:self];
-    /*
-     Scopes let you specify exactly what types of data your application wants to
-     access, and the set of scopes you pass in your call determines what access
-     permissions the user is asked to grant.
-     For more information, see https://developer.spotify.com/web-api/using-scopes/.
-     */
-    SPTScope scope = SPTUserLibraryReadScope | SPTPlaylistReadPrivateScope;
+    NSString *spotifyClientID = SpotifyClientID;
+    NSURL *spotifyRedirectURL = [NSURL URLWithString:SpotifyRedirectURLString];
 
-    /*
-     Start the authorization process. This requires user input.
-     */
+    self.configuration  = [[SPTConfiguration alloc] initWithClientID:spotifyClientID redirectURL:spotifyRedirectURL];
+    
+//    NSURL *tokenSwapURL = [NSURL URLWithString:@"https://[my token swap app domain]/api/token"];
+//    NSURL *tokenRefreshURL = [NSURL URLWithString:@"https://[my token swap app domain]/api/refresh_token"];
+//
+//    self.configuration.tokenSwapURL = tokenSwapURL;
+//    self.configuration.tokenRefreshURL = tokenRefreshURL;
+    self.configuration.playURI = @"";
+
+    self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
+    
+    SPTScope requestedScope = SPTUserLibraryReadScope | SPTPlaylistReadPrivateScope;
+     
     if (@available(iOS 11, *)) {
         // Use this on iOS 11 and above to take advantage of SFAuthenticationSession
-        [self.sessionManager initiateSessionWithScope:scope options:SPTDefaultAuthorizationOption];
+        [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
     } else {
         // Use this on iOS versions < 11 to use SFSafariViewController
-        [self.sessionManager initiateSessionWithScope:scope options:SPTDefaultAuthorizationOption presentingViewController:self];
+        [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption presentingViewController:self];
     }
 }
 
-- (void) setUpSpotifyWithCompletion2:(void (^)(NSDictionary *, NSError *))completion{
-    NSString *beforeURL = [@"https://accounts.spotify.com/authorize?" stringByAppendingString:@"client_id=cad3439e0ad84169a65d5ed857f5e936&response_type=code&redirect_uri=spotify-ios-quick-start://spotify-login-callback&scope=user-library-read%20user-top-read%20playlist-read-private&state=34fFs29kd09"];
-    NSURL *url = [NSURL URLWithString:beforeURL];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    [request setHTTPMethod:@"GET"];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-           if (error != nil) {
-               NSLog(@"error: %@", [error localizedDescription]);
-           }
-           else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               NSLog(@"success: %@", dataDictionary);
-               
-           }
-       }];
-    //[self.refreshControl endRefreshing];
-    [task resume];
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    [self.sessionManager application:app openURL:url options:options];
+    return true;
 }
 
 #pragma mark - SPTSessionManagerDelegate

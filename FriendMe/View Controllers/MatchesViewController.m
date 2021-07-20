@@ -79,27 +79,27 @@
 }
 
 - (IBAction)testAddMatches:(id)sender {
-    PFUser *current = [PFUser currentUser];
-    PFQuery *query = [PFUser query];
-    NSArray *users = [query findObjects];
-    self.matches = [[NSMutableArray alloc] init];
-    for (PFUser *user in users){
-        if (user!=current){
-            [self.matches addObject:user.objectId];
+//    PFUser *current = [PFUser currentUser];
+//    PFQuery *query = [PFUser query];
+//    NSArray *users = [query findObjects];
+//    self.matches = [[NSMutableArray alloc] init];
+//    for (PFUser *user in users){
+//        if (user!=current){
+//            [self.matches addObject:user.objectId];
+//        }
+//    }
+//    current[@"matches"] = self.matches;
+//    [self.collectionView reloadData];
+    APIManager *api = [APIManager shared];
+
+    [api setUpSpotifyWithCompletion:^(NSDictionary *data, NSError *error) {
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
         }
-    }
-    current[@"matches"] = self.matches;
-    [self.collectionView reloadData];
-//    APIManager *api = [APIManager shared];
-//
-//    [api setUpSpotifyWithCompletion:^(NSDictionary *data, NSError *error) {
-//        if (error) {
-//            NSLog(@"%@", [error localizedDescription]);
-//        }
-//        else{
-//            NSLog(@"Success");
-//        }
-//    }];
+        else{
+            NSLog(@"Success: %@", data);
+        }
+    }];
 }
 
 

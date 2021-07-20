@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_END
 
 - (void) setUpSpotifyWithCompletion:(void (^)(NSDictionary *, NSError*))completion;
 
-- (void) setUpSpotifyWithCompletion2:(void (^)(NSDictionary *, NSError*))completion;
+- (void) getSpotifyTracksArtists:(void (^)(NSDictionary *, NSError*))completion;
+
 
 @end

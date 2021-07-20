@@ -24,7 +24,6 @@
 		1A62D568269E01E4000AA0A2 /* WeightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D567269E01E4000AA0A2 /* WeightsViewController.m */; };
 		1A62D56B269E06F2000AA0A2 /* PlatformWeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D56A269E06F2000AA0A2 /* PlatformWeightCell.m */; };
 		1A62D56E269E0ACF000AA0A2 /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D56D269E0ACF000AA0A2 /* Platform.m */; };
-		1A62D570269E3086000AA0A2 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A62D56F269E3086000AA0A2 /* SpotifyiOS.xcframework */; };
 		1A62D577269F3DD4000AA0A2 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D576269F3DD4000AA0A2 /* APIManager.m */; };
 		1A62D57A269F68BA000AA0A2 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D579269F68BA000AA0A2 /* ProfileViewController.m */; };
 		1A62D57D269F7C7B000AA0A2 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D57C269F7C7B000AA0A2 /* PhotosViewController.m */; };
@@ -38,6 +37,8 @@
 		1A62D59426A5FAEB000AA0A2 /* APIManager2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59326A5FAEB000AA0A2 /* APIManager2.m */; };
 		1A62D59726A627E0000AA0A2 /* PlatformChangeWeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59626A627E0000AA0A2 /* PlatformChangeWeightCell.m */; };
 		1A62D59A26A64412000AA0A2 /* MatchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59926A64412000AA0A2 /* MatchProfileViewController.m */; };
+		1A62D5A326A73E4A000AA0A2 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */; };
+		1A62D5A426A73E4A000AA0A2 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,20 @@
 			remoteInfo = FriendMe;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1A62D5A526A73E4A000AA0A2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1A62D5A426A73E4A000AA0A2 /* SpotifyiOS.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FriendMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +109,6 @@
 		1A62D56A269E06F2000AA0A2 /* PlatformWeightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformWeightCell.m; sourceTree = "<group>"; };
 		1A62D56C269E0ACF000AA0A2 /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		1A62D56D269E0ACF000AA0A2 /* Platform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Platform.m; sourceTree = "<group>"; };
-		1A62D56F269E3086000AA0A2 /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../../../Downloads/ios-sdk-master/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
 		1A62D575269F3DD4000AA0A2 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		1A62D576269F3DD4000AA0A2 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		1A62D578269F68BA000AA0A2 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -120,6 +134,8 @@
 		1A62D59626A627E0000AA0A2 /* PlatformChangeWeightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformChangeWeightCell.m; sourceTree = "<group>"; };
 		1A62D59826A64412000AA0A2 /* MatchProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchProfileViewController.h; sourceTree = "<group>"; };
 		1A62D59926A64412000AA0A2 /* MatchProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchProfileViewController.m; sourceTree = "<group>"; };
+		1A62D59D26A73C60000AA0A2 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../../Downloads/ios-sdk-master 2/SpotifyiOS.framework"; sourceTree = "<group>"; };
+		1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../../../Downloads/ios-sdk-master/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
 		7A89400C6FDA2200E862CB7D /* Pods-FriendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.debug.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.debug.xcconfig"; sourceTree = "<group>"; };
 		8C56027D1DDC23A0C7BA7064 /* Pods-FriendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.release.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,7 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A62D570269E3086000AA0A2 /* SpotifyiOS.xcframework in Frameworks */,
+				1A62D5A326A73E4A000AA0A2 /* SpotifyiOS.xcframework in Frameworks */,
 				314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,8 +318,9 @@
 		84A99C5E67FDFB0A13B34DED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */,
 				16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */,
-				1A62D56F269E3086000AA0A2 /* SpotifyiOS.xcframework */,
+				1A62D59D26A73C60000AA0A2 /* SpotifyiOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -320,6 +337,7 @@
 				1A62D50C269CAE84000AA0A2 /* Frameworks */,
 				1A62D50D269CAE84000AA0A2 /* Resources */,
 				0B8CE18E8E712886A6FDB302 /* [CP] Embed Pods Frameworks */,
+				1A62D5A526A73E4A000AA0A2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
