@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 
-@property (weak, nonatomic) PFUser *currentMatch;
+@property (weak, nonatomic) PFObject *currentMatch;
 
 -(void) loadData;
 

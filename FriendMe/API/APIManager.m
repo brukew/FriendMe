@@ -8,6 +8,7 @@
 #import "APIManager.h"
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
+#import "MatchesViewController.h"
 
 
 @implementation APIManager
@@ -60,6 +61,8 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     return true;
 }
 
+
+
 #pragma mark - SPTSessionManagerDelegate
 
 - (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
@@ -83,14 +86,9 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
   NSLog(@"renewed: %@", session.description);
 }
 
-- (void) getBearerToken{}
 
 
 #pragma mark - Pulling Spotify data
-
--(void) getBearerToken:(void (^)(NSDictionary *, NSError*))completion{
-    
-}
 
 -(void) getSpotifyTracksArtists:(void (^)(NSDictionary *, NSError*))completion{
     NSURL *url = [NSURL URLWithString:@"https://api.spotify.com/v1/me/top/artists"];

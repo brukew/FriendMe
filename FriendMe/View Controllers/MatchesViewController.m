@@ -65,7 +65,8 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MatchCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MatchCell" forIndexPath:indexPath];
     PFUser *current = [PFUser currentUser];
-    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    PFQuery *query = [PFUser query];
+    NSLog(@"%@", current[@"matches"][indexPath.row]);
     [query getObjectInBackgroundWithId:current[@"matches"][indexPath.row] block:^(PFObject *match, NSError *error) {
         if (!error) {
             cell.currentMatch = match;
@@ -112,15 +113,16 @@
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
         MatchProfileViewController *matchProfileController = [segue destinationViewController];
         PFUser *current = [PFUser currentUser];
-        PFQuery *query = [PFQuery queryWithClassName:@"User"];
-        [query getObjectInBackgroundWithId:current[@"matches"][indexPath.item] block:^(PFObject *user, NSError *error) {
-            if (!error) {
-                matchProfileController.user = user;
-            }
-            else {
-                NSLog(@"Error %@", error.localizedDescription);
-            }
-        }];
+//        PFQuery *query = [PFUser query];
+//        [query getObjectInBackgroundWithId:current[@"matches"][indexPath.item] block:^(PFObject *user, NSError *error) {
+//            if (!error) {
+//                matchProfileController.user = user;
+//            }
+//            else {
+//                NSLog(@"Error %@", error.localizedDescription);
+//            }
+//        }];
+        matchProfileController.userID = current[@"matches"][indexPath.item];
     }
 }
 

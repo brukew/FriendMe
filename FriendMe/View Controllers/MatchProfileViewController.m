@@ -21,7 +21,17 @@
     self.scrollView.showsHorizontalScrollIndicator = false;
     self.scrollView.pagingEnabled = true;
     self.scrollView.delegate = self;
-    [self loadData];
+    PFQuery *query = [PFUser query];
+    
+    [query getObjectInBackgroundWithId:self.userID block:^(PFObject *user, NSError *error) {
+        if (!error) {
+            self.user = user;
+            [self loadData];
+        }
+        else {
+            NSLog(@"Error %@", error.localizedDescription);
+        }
+    }];
     
 }
 

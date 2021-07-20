@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MatchProfileViewController : UIViewController
 
+@property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) PFObject *user;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;

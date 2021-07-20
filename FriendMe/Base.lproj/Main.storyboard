@@ -391,31 +391,33 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="295"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VMe-HZ-9v4">
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VMe-HZ-9v4">
                                         <rect key="frame" x="135" y="260" width="121" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </pageControl>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="VMe-HZ-9v4" firstAttribute="top" secondItem="9oX-uL-scl" secondAttribute="top" constant="260" id="6hZ-0h-Tg4"/>
+                                    <constraint firstItem="9oX-uL-scl" firstAttribute="bottom" secondItem="VMe-HZ-9v4" secondAttribute="bottom" constant="8" id="72P-7s-F2K"/>
+                                    <constraint firstItem="9oX-uL-scl" firstAttribute="trailing" secondItem="VMe-HZ-9v4" secondAttribute="trailing" constant="134" id="DeR-a1-WbO"/>
+                                    <constraint firstItem="VMe-HZ-9v4" firstAttribute="leading" secondItem="9oX-uL-scl" secondAttribute="leading" constant="135" id="Zkr-wv-mQS"/>
+                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="g0x-rv-D2U"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="9oX-uL-scl"/>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f7-ZZ-h6z">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f7-ZZ-h6z">
                                 <rect key="frame" x="16" y="309" width="98" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYd-8A-iGi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYd-8A-iGi">
                                 <rect key="frame" x="16" y="363" width="48" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TG4-As-U8g">
-                                <rect key="frame" x="19" y="404" width="29" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TG4-As-U8g">
+                                <rect key="frame" x="16" y="404" width="23.666666666666671" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -423,6 +425,19 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VCd-10-AHh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TG4-As-U8g" firstAttribute="top" secondItem="jYd-8A-iGi" secondAttribute="bottom" constant="8" id="0ou-xK-kTG"/>
+                            <constraint firstItem="jYd-8A-iGi" firstAttribute="top" secondItem="4f7-ZZ-h6z" secondAttribute="bottom" constant="8" id="BxY-h8-37C"/>
+                            <constraint firstItem="4f7-ZZ-h6z" firstAttribute="leading" secondItem="VCd-10-AHh" secondAttribute="leading" constant="16" id="CjL-1L-wt8"/>
+                            <constraint firstItem="VCd-10-AHh" firstAttribute="bottom" secondItem="TG4-As-U8g" secondAttribute="bottom" constant="331.67000000000002" id="E10-eS-a3C"/>
+                            <constraint firstItem="VCd-10-AHh" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TG4-As-U8g" secondAttribute="trailing" constant="10" id="Hhb-og-LZg"/>
+                            <constraint firstItem="jYd-8A-iGi" firstAttribute="leading" secondItem="TG4-As-U8g" secondAttribute="leading" id="Otc-wS-tB4"/>
+                            <constraint firstItem="VCd-10-AHh" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4f7-ZZ-h6z" secondAttribute="trailing" constant="10" id="Owb-rK-zxs"/>
+                            <constraint firstItem="TG4-As-U8g" firstAttribute="top" secondItem="blT-Yb-Nj5" secondAttribute="topMargin" constant="404" id="Rph-aJ-e1Z"/>
+                            <constraint firstItem="4f7-ZZ-h6z" firstAttribute="leading" secondItem="jYd-8A-iGi" secondAttribute="leading" id="i5M-6c-0aS"/>
+                            <constraint firstItem="4f7-ZZ-h6z" firstAttribute="top" secondItem="blT-Yb-Nj5" secondAttribute="topMargin" constant="309" id="oSW-6B-R9L"/>
+                            <constraint firstItem="VCd-10-AHh" firstAttribute="trailing" secondItem="jYd-8A-iGi" secondAttribute="trailing" constant="326" id="tw3-IN-OJO"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="ageLabel" destination="jYd-8A-iGi" id="6ht-tX-p6s"/>

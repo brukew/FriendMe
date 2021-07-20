@@ -7,6 +7,7 @@
 
 #import "SceneDelegate.h"
 #import <Parse/Parse.h>
+#import "MatchesViewController.h"
 
 @interface SceneDelegate ()
 
@@ -65,9 +66,5 @@
 //  }
 //}
 
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
-{
-    [...]
-}
 
 @end
