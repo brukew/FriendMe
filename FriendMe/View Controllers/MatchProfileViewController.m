@@ -9,6 +9,7 @@
 #import "UIImageView+AFNetworking.h"
 #import <Parse/Parse.h>
 #import "Parse/PFImageView.h"
+#import "APIManager2.h"
 
 @interface MatchProfileViewController () <UIScrollViewDelegate>
 
@@ -21,6 +22,8 @@
     self.scrollView.showsHorizontalScrollIndicator = false;
     self.scrollView.pagingEnabled = true;
     self.scrollView.delegate = self;
+    
+    
     PFQuery *query = [PFUser query];
     
     [query getObjectInBackgroundWithId:self.userID block:^(PFObject *user, NSError *error) {
@@ -32,6 +35,7 @@
             NSLog(@"Error %@", error.localizedDescription);
         }
     }];
+    
     
 }
 

@@ -12,6 +12,7 @@
 #import "MatchCell.h"
 #import "APIManager.h"
 #import "MatchProfileViewController.h"
+#import "APIManager2.h"
 
 @interface MatchesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
             

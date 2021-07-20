@@ -13,4 +13,7 @@
 
 + (instancetype)shared;
 
+- (void)getFollowersWithCompletion:(void(^)(NSMutableArray *tweets, NSError *error))completion;
+
+
 @end

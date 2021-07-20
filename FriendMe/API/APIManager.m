@@ -44,7 +44,7 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 
     self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
     
-    SPTScope requestedScope = SPTUserLibraryReadScope | SPTPlaylistReadPrivateScope;
+    SPTScope requestedScope = SPTUserLibraryReadScope | SPTPlaylistReadPrivateScope |  SPTUserTopReadScope;
      
     if (@available(iOS 11, *)) {
         // Use this on iOS 11 and above to take advantage of SFAuthenticationSession
@@ -91,7 +91,30 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 #pragma mark - Pulling Spotify data
 
 -(void) getSpotifyTracksArtists:(void (^)(NSDictionary *, NSError*))completion{
-    NSURL *url = [NSURL URLWithString:@"https://api.spotify.com/v1/me/top/artists"];
+    [self getSpotifyData:@"https://api.spotify.com/v1/me/top/artists" completion:^(NSDictionary * artistDict, NSError * error) {
+        if (!error){
+            NSLog(@"success: artists");
+            NSArray *artistArray = artistDict[@"items"];
+            [self convertSpotifyArtists:artistArray];
+        }
+        else{
+            NSLog(@"Error, Trouble getting artists: %@", error.localizedDescription);
+        }
+    }];
+    [self getSpotifyData:@"https://api.spotify.com/v1/me/top/tracks" completion:^(NSDictionary * tracksDict, NSError * error) {
+        if (!error){
+            NSArray *tracksArray = tracksDict[@"items"];
+            [self convertSpotifyTracks:tracksArray];
+        }
+        else{
+            NSLog(@"Error, Trouble getting tracks: %@", error.localizedDescription);
+        }
+    }];
+}
+
+
+-(void) getSpotifyData:(NSString *)urlString completion:(void (^)(NSDictionary *, NSError*))completion{
+    NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     [request setHTTPMethod:@"GET"];
@@ -101,16 +124,39 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
            if (error != nil) {
                NSLog(@"error: %@", [error localizedDescription]);
+               completion(nil, error);
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               NSLog(@"success: %@", data);
-               
+               completion(dataDictionary, nil);
            }
        }];
-    //[self.refreshControl endRefreshing];
     [task resume];
 }
 
 
+- (void) convertSpotifyArtists:(NSArray *)artists{
+    NSMutableSet *genreSet = [[NSMutableSet alloc] init];
+    NSMutableSet *artistSet = [[NSMutableSet alloc] init];
+    for (NSDictionary *artist in artists){
+        [genreSet addObjectsFromArray:artist[@"genres"]];
+        [artistSet addObject:artist[@"id"]];
+    }
+    NSLog(@"%@", genreSet);
+    NSLog(@"%@", artistSet);
+}
+
+- (void) convertSpotifyTracks:(NSArray *)tracks{
+    NSMutableSet *trackSet = [[NSMutableSet alloc] init];
+    NSMutableSet *artistSet = [[NSMutableSet alloc] init];
+    NSMutableSet *albumSet = [[NSMutableSet alloc] init];
+//    for (NSDictionary *track in tracks){
+//        NS
+//        for (NSDictionary *track in tracks)
+//        [genreSet addObjects:artist[@"genres"]];
+//        [artistSet addObject:artist[@"id"]];
+//    }
+//    NSLog(@"%@", genreSet);
+//    NSLog(@"%@", artistSet);
+}
 @end

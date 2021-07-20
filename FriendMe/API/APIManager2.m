@@ -52,4 +52,20 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     return self;
 }
 
+- (void)getFollowersWithCompletion:(void(^)(NSMutableArray *tweets, NSError *error))completion {
+    NSDictionary *parameters = @{@"stringify_ids":@"true"};
+
+    [self GET:@"1.1/friends/ids.json"
+       parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * dataDictionary) {
+           // Success
+        NSArray *ids = dataDictionary[@"ids"];
+        completion(ids, nil);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           // There was a problem
+           NSLog(@"Error: %@", error.localizedDescription);
+           completion(nil, error);
+    }];
+}
+
+
 @end

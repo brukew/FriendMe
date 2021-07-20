@@ -93,7 +93,11 @@ static NSArray *arrayOfPlatforms;
                 NSLog(@"%@", [error localizedDescription]);
             }
             else{
-                NSLog(@"Success");
+                [[APIManager2 shared] getFollowersWithCompletion:^(NSMutableArray *datadictionary, NSError *error){
+                    if (!error){
+                        //save data
+                    }
+                }];
             }
         }];
 
