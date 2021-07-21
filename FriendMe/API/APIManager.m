@@ -73,6 +73,9 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
         if (error){
             NSLog(@"fail3: %@", error);
         }
+        else{
+            [self saveData:dict];
+        }
     }];
 }
 
@@ -91,25 +94,33 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 #pragma mark - Pulling Spotify data
 
 -(void) getSpotifyTracksArtists:(void (^)(NSDictionary *, NSError*))completion{
+    // get artists
     [self getSpotifyData:@"https://api.spotify.com/v1/me/top/artists" completion:^(NSDictionary * artistDict, NSError * error) {
         if (!error){
-            NSLog(@"success: artists");
             NSArray *artistArray = artistDict[@"items"];
-            [self convertSpotifyArtists:artistArray];
+            // get dictionary of genres and artists based on top artists
+            NSDictionary *artistDict = [self convertSpotifyArtists:artistArray];
+            // get tracks data
+            [self getSpotifyData:@"https://api.spotify.com/v1/me/top/tracks" completion:^(NSDictionary * tracksDict, NSError * error) {
+                if (!error){
+                    NSArray *tracksArray = tracksDict[@"items"];
+                    // get dictionary of genres, tracks, and artists based on top tracks
+                    NSDictionary *tracksDict =[self convertSpotifyTracks:tracksArray];
+                    NSLog(@"success: tracks");
+                    [artistDict[@"artists"] unionSet:tracksDict[@"artists"]];
+                    completion(@{@"artists": artistDict[@"artists"], @"tracks":tracksDict[@"tracks"], @"albums": tracksDict[@"albums"], @"genres": artistDict[@"genres"] }, nil);
+                }
+                else{
+                    NSLog(@"Error, Trouble getting tracks: %@", error.localizedDescription);
+                }
+            }];
+            NSLog(@"success: artists");
         }
         else{
             NSLog(@"Error, Trouble getting artists: %@", error.localizedDescription);
         }
     }];
-    [self getSpotifyData:@"https://api.spotify.com/v1/me/top/tracks" completion:^(NSDictionary * tracksDict, NSError * error) {
-        if (!error){
-            NSArray *tracksArray = tracksDict[@"items"];
-            [self convertSpotifyTracks:tracksArray];
-        }
-        else{
-            NSLog(@"Error, Trouble getting tracks: %@", error.localizedDescription);
-        }
-    }];
+    NSLog(@"success");
 }
 
 
@@ -135,28 +146,62 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 }
 
 
-- (void) convertSpotifyArtists:(NSArray *)artists{
+- (NSDictionary *) convertSpotifyArtists:(NSArray *)artists{
     NSMutableSet *genreSet = [[NSMutableSet alloc] init];
     NSMutableSet *artistSet = [[NSMutableSet alloc] init];
     for (NSDictionary *artist in artists){
         [genreSet addObjectsFromArray:artist[@"genres"]];
         [artistSet addObject:artist[@"id"]];
     }
-    NSLog(@"%@", genreSet);
-    NSLog(@"%@", artistSet);
+    return @{@"genres": genreSet, @"artists": artistSet};
 }
 
-- (void) convertSpotifyTracks:(NSArray *)tracks{
+- (NSDictionary *) convertSpotifyTracks:(NSArray *)tracks{
     NSMutableSet *trackSet = [[NSMutableSet alloc] init];
     NSMutableSet *artistSet = [[NSMutableSet alloc] init];
     NSMutableSet *albumSet = [[NSMutableSet alloc] init];
-//    for (NSDictionary *track in tracks){
-//        NS
-//        for (NSDictionary *track in tracks)
-//        [genreSet addObjects:artist[@"genres"]];
-//        [artistSet addObject:artist[@"id"]];
-//    }
-//    NSLog(@"%@", genreSet);
-//    NSLog(@"%@", artistSet);
+    for (NSDictionary *track in tracks){
+        NSDictionary *albumItems = track[@"album"];
+        // adds album and artist of album to set
+        [albumSet addObject:albumItems[@"id"]];
+        for (NSDictionary *artist in albumItems[@"artists"]){
+            [artistSet addObject:artist[@"id"]];
+        }
+        
+        // adds artists on song to set
+        NSArray *trackArtists = track[@"artists"];
+        if (trackArtists.count>1){
+            for (NSDictionary *artist in trackArtists){
+                [artistSet addObject:artist[@"id"]];
+            }
+        }
+        
+        // adds track id to set
+        [trackSet addObject:track[@"id"]];
+    }
+    return @{@"albums": albumSet, @"artists": artistSet, @"tracks":trackSet};
+}
+
+-(void) saveData:(NSDictionary *) spotifyData{
+    PFUser *current = [PFUser currentUser];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *archivedData = [userDefaults objectForKey:current.objectId];
+    if (archivedData != nil){
+        NSDictionary *dataDict = [NSKeyedUnarchiver unarchiveObjectWithData:archivedData];
+        //if twitter data has already been saved, add that to new dict
+        if (dataDict[@"Twitter"]){
+            NSArray *twitterData = dataDict[@"Twitter"];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData, @"Twitter":twitterData} requiringSecureCoding:YES error:nil];
+            [userDefaults setObject:data forKey:current.objectId];
+        }
+        else{
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData} requiringSecureCoding:YES error:nil];
+            [userDefaults setObject:data forKey:current.objectId];
+        }
+    }
+    else {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData} requiringSecureCoding:YES error:nil];
+        [[NSUserDefaults standardUserDefaults]setObject:data forKey:current.objectId];
+    }
 }
 @end
