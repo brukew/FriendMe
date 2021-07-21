@@ -13,6 +13,7 @@
 #import "APIManager.h"
 #import "MatchProfileViewController.h"
 #import "APIManager2.h"
+#import "MatchingAlgo.h"
 
 @interface MatchesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -28,7 +29,6 @@
     [super viewDidLoad];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
             
@@ -39,6 +39,7 @@
     CGFloat itemWidth = (self.view.frame.size.width - layout.minimumInteritemSpacing * (postsPerRow - 1)) / postsPerRow;
     CGFloat itemHeight = itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    [MatchingAlgo lookForMatches];
     [self.collectionView reloadData];
 }
 

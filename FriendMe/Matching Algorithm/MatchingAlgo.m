@@ -33,9 +33,12 @@
         }
     }
     NSArray *matches = [[[matchDict keysSortedByValueUsingSelector:@selector(compare:)] reverseObjectEnumerator] allObjects];
-
-    
-    //go through all user IDs
+    current[@"matches"] = matches;
+    [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (!error){
+            NSLog(@"matches: %@", current[@"matches"]);
+        }
+    }];
 }
 
 + (double) compareSpotifyData:(PFObject *)potentialMatch withData:(NSDictionary *)userData{
