@@ -39,6 +39,7 @@
 		1A62D59A26A64412000AA0A2 /* MatchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59926A64412000AA0A2 /* MatchProfileViewController.m */; };
 		1A62D5A326A73E4A000AA0A2 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */; };
 		1A62D5A426A73E4A000AA0A2 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1A62D5A926A8BD8F000AA0A2 /* MatchingAlgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D5A826A8BD8F000AA0A2 /* MatchingAlgo.m */; };
 		314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +137,8 @@
 		1A62D59926A64412000AA0A2 /* MatchProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchProfileViewController.m; sourceTree = "<group>"; };
 		1A62D59D26A73C60000AA0A2 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../../Downloads/ios-sdk-master 2/SpotifyiOS.framework"; sourceTree = "<group>"; };
 		1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../../../Downloads/ios-sdk-master/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
+		1A62D5A726A8BD8F000AA0A2 /* MatchingAlgo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchingAlgo.h; sourceTree = "<group>"; };
+		1A62D5A826A8BD8F000AA0A2 /* MatchingAlgo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchingAlgo.m; sourceTree = "<group>"; };
 		7A89400C6FDA2200E862CB7D /* Pods-FriendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.debug.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.debug.xcconfig"; sourceTree = "<group>"; };
 		8C56027D1DDC23A0C7BA7064 /* Pods-FriendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.release.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +195,7 @@
 		1A62D511269CAE84000AA0A2 /* FriendMe */ = {
 			isa = PBXGroup;
 			children = (
+				1A62D5A626A8BD6A000AA0A2 /* Matching Algorithm */,
 				1A62D574269F3DC0000AA0A2 /* API */,
 				1A62D55F269D0319000AA0A2 /* Views */,
 				1A62D54B269CB4ED000AA0A2 /* View Controllers */,
@@ -304,6 +308,15 @@
 				1A62D59326A5FAEB000AA0A2 /* APIManager2.m */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		1A62D5A626A8BD6A000AA0A2 /* Matching Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				1A62D5A726A8BD8F000AA0A2 /* MatchingAlgo.h */,
+				1A62D5A826A8BD8F000AA0A2 /* MatchingAlgo.m */,
+			);
+			path = "Matching Algorithm";
 			sourceTree = "<group>";
 		};
 		7A6217908209B4B42A319DF2 /* Pods */ = {
@@ -505,6 +518,7 @@
 				1A62D51A269CAE84000AA0A2 /* ViewController.m in Sources */,
 				1A62D58326A0C130000AA0A2 /* MatchesViewController.m in Sources */,
 				1A62D58F26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
+				1A62D5A926A8BD8F000AA0A2 /* MatchingAlgo.m in Sources */,
 				1A62D54E269CCF40000AA0A2 /* LogInViewController.m in Sources */,
 				1A62D57A269F68BA000AA0A2 /* ProfileViewController.m in Sources */,
 				1A62D58C26A23930000AA0A2 /* ManagePlatformsViewController.m in Sources */,

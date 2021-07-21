@@ -93,14 +93,19 @@
 //    }
 //    current[@"matches"] = self.matches;
 //    [self.collectionView reloadData];
-    APIManager *api = [APIManager shared];
-
-    [api setUpSpotifyWithCompletion:^(NSDictionary *data, NSError *error) {
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        else{
-            NSLog(@"Success: %@", data);
+//    APIManager *api = [APIManager shared];
+//
+//    [api setUpSpotifyWithCompletion:^(NSDictionary *data, NSError *error) {
+//        if (error) {
+//            NSLog(@"%@", [error localizedDescription]);
+//        }
+//        else{
+//            NSLog(@"Success: %@", data);
+//        }
+//    }];
+    [[APIManager2 shared] getFollowersWithCompletion:^(NSMutableArray *datadictionary, NSError *error){
+        if (!error){
+            //save data
         }
     }];
 }

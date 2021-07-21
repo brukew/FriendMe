@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) updateWeights: (NSNumber * _Nullable)weight ofPlatform: (Platform * _Nullable)platform withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
++ (BOOL *) alreadyAdded: ( NSString * )name;
+
 @end
 
 NS_ASSUME_NONNULL_END

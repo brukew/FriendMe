@@ -67,7 +67,6 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 
 - (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
 {
-    NSLog(@"success: %@", session.description);
     self.token = session.accessToken;
     [self getSpotifyTracksArtists:^(NSDictionary *dict, NSError *error) {
         if (error){
@@ -106,7 +105,6 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
                     NSArray *tracksArray = tracksDict[@"items"];
                     // get dictionary of genres, tracks, and artists based on top tracks
                     NSDictionary *tracksDict =[self convertSpotifyTracks:tracksArray];
-                    NSLog(@"success: tracks");
                     [artistDict[@"artists"] unionSet:tracksDict[@"artists"]];
                     completion(@{@"artists": artistDict[@"artists"], @"tracks":tracksDict[@"tracks"], @"albums": tracksDict[@"albums"], @"genres": artistDict[@"genres"] }, nil);
                 }
@@ -114,13 +112,11 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
                     NSLog(@"Error, Trouble getting tracks: %@", error.localizedDescription);
                 }
             }];
-            NSLog(@"success: artists");
         }
         else{
             NSLog(@"Error, Trouble getting artists: %@", error.localizedDescription);
         }
     }];
-    NSLog(@"success");
 }
 
 

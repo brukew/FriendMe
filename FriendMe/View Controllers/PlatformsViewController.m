@@ -11,6 +11,8 @@
 #import "Platform.h"
 #import "APIManager.h"
 #import "APIManager2.h"
+#import "MatchingAlgo.h"
+
 @interface PlatformsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
@@ -50,6 +52,7 @@ static NSArray *arrayOfPlatforms;
     else{
         [self performSegueWithIdentifier:@"toPicsSegue" sender:nil];
     }
+    [MatchingAlgo lookForMatches];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -71,6 +74,7 @@ static NSArray *arrayOfPlatforms;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+   // if (![Platform alreadyAdded: arrayOfPlatforms[indexPath.item]]){
     if ([arrayOfPlatforms[indexPath.item]  isEqual: @"Spotify"]){
         APIManager *api = [APIManager shared];
         
@@ -86,23 +90,21 @@ static NSArray *arrayOfPlatforms;
     }
     
     if ([arrayOfPlatforms[indexPath.item]  isEqual: @"Twitter"]){
-        APIManager *api = [APIManager shared];
         
         [[APIManager2 shared] loginWithCompletion:^(BOOL success, NSError *error) {
             if (error) {
                 NSLog(@"%@", [error localizedDescription]);
             }
             else{
-                [[APIManager2 shared] getFollowersWithCompletion:^(NSMutableArray *datadictionary, NSError *error){
-                    if (!error){
-                        //save data
-                    }
+                [[APIManager2 shared] getFollowersWithCompletion:^(NSMutableArray *data, NSError *error){
                 }];
             }
         }];
 
     }
+    
     [Platform addPlatform: arrayOfPlatforms[indexPath.item] withCompletion: nil];
+    //}
     
 }
 

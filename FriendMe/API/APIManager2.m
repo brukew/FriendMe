@@ -7,6 +7,7 @@
 //
 
 #import "APIManager2.h"
+#import <Parse/Parse.h>
 
 static NSString * const baseURLString = @"https://api.twitter.com";
 
@@ -59,12 +60,36 @@ static NSString * const baseURLString = @"https://api.twitter.com";
        parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * dataDictionary) {
            // Success
         NSArray *ids = dataDictionary[@"ids"];
+        [self saveData:[NSSet setWithArray:ids]];
         completion(ids, nil);
        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            // There was a problem
            NSLog(@"Error: %@", error.localizedDescription);
            completion(nil, error);
     }];
+}
+
+-(void) saveData:(NSSet *) twitterData{
+    PFUser *current = [PFUser currentUser];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *archivedData = [userDefaults objectForKey:current.objectId];
+    if (archivedData != nil){
+        NSDictionary *dataDict = [NSKeyedUnarchiver unarchiveObjectWithData:archivedData];
+        //if twitter data has already been saved, add that to new dict
+        if (dataDict[@"Spotify"]){
+            NSArray *spotifyData = dataDict[@"Spotify"];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData, @"Twitter":twitterData} requiringSecureCoding:YES error:nil];
+            [userDefaults setObject:data forKey:current.objectId];
+        }
+        else{
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Twitter":twitterData} requiringSecureCoding:YES error:nil];
+            [userDefaults setObject:data forKey:current.objectId];
+        }
+    }
+    else {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Twitter":twitterData} requiringSecureCoding:YES error:nil];
+        [[NSUserDefaults standardUserDefaults]setObject:data forKey:current.objectId];
+    }
 }
 
 
