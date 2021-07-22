@@ -6,10 +6,11 @@
 //
 
 #import "WeightsViewController.h"
-#import "Parse/Parse.h"
+#import <Parse/Parse.h>
 #import "PlatformWeightCell.h"
 #import "Platform.h"
-#import <math.h>
+#import "MatchingAlgo.h"
+
 
 @interface WeightsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -35,12 +36,28 @@
         }
     }
     PFUser *current = [PFUser currentUser];
-    NSArray *platformArray = current[@"platforms"]; //make sure platforms are saved!
+    double twitterWeight = 0.0;
+    double spotifyWeight = 0.0;
+    NSMutableArray *weights = [NSMutableArray new];
     for (PlatformWeightCell *cell in cells)
     {
-
+        NSLog(@"%@", cell);
+        if ([cell.platform[@"name"] isEqual:@"Twitter"]){
+            twitterWeight =cell.platformSlider.value;
+        }
+        if ([cell.platform[@"name"] isEqual:@"Spotify"]){
+            spotifyWeight =cell.platformSlider.value;
+        }
         [Platform updateWeights:@(roundf(cell.platformSlider.value*100)/100) ofPlatform:cell.platform withCompletion:nil];
     }
+    [weights addObject:@(twitterWeight)];
+    [weights insertObject:@(spotifyWeight) atIndex:0];
+    current[@"weights"] = weights;
+    [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (!error){
+            [MatchingAlgo lookForMatches];
+        }
+    }];
     [self performSegueWithIdentifier:@"weightsToPicsSegue" sender:nil];
     // segue
 }

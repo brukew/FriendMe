@@ -37,9 +37,9 @@ return @"Platform";
     }];
 }
 
-+ (void) updateWeights: (NSNumber * _Nullable)weight ofPlatform: (Platform * _Nullable)platform withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void) updateWeights: (NSNumber * _Nullable)weight ofPlatform: (PFObject * _Nullable)platform withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
-    platform.weight = weight;
+    platform[@"weight"] = weight;
     [platform saveInBackgroundWithBlock: completion];
 }
 

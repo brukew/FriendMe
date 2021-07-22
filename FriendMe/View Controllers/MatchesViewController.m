@@ -51,6 +51,8 @@
     BeginViewController *beginViewController = [storyboard instantiateViewControllerWithIdentifier:@"BeginViewController"];
     //need to use keyWindow
     [[UIApplication sharedApplication].keyWindow setRootViewController: beginViewController];
+    
+    [[APIManager2 shared] logout];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -69,7 +71,7 @@
     MatchCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MatchCell" forIndexPath:indexPath];
     PFUser *current = [PFUser currentUser];
     PFQuery *query = [PFUser query];
-    NSLog(@"%@", current[@"matches"][indexPath.row]);
+    //NSLog(@"%@", current[@"matches"][indexPath.row]);
     [query getObjectInBackgroundWithId:current[@"matches"][indexPath.row] block:^(PFObject *match, NSError *error) {
         if (!error) {
             cell.currentMatch = match;

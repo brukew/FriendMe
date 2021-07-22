@@ -626,10 +626,15 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
+                        <segue destination="N9K-wc-hTH" kind="relationship" relationship="viewControllers" id="NCw-oB-PJr"/>
                         <segue destination="S7c-dg-BcU" kind="relationship" relationship="viewControllers" id="H4L-gB-j20"/>
                         <segue destination="7dU-NE-Zkt" kind="relationship" relationship="viewControllers" id="2Cz-Ve-jN0"/>
-                        <segue destination="N9K-wc-hTH" kind="relationship" relationship="viewControllers" id="NCw-oB-PJr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJ7-nk-tNu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

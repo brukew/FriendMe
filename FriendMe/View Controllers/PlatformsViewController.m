@@ -52,7 +52,6 @@ static NSArray *arrayOfPlatforms;
     else{
         [self performSegueWithIdentifier:@"toPicsSegue" sender:nil];
     }
-    [MatchingAlgo lookForMatches];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{

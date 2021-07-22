@@ -24,6 +24,21 @@
     PFQuery *query = [PFUser query];
     NSArray *users = [query findObjects];
     PFUser *current = [PFUser currentUser];
+//    for (PFObject *platformId in current[@"platforms"]){
+//        PFQuery *query = [PFQuery queryWithClassName:@"Platform"];
+//        [query getObjectInBackgroundWithId:platformId block:^(PFObject *platform, NSError *error) {
+//            if (!error) {
+//                if ([platform[@"name"] isEqual:@"Twitter"]){
+//                    twitterWeight = platform[@"weight"];
+//                }
+//                if ([platform[@"name"] isEqual:@"Twitter"]){
+//                    spotifyWeight = platform[@"weight"];
+//                }
+//            } else {
+//                // Failure!
+//            }
+//        }];
+//    }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSData *currentArchivedData = [userDefaults objectForKey:current.objectId];
     NSDictionary *userData = [NSKeyedUnarchiver unarchiveObjectWithData:currentArchivedData];
@@ -37,12 +52,14 @@
     [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error){
             NSLog(@"matches: %@", current[@"matches"]);
+            NSLog(@"matchDict: %@", matchDict);
         }
     }];
 }
 
 + (double) compareSpotifyData:(PFObject *)potentialMatch withData:(NSDictionary *)userData{
     double spotifyMatch = 0.0;
+    PFUser *current = [PFUser currentUser];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSData *matchArchivedData = [userDefaults objectForKey:potentialMatch.objectId];
     NSDictionary *matchData = [NSKeyedUnarchiver unarchiveObjectWithData:matchArchivedData];
@@ -59,13 +76,19 @@
         [tracks intersectSet:matchData[@"Spotify"][@"tracks"]];
         [albums intersectSet:matchData[@"Spotify"][@"albums"]];
         [artists intersectSet:matchData[@"Spotify"][@"artists"]];
-        spotifyMatch = ((genres.count/genreCount)*0.2) + ((tracks.count/trackCount)*0.3) + ((albums.count/albumCount)*0.2) + ((artists.count/artistCount)*0.3);
+        double newGenreCount = [genres count];
+        double newAlbumCount = [albums count];
+        double newTrackCount = [tracks count];
+        double newArtistCount = [artists count];
+        double weight = [current[@"weights"][0] doubleValue];
+        spotifyMatch = (((newGenreCount/genreCount)*0.2) + ((newTrackCount/trackCount)*0.3) + ((newAlbumCount/albumCount)*0.2) + ((newArtistCount/artistCount)*0.3)) * weight;
     }
     return spotifyMatch;
 }
 
 + (double) compareTwitterData:(PFObject *)potentialMatch withData:(NSDictionary *)userData{
     double twitterMatch = 0.0;
+    PFUser *current = [PFUser currentUser];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSData *matchArchivedData = [userDefaults objectForKey:potentialMatch.objectId];
     NSDictionary *matchData = [NSKeyedUnarchiver unarchiveObjectWithData:matchArchivedData];
@@ -73,14 +96,18 @@
         NSMutableSet *friends = [NSMutableSet setWithSet:userData[@"Twitter"]];
         NSInteger friendCount = [friends count];
         [friends intersectSet:matchData[@"Twitter"]];
-        twitterMatch = friends.count/friendCount;
+        double weight = [current[@"weights"][1] doubleValue];
+        double newCount = [friends count];
+        twitterMatch = ((newCount)/friendCount) * weight;
     }
     return twitterMatch;
 }
 //
 + (void) compare:(PFObject *)potentialMatch withDictionary:(NSMutableDictionary *)matches withData:(NSDictionary *)data {
+    
     double spotifyComp = [self compareSpotifyData:potentialMatch withData:data];
     double twitterComp = [self compareTwitterData:potentialMatch withData:data];
+    
     [matches setObject:[NSNumber numberWithDouble:spotifyComp + twitterComp] forKey:potentialMatch.objectId];
 }
 @end
