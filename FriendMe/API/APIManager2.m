@@ -8,6 +8,7 @@
 
 #import "APIManager2.h"
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
 
 static NSString * const baseURLString = @"https://api.twitter.com";
 
@@ -71,25 +72,51 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 
 -(void) saveData:(NSSet *) twitterData{
     PFUser *current = [PFUser currentUser];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSData *archivedData = [userDefaults objectForKey:current.objectId];
-    if (archivedData != nil){
-        NSDictionary *dataDict = [NSKeyedUnarchiver unarchiveObjectWithData:archivedData];
-        //if twitter data has already been saved, add that to new dict
-        if (dataDict[@"Spotify"]){
-            NSArray *spotifyData = dataDict[@"Spotify"];
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData, @"Twitter":twitterData} requiringSecureCoding:YES error:nil];
-            [userDefaults setObject:data forKey:current.objectId];
-        }
-        else{
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Twitter":twitterData} requiringSecureCoding:YES error:nil];
-            [userDefaults setObject:data forKey:current.objectId];
-        }
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *moc = [[delegate persistentContainer] viewContext];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RegUser"];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", current.objectId]];
+    NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
+    NSManagedObject *currentTwitter;
+    NSManagedObject *userData;
+    if (results.count){
+        userData = results[0];
+        currentTwitter = [userData valueForKey:@"twitterData"];
     }
-    else {
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Twitter":twitterData} requiringSecureCoding:YES error:nil];
-        [[NSUserDefaults standardUserDefaults]setObject:data forKey:current.objectId];
+    else{
+        userData = [NSEntityDescription insertNewObjectForEntityForName:@"RegUser" inManagedObjectContext:moc];
+        [userData setValue:current.objectId forKey:@"id"];
+        currentTwitter = NULL;
     }
+    if (currentTwitter == NULL){
+        currentTwitter = [NSEntityDescription insertNewObjectForEntityForName:@"Twitter" inManagedObjectContext:moc];
+    }
+    [currentTwitter setValue:twitterData forKey:@"friends"];
+    [userData setValue:currentTwitter forKey:@"twitterData"];
+    NSLog(@"%@", [userData valueForKey:@"twitterData"]);
+    if ([moc save:nil] == NO) {
+        NSLog(@"Error saving context");
+    }
+    
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSData *archivedData = [userDefaults objectForKey:current.objectId];
+//    if (archivedData != nil){
+//        NSDictionary *dataDict = [NSKeyedUnarchiver unarchiveObjectWithData:archivedData];
+//        //if twitter data has already been saved, add that to new dict
+//        if (dataDict[@"Spotify"]){
+//            NSArray *spotifyData = dataDict[@"Spotify"];
+//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData, @"Twitter":twitterData} requiringSecureCoding:YES error:nil];
+//            [userDefaults setObject:data forKey:current.objectId];
+//        }
+//        else{
+//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Twitter":twitterData} requiringSecureCoding:YES error:nil];
+//            [userDefaults setObject:data forKey:current.objectId];
+//        }
+//    }
+//    else {
+//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Twitter":twitterData} requiringSecureCoding:YES error:nil];
+//        [[NSUserDefaults standardUserDefaults]setObject:data forKey:current.objectId];
+//    }
 }
 
 

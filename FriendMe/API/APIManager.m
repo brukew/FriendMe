@@ -9,7 +9,7 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "MatchesViewController.h"
-
+#import <CoreData/CoreData.h>
 
 @implementation APIManager
 
@@ -177,27 +177,79 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     }
     return @{@"albums": albumSet, @"artists": artistSet, @"tracks":trackSet};
 }
+//
+//-(void) saveData:(NSDictionary *) spotifyData{
+//    PFUser *current = [PFUser currentUser];
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSData *archivedData = [userDefaults objectForKey:current.objectId];
+//    if (archivedData != nil){
+//        NSDictionary *dataDict = [NSKeyedUnarchiver unarchiveObjectWithData:archivedData];
+//        //if twitter data has already been saved, add that to new dict
+//        if (dataDict[@"Twitter"]){
+//            NSArray *twitterData = dataDict[@"Twitter"];
+//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData, @"Twitter":twitterData} requiringSecureCoding:YES error:nil];
+//            [userDefaults setObject:data forKey:current.objectId];
+//        }
+//        else{
+//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData} requiringSecureCoding:YES error:nil];
+//            [userDefaults setObject:data forKey:current.objectId];
+//        }
+//    }
+//    else {
+//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData} requiringSecureCoding:YES error:nil];
+//        [[NSUserDefaults standardUserDefaults]setObject:data forKey:current.objectId];
+//    }
+//}
 
 -(void) saveData:(NSDictionary *) spotifyData{
     PFUser *current = [PFUser currentUser];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSData *archivedData = [userDefaults objectForKey:current.objectId];
-    if (archivedData != nil){
-        NSDictionary *dataDict = [NSKeyedUnarchiver unarchiveObjectWithData:archivedData];
-        //if twitter data has already been saved, add that to new dict
-        if (dataDict[@"Twitter"]){
-            NSArray *twitterData = dataDict[@"Twitter"];
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData, @"Twitter":twitterData} requiringSecureCoding:YES error:nil];
-            [userDefaults setObject:data forKey:current.objectId];
-        }
-        else{
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData} requiringSecureCoding:YES error:nil];
-            [userDefaults setObject:data forKey:current.objectId];
-        }
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *moc = [[delegate persistentContainer] viewContext];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RegUser"];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", current.objectId]];
+    NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
+    NSManagedObject *currentSpotify;
+    NSManagedObject *userData;
+    if (results.count){
+        userData = results[0];
+        currentSpotify = [userData valueForKey:@"spotifyData"];
     }
-    else {
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData} requiringSecureCoding:YES error:nil];
-        [[NSUserDefaults standardUserDefaults]setObject:data forKey:current.objectId];
+    else{
+        userData = [NSEntityDescription insertNewObjectForEntityForName:@"RegUser" inManagedObjectContext:moc];
+        [userData setValue:current.objectId forKey:@"id"];
+        currentSpotify = NULL;
     }
+    if (currentSpotify == NULL){
+        currentSpotify = [NSEntityDescription insertNewObjectForEntityForName:@"Spotify" inManagedObjectContext:moc];
+    }
+    [currentSpotify setValue:spotifyData[@"genres"] forKey:@"genres"];
+    [currentSpotify setValue:spotifyData[@"tracks"] forKey:@"tracks"];
+    [currentSpotify setValue:spotifyData[@"artists"] forKey:@"artists"];
+    [currentSpotify setValue:spotifyData[@"albums"] forKey:@"albums"];
+    [userData setValue:currentSpotify forKey:@"spotifyData"];
+    if ([moc save:nil] == NO) {
+        NSLog(@"Error saving context");
+    }
+    
+    
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSData *archivedData = [userDefaults objectForKey:current.objectId];
+//    if (archivedData != nil){
+//        NSDictionary *dataDict = [NSKeyedUnarchiver unarchiveObjectWithData:archivedData];
+//        //if twitter data has already been saved, add that to new dict
+//        if (dataDict[@"Twitter"]){
+//            NSArray *twitterData = dataDict[@"Twitter"];
+//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData, @"Twitter":twitterData} requiringSecureCoding:YES error:nil];
+//            [userDefaults setObject:data forKey:current.objectId];
+//        }
+//        else{
+//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData} requiringSecureCoding:YES error:nil];
+//            [userDefaults setObject:data forKey:current.objectId];
+//        }
+//    }
+//    else {
+//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"Spotify": spotifyData} requiringSecureCoding:YES error:nil];
+//        [[NSUserDefaults standardUserDefaults]setObject:data forKey:current.objectId];
+//    }
 }
 @end

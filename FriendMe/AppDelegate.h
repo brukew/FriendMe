@@ -6,16 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SpotifyiOS/SpotifyiOS.h>
+#import <CoreData/CoreData.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, SPTSessionManagerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-+ (instancetype)shared;
+@property (readonly, strong) NSPersistentContainer *persistentContainer;
 
-@property (nonatomic, strong) SPTSessionManager *sessionManager;
-@property (nonatomic, strong) SPTConfiguration *configuration;
-
-- (void) setUpSpotifyWithCompletion:(void (^)(NSDictionary *, NSError*))completion;
+- (void)saveContext;
 
 @end
 

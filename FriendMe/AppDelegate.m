@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  FriendMe
 //
-//  Created by Bruke Wossenseged on 7/12/21.
+//  Created by Bruke Wossenseged on 7/22/21.
 //
 
 #import "AppDelegate.h"
@@ -27,61 +27,6 @@
     return YES;
 }
 
-+ (instancetype)shared {
-    static AppDelegate *sharedManager = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedManager = [[self alloc] init];
-    });
-    return sharedManager;
-}
-
-- (void) setUpSpotifyWithCompletion:(void (^)(NSDictionary *, NSError*))completion{
-    
-    NSString *spotifyClientID = @"cad3439e0ad84169a65d5ed857f5e936";
-    NSURL *spotifyRedirectURL = [NSURL URLWithString:@"spotify-ios-quick-start://spotify-login-callback"];
-    
-    SPTConfiguration *configuration =
-        [[SPTConfiguration alloc] initWithClientID:spotifyClientID redirectURL:spotifyRedirectURL];
-    
-    configuration.tokenSwapURL = [NSURL URLWithString:@"https://glitch.com/edit/#!/metal-bedecked-cave/api/token"];
-    configuration.tokenRefreshURL = [NSURL URLWithString:@"https://glitch.com/edit/#!/metal-bedecked-cave/api/refresh_token"];
-    
-    self.sessionManager = [SPTSessionManager sessionManagerWithConfiguration:configuration delegate:self];
-    
-    SPTScope scope = SPTUserFollowReadScope | SPTUserTopReadScope | SPTUserFollowModifyScope ;
-
-    if (@available(iOS 11, *)) {
-        // Use this on iOS 11 and above to take advantage of SFAuthenticationSession
-        [self.sessionManager initiateSessionWithScope:scope options:SPTDefaultAuthorizationOption];
-    } else {
-        // Use this on iOS versions < 11 to use SFSafariViewController
-        [self.sessionManager initiateSessionWithScope:scope options:SPTDefaultAuthorizationOption presentingViewController:self];
-    }
-
-}
-
-
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
-{
-    [self.sessionManager application:app openURL:url options:options];
-    return true;
-}
-
-- (void)getFollowingWithCompletion:(void(^)(NSMutableArray *tweets, NSError *error))completion {
-//    NSDictionary *parameters = @{@"tweet_mode":@"extended"};
-//
-//    [self GET:@"https://api.spotify.com/v1/me/following"
-//       parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
-//           // Success
-//           NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
-//           completion(tweets, nil);
-//       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//           // There was a problem
-//           completion(nil, error);
-//    }];
-}
-
 
 #pragma mark - UISceneSession lifecycle
 
@@ -100,23 +45,49 @@
 }
 
 
-#pragma mark - SPTSessionManagerDelegate
+#pragma mark - Core Data stack
 
-- (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
-{
-    NSLog(@"success: %@", session);
+@synthesize persistentContainer = _persistentContainer;
+
+- (NSPersistentContainer *)persistentContainer {
+    // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.
+    @synchronized (self) {
+        if (_persistentContainer == nil) {
+            _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"FriendMe"];
+            [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
+                if (error != nil) {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    
+                    /*
+                     Typical reasons for an error here include:
+                     * The parent directory does not exist, cannot be created, or disallows writing.
+                     * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                     * The device is out of space.
+                     * The store could not be migrated to the current model version.
+                     Check the error message to determine what the actual problem was.
+                    */
+                    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+                    abort();
+                }
+            }];
+        }
+    }
+    
+    return _persistentContainer;
 }
 
-- (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error
-{
-  NSLog(@"fail: %@", error);
+#pragma mark - Core Data Saving support
+
+- (void)saveContext {
+    NSManagedObjectContext *context = self.persistentContainer.viewContext;
+    NSError *error = nil;
+    if ([context hasChanges] && ![context save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+        abort();
+    }
 }
-
-- (void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session
-{
-  NSLog(@"renewed: %@", session);
-}
-
-
 
 @end

@@ -14,6 +14,7 @@
 #import "MatchProfileViewController.h"
 #import "APIManager2.h"
 #import "MatchingAlgo.h"
+#import "AppDelegate.h"
 
 @interface MatchesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -35,7 +36,11 @@
     layout.minimumInteritemSpacing = 2.5;
     layout.minimumLineSpacing = 2.5;
     
-    CGFloat postsPerRow = 2;
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.collectionView insertSubview:refreshControl atIndex:0];
+    
+    CGFloat postsPerRow = 2.1;
     CGFloat itemWidth = (self.view.frame.size.width - layout.minimumInteritemSpacing * (postsPerRow - 1)) / postsPerRow;
     CGFloat itemHeight = itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
@@ -55,6 +60,16 @@
     [[APIManager2 shared] logout];
 }
 
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+    [self refresh];
+    [refreshControl endRefreshing];
+}
+
+-(void)refresh{
+    [MatchingAlgo lookForMatches];
+    [self.collectionView reloadData];
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
@@ -69,6 +84,10 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MatchCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MatchCell" forIndexPath:indexPath];
+    cell.contentView.layer.cornerRadius = 8.0;
+    cell.contentView.layer.borderWidth = 1.0;
+    cell.contentView.layer.borderColor = CFBridgingRetain([UIColor clearColor]);
+    cell.contentView.layer.masksToBounds = true;
     PFUser *current = [PFUser currentUser];
     PFQuery *query = [PFUser query];
     //NSLog(@"%@", current[@"matches"][indexPath.row]);
@@ -106,11 +125,21 @@
 //            NSLog(@"Success: %@", data);
 //        }
 //    }];
-    [[APIManager2 shared] getFollowersWithCompletion:^(NSMutableArray *datadictionary, NSError *error){
-        if (!error){
-            //save data
-        }
-    }];
+//    [[APIManager2 shared] getFollowersWithCompletion:^(NSMutableArray *datadictionary, NSError *error){
+//        if (!error){
+//            //save data
+//        }
+//    }];
+    PFUser *current = [PFUser currentUser];
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *moc = [[delegate persistentContainer] viewContext];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RegUser"];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", current.objectId]];
+    NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
+    for (NSManagedObject *obj in results){
+        NSLog(@"%@", [obj valueForKey:@"id"]);
+        NSLog(@"%d", [[[obj valueForKey:@"twitterData"] valueForKey:@"friends"] isKindOfClass:[NSSet class]]);
+    }
 }
 
 

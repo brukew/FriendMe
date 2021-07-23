@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A62D514269CAE84000AA0A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D513269CAE84000AA0A2 /* AppDelegate.m */; };
 		1A62D517269CAE84000AA0A2 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D516269CAE84000AA0A2 /* SceneDelegate.m */; };
-		1A62D51A269CAE84000AA0A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D519269CAE84000AA0A2 /* ViewController.m */; };
 		1A62D51D269CAE84000AA0A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A62D51B269CAE84000AA0A2 /* Main.storyboard */; };
 		1A62D51F269CAE85000AA0A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A62D51E269CAE85000AA0A2 /* Assets.xcassets */; };
 		1A62D522269CAE85000AA0A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A62D520269CAE85000AA0A2 /* LaunchScreen.storyboard */; };
@@ -40,6 +39,8 @@
 		1A62D5A326A73E4A000AA0A2 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */; };
 		1A62D5A426A73E4A000AA0A2 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1A62D5A926A8BD8F000AA0A2 /* MatchingAlgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D5A826A8BD8F000AA0A2 /* MatchingAlgo.m */; };
+		1A62D5AC26AA226E000AA0A2 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D5AB26AA226E000AA0A2 /* ConnectViewController.m */; };
+		1A62D5AF26AA3440000AA0A2 /* FriendMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D5AD26AA3440000AA0A2 /* FriendMe.xcdatamodeld */; };
 		314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,8 +82,6 @@
 		1A62D513269CAE84000AA0A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1A62D515269CAE84000AA0A2 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		1A62D516269CAE84000AA0A2 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		1A62D518269CAE84000AA0A2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1A62D519269CAE84000AA0A2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1A62D51C269CAE84000AA0A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A62D51E269CAE85000AA0A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A62D521269CAE85000AA0A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -139,6 +138,9 @@
 		1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../../../Downloads/ios-sdk-master/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
 		1A62D5A726A8BD8F000AA0A2 /* MatchingAlgo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchingAlgo.h; sourceTree = "<group>"; };
 		1A62D5A826A8BD8F000AA0A2 /* MatchingAlgo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchingAlgo.m; sourceTree = "<group>"; };
+		1A62D5AA26AA226E000AA0A2 /* ConnectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
+		1A62D5AB26AA226E000AA0A2 /* ConnectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
+		1A62D5AE26AA3440000AA0A2 /* FriendMe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendMe.xcdatamodel; sourceTree = "<group>"; };
 		7A89400C6FDA2200E862CB7D /* Pods-FriendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.debug.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.debug.xcconfig"; sourceTree = "<group>"; };
 		8C56027D1DDC23A0C7BA7064 /* Pods-FriendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.release.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,14 +206,13 @@
 				1A62D513269CAE84000AA0A2 /* AppDelegate.m */,
 				1A62D515269CAE84000AA0A2 /* SceneDelegate.h */,
 				1A62D516269CAE84000AA0A2 /* SceneDelegate.m */,
-				1A62D518269CAE84000AA0A2 /* ViewController.h */,
-				1A62D519269CAE84000AA0A2 /* ViewController.m */,
 				1A62D51B269CAE84000AA0A2 /* Main.storyboard */,
 				1A62D51E269CAE85000AA0A2 /* Assets.xcassets */,
 				1A62D520269CAE85000AA0A2 /* LaunchScreen.storyboard */,
 				1A62D523269CAE85000AA0A2 /* Info.plist */,
 				1A62D524269CAE85000AA0A2 /* main.m */,
 				1A62D59026A5FA2A000AA0A2 /* Keys.plist */,
+				1A62D5AD26AA3440000AA0A2 /* FriendMe.xcdatamodeld */,
 			);
 			path = FriendMe;
 			sourceTree = "<group>";
@@ -278,6 +279,8 @@
 				1A62D554269CD9C3000AA0A2 /* GenInfoViewController.m */,
 				1A62D556269CDDA0000AA0A2 /* SignUpViewController.h */,
 				1A62D557269CDDA0000AA0A2 /* SignUpViewController.m */,
+				1A62D5AA26AA226E000AA0A2 /* ConnectViewController.h */,
+				1A62D5AB26AA226E000AA0A2 /* ConnectViewController.m */,
 			);
 			path = "Sign Up";
 			sourceTree = "<group>";
@@ -515,7 +518,8 @@
 			files = (
 				1A62D56B269E06F2000AA0A2 /* PlatformWeightCell.m in Sources */,
 				1A62D562269D032D000AA0A2 /* PlatformCell.m in Sources */,
-				1A62D51A269CAE84000AA0A2 /* ViewController.m in Sources */,
+				1A62D5AF26AA3440000AA0A2 /* FriendMe.xcdatamodeld in Sources */,
+				1A62D5AC26AA226E000AA0A2 /* ConnectViewController.m in Sources */,
 				1A62D58326A0C130000AA0A2 /* MatchesViewController.m in Sources */,
 				1A62D58F26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				1A62D5A926A8BD8F000AA0A2 /* MatchingAlgo.m in Sources */,
@@ -928,6 +932,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1A62D5AD26AA3440000AA0A2 /* FriendMe.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1A62D5AE26AA3440000AA0A2 /* FriendMe.xcdatamodel */,
+			);
+			currentVersion = 1A62D5AE26AA3440000AA0A2 /* FriendMe.xcdatamodel */;
+			path = FriendMe.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1A62D507269CAE84000AA0A2 /* Project object */;
 }

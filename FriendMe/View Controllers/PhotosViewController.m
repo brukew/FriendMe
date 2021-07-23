@@ -70,7 +70,7 @@
     for (int i = 0; i < [assets count]; i++) {
 
         [manager requestImageForAsset:[assets objectAtIndex:i]
-                           targetSize:CGSizeMake(390, 335)
+                           targetSize:CGSizeMake(390, 326)
                           contentMode:PHImageContentModeAspectFill
                               options:requestOptions
                         resultHandler:^(UIImage *image, NSDictionary *info){
