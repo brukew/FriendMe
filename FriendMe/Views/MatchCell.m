@@ -7,10 +7,12 @@
 
 #import "MatchCell.h"
 #import "UIImageView+AFNetworking.h"
+#import <Parse/Parse.h>
 
 @implementation MatchCell
 
 - (void) loadData{
+    PFUser *current = [PFUser currentUser];
     self.nameLabel.text = [[self.currentMatch[@"firstName"] stringByAppendingString:@" "] stringByAppendingString:self.currentMatch[@"lastName"]];
     NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
                                        components:NSCalendarUnitYear
@@ -28,6 +30,10 @@
         @catch(id anException) {
             [self.profilePicView setImage:[UIImage imageNamed:@"image_placeholder.png"]];
         }
+    if ([self.currentMatch[@"likes"] containsObject:current.objectId]){
+        [self bringSubviewToFront:self.heart];
+        self.heart.alpha = 1;
+    }
 }
 
 @end

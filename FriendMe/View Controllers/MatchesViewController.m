@@ -90,7 +90,6 @@
     cell.contentView.layer.masksToBounds = true;
     PFUser *current = [PFUser currentUser];
     PFQuery *query = [PFUser query];
-    //NSLog(@"%@", current[@"matches"][indexPath.row]);
     [query getObjectInBackgroundWithId:current[@"matches"][indexPath.row] block:^(PFObject *match, NSError *error) {
         if (!error) {
             cell.currentMatch = match;

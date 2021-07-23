@@ -41,6 +41,7 @@
 		1A62D5A926A8BD8F000AA0A2 /* MatchingAlgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D5A826A8BD8F000AA0A2 /* MatchingAlgo.m */; };
 		1A62D5AC26AA226E000AA0A2 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D5AB26AA226E000AA0A2 /* ConnectViewController.m */; };
 		1A62D5AF26AA3440000AA0A2 /* FriendMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D5AD26AA3440000AA0A2 /* FriendMe.xcdatamodeld */; };
+		1A62D68D26AB6AFF000AA0A2 /* HeartButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D68C26AB6AFF000AA0A2 /* HeartButton.m */; };
 		314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,8 @@
 		1A62D5AA26AA226E000AA0A2 /* ConnectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
 		1A62D5AB26AA226E000AA0A2 /* ConnectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
 		1A62D5AE26AA3440000AA0A2 /* FriendMe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendMe.xcdatamodel; sourceTree = "<group>"; };
+		1A62D68B26AB6AFF000AA0A2 /* HeartButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeartButton.h; sourceTree = "<group>"; };
+		1A62D68C26AB6AFF000AA0A2 /* HeartButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeartButton.m; sourceTree = "<group>"; };
 		7A89400C6FDA2200E862CB7D /* Pods-FriendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.debug.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.debug.xcconfig"; sourceTree = "<group>"; };
 		8C56027D1DDC23A0C7BA7064 /* Pods-FriendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.release.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -296,6 +299,8 @@
 				1A62D58826A0C89E000AA0A2 /* MatchCell.m */,
 				1A62D59526A627E0000AA0A2 /* PlatformChangeWeightCell.h */,
 				1A62D59626A627E0000AA0A2 /* PlatformChangeWeightCell.m */,
+				1A62D68B26AB6AFF000AA0A2 /* HeartButton.h */,
+				1A62D68C26AB6AFF000AA0A2 /* HeartButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				1A62D59A26A64412000AA0A2 /* MatchProfileViewController.m in Sources */,
 				1A62D525269CAE85000AA0A2 /* main.m in Sources */,
 				1A62D558269CDDA0000AA0A2 /* SignUpViewController.m in Sources */,
+				1A62D68D26AB6AFF000AA0A2 /* HeartButton.m in Sources */,
 				1A62D577269F3DD4000AA0A2 /* APIManager.m in Sources */,
 				1A62D568269E01E4000AA0A2 /* WeightsViewController.m in Sources */,
 				1A62D580269FB234000AA0A2 /* EditProfileViewController.m in Sources */,

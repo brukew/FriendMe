@@ -409,12 +409,18 @@
                                                         <constraint firstItem="qHN-U1-de9" firstAttribute="top" secondItem="Xeo-2z-7NB" secondAttribute="top" id="ouv-Ql-vaG"/>
                                                     </constraints>
                                                 </view>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="c2j-qf-m2s">
+                                                    <rect key="frame" x="159.33333333333334" y="1.9999999999999982" width="20.666666666666657" height="17.333333333333336"/>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Xeo-2z-7NB" firstAttribute="top" secondItem="zUf-mn-gmp" secondAttribute="bottom" id="7nM-zK-z7x"/>
                                                 <constraint firstItem="zUf-mn-gmp" firstAttribute="top" secondItem="zdR-bb-CcP" secondAttribute="top" id="PzE-OV-ztl"/>
                                                 <constraint firstAttribute="trailing" secondItem="Xeo-2z-7NB" secondAttribute="trailing" id="Spo-fK-pJU"/>
+                                                <constraint firstAttribute="trailing" secondItem="c2j-qf-m2s" secondAttribute="trailing" id="Yob-jL-9pU"/>
                                                 <constraint firstItem="zUf-mn-gmp" firstAttribute="leading" secondItem="zdR-bb-CcP" secondAttribute="leading" id="eRT-RJ-NTy"/>
+                                                <constraint firstItem="c2j-qf-m2s" firstAttribute="top" secondItem="zdR-bb-CcP" secondAttribute="top" id="hOl-JR-Mgf"/>
                                                 <constraint firstAttribute="bottom" secondItem="Xeo-2z-7NB" secondAttribute="bottom" id="mcb-do-QLR"/>
                                                 <constraint firstAttribute="trailing" secondItem="zUf-mn-gmp" secondAttribute="trailing" id="nSZ-be-NNI"/>
                                                 <constraint firstItem="Xeo-2z-7NB" firstAttribute="leading" secondItem="zdR-bb-CcP" secondAttribute="leading" id="rM3-nl-btb"/>
@@ -424,6 +430,7 @@
                                         <size key="customSize" width="180" height="253"/>
                                         <connections>
                                             <outlet property="ageLabel" destination="JVS-gR-4bB" id="uVz-Do-FWf"/>
+                                            <outlet property="heart" destination="c2j-qf-m2s" id="DU9-CN-gD2"/>
                                             <outlet property="nameLabel" destination="qHN-U1-de9" id="GwG-y6-ksD"/>
                                             <outlet property="profilePicView" destination="zUf-mn-gmp" id="2WY-b5-YBy"/>
                                             <segue destination="yKo-ZQ-rP7" kind="presentation" identifier="toProfile" id="sUO-Lu-F6t"/>
@@ -476,12 +483,28 @@
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VMe-HZ-9v4">
                                         <rect key="frame" x="135" y="260" width="121" height="27"/>
                                     </pageControl>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MKA-SP-kI2">
+                                        <rect key="frame" x="127" y="101" width="137" height="93"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hNB-Qe-vU8">
+                                        <rect key="frame" x="345" y="10" width="37" height="39"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="VMe-HZ-9v4" firstAttribute="top" secondItem="9oX-uL-scl" secondAttribute="top" constant="260" id="6hZ-0h-Tg4"/>
                                     <constraint firstItem="9oX-uL-scl" firstAttribute="bottom" secondItem="VMe-HZ-9v4" secondAttribute="bottom" constant="8" id="72P-7s-F2K"/>
                                     <constraint firstItem="9oX-uL-scl" firstAttribute="trailing" secondItem="VMe-HZ-9v4" secondAttribute="trailing" constant="134" id="DeR-a1-WbO"/>
+                                    <constraint firstItem="MKA-SP-kI2" firstAttribute="top" secondItem="9oX-uL-scl" secondAttribute="top" constant="99" id="Wsy-Rq-CGz"/>
+                                    <constraint firstItem="hNB-Qe-vU8" firstAttribute="leading" secondItem="9oX-uL-scl" secondAttribute="leading" constant="345" id="ZCW-XP-KbG"/>
                                     <constraint firstItem="VMe-HZ-9v4" firstAttribute="leading" secondItem="9oX-uL-scl" secondAttribute="leading" constant="135" id="Zkr-wv-mQS"/>
+                                    <constraint firstItem="9oX-uL-scl" firstAttribute="trailing" secondItem="MKA-SP-kI2" secondAttribute="trailing" constant="126" id="bp9-7I-F5f"/>
+                                    <constraint firstItem="9oX-uL-scl" firstAttribute="bottom" secondItem="hNB-Qe-vU8" secondAttribute="bottom" constant="245" id="d9l-fN-OUq"/>
+                                    <constraint firstItem="9oX-uL-scl" firstAttribute="bottom" secondItem="MKA-SP-kI2" secondAttribute="bottom" constant="100" id="pE1-QW-dR6"/>
+                                    <constraint firstItem="hNB-Qe-vU8" firstAttribute="top" secondItem="9oX-uL-scl" secondAttribute="top" constant="8" id="pQt-CH-w72"/>
+                                    <constraint firstItem="9oX-uL-scl" firstAttribute="trailing" secondItem="hNB-Qe-vU8" secondAttribute="trailing" constant="8" id="wmh-Kz-ANE"/>
+                                    <constraint firstItem="MKA-SP-kI2" firstAttribute="leading" secondItem="9oX-uL-scl" secondAttribute="leading" constant="127" id="wzO-vy-pCl"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="g0x-rv-D2U"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="9oX-uL-scl"/>
@@ -524,6 +547,8 @@
                     <connections>
                         <outlet property="ageLabel" destination="jYd-8A-iGi" id="6ht-tX-p6s"/>
                         <outlet property="bioLabel" destination="TG4-As-U8g" id="mlO-PT-ThU"/>
+                        <outlet property="heart" destination="hNB-Qe-vU8" id="yP0-Ot-2Fn"/>
+                        <outlet property="heartPopup" destination="MKA-SP-kI2" id="wjO-UV-JZ5"/>
                         <outlet property="nameLabel" destination="4f7-ZZ-h6z" id="Xp4-OT-CXA"/>
                         <outlet property="pageControl" destination="VMe-HZ-9v4" id="8V8-jg-1mF"/>
                         <outlet property="scrollView" destination="aob-1J-38j" id="c0D-mc-sLu"/>
@@ -1009,6 +1034,7 @@
         <image name="Spotify" width="341.33334350585938" height="341.33334350585938"/>
         <image name="Twitter" width="1280" height="720"/>
         <image name="globe" catalog="system" width="128" height="121"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="image_placeholder" width="375" height="375"/>
         <image name="link" catalog="system" width="128" height="122"/>
         <image name="person" catalog="system" width="128" height="117"/>
@@ -1024,6 +1050,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
