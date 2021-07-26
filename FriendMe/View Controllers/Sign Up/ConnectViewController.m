@@ -9,6 +9,7 @@
 #import "APIManager.h"
 #import "APIManager2.h"
 #import <Parse/Parse.h>
+#import "Platform.h"
 
 @interface ConnectViewController ()
 
@@ -16,48 +17,48 @@
 
 @implementation ConnectViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(spotifyConnect:)];
-    tapGestureRecognizer.numberOfTapsRequired = 1;
-    [self.spotifyImage setUserInteractionEnabled:YES];
-    [self.spotifyImage  addGestureRecognizer:tapGestureRecognizer];
-    
-    UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twitterConnect:)];
-    tapGestureRecognizer2.numberOfTapsRequired = 1;
-    [self.twitterImage setUserInteractionEnabled:YES];
-    [self.twitterImage  addGestureRecognizer:tapGestureRecognizer];
-    
-    // Do any additional setup after loading the view.
 }
+
+- (IBAction)continueTapped:(id)sender {
+    PFUser *current = [PFUser currentUser];
+    if (current[@"platforms"]){
+        [self performSegueWithIdentifier:@"toWeightsSegue" sender:nil];
+    }
+    else{
+        [self performSegueWithIdentifier:@"toPicsSegue" sender:nil];
+    }
+}
+
 - (IBAction)spotifyConnect:(UITapGestureRecognizer *)sender {
     APIManager *api = [APIManager shared];
     
     [api setUpSpotifyWithCompletion:^(NSDictionary *data, NSError *error) {
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        else{
-            NSLog(@"Success");
-            //add green check mark under label
+        if (!error) {
+            self.spotifyCheck.alpha = 1;
+            [Platform addPlatform: @"Spotify" withCompletion: nil];
         }
     }];
 }
 - (IBAction)twitterConnect:(UITapGestureRecognizer *)sender {
     [[APIManager2 shared] loginWithCompletion:^(BOOL success, NSError *error) {
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        else{
+        if (!error) {
             [[APIManager2 shared] getFollowersWithCompletion:^(NSMutableArray *data, NSError *error){
             }];
-            NSLog(@"Success");
-            //add green check mark under label and add transparent grey overlay on image view
-            
+//            UIView *newView = [[UIView alloc] initWithFrame:self.twitterView.frame];
+//            newView.backgroundColor = [UIColor lightGrayColor];
+//            newView.alpha = 0.5;
+//            [self.view addSubview:newView];
+//            [self.twitterView bringSubviewToFront:self.twitterCheck];
+            self.twitterCheck.alpha = 1;
+            [Platform addPlatform: @"Twitter" withCompletion: nil];
         }
     }];
 
 }
+
 
 /*
 #pragma mark - Navigation

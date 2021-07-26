@@ -8,7 +8,7 @@
 #import "GenInfoViewController.h"
 #import "Parse/Parse.h"
 
-@interface GenInfoViewController ()
+@interface GenInfoViewController () <UITextFieldDelegate>
 
 @end
 
@@ -16,18 +16,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.datePicker.datePickerMode = UIDatePickerModeDate;
-    self.datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
-    self.datePicker.maximumDate = [NSDate date];
-    // add in 18 + functionality
+    self.BirthdateTextfield.delegate = self;
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+
+    [datePicker setDate:[NSDate date]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"dd-MMM-yyyy";
+    NSDate *theMaximumDate = [NSDate date];
+    [datePicker setMaximumDate:theMaximumDate];
     
+    datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+    [datePicker setDatePickerMode:UIDatePickerModeDate];
+
+
+    [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
+
+    [self.BirthdateTextfield setInputView:datePicker];
+
+}
+
+- (NSString *)formatDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [dateFormatter setDateFormat:@"MMM dd, yyyy"];
+    NSString *formattedDate = [dateFormatter stringFromDate:date];
+    return formattedDate;
+}
+
+-(void)updateTextField:(id)sender {
+    UIDatePicker *picker = (UIDatePicker*)self.BirthdateTextfield.inputView;
+    self.BirthdateTextfield.text = [self formatDate:picker.date];
 }
 
 - (IBAction)addInfo:(id)sender {
+    UIDatePicker *picker = (UIDatePicker*)self.BirthdateTextfield.inputView;
     PFUser *current = [PFUser currentUser];
     current[@"firstName"] = self.firstNameField.text;
     current[@"lastName"] = self.lastNameField.text;
-    current[@"DOB"] = self.datePicker.date;
+    current[@"DOB"] = picker.date;
     // add in 18 + functionality
     [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
     }];

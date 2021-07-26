@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.signUpButton.layer.cornerRadius = 4;
     // Do any additional setup after loading the view.
 }
 

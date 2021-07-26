@@ -21,18 +21,23 @@
                                        options:0];
     NSInteger age = [ageComponents year];
     self.ageLabel.text = [NSString stringWithFormat:@"%ld",(long)age];
-    @try
-        {
-            PFFileObject * profileImage = [self.currentMatch[@"pictures"] objectAtIndex:0];
-            NSURL * imageURL = [NSURL URLWithString:profileImage.url];
-            [self.profilePicView setImageWithURL:imageURL];
-        }
-        @catch(id anException) {
-            [self.profilePicView setImage:[UIImage imageNamed:@"image_placeholder.png"]];
-        }
+    if (self.currentMatch[@"pictures"]){
+        PFFileObject * profileImage = [self.currentMatch[@"pictures"] objectAtIndex:0];
+        NSURL * imageURL = [NSURL URLWithString:profileImage.url];
+        [self.profilePicView setImageWithURL:imageURL];
+    }
+    else{
+        [self.profilePicView setImage:[UIImage imageNamed:@"image_placeholder.png"]];
+    }
     if ([self.currentMatch[@"likes"] containsObject:current.objectId]){
-        [self bringSubviewToFront:self.heart];
-        self.heart.alpha = 1;
+        if([current[@"likes"] containsObject:self.currentMatch.objectId]){
+            [self bringSubviewToFront:self.heart];
+            self.heart.alpha = 1;
+        }
+        else{
+            [self bringSubviewToFront:self.heartNoFill];
+            self.heartNoFill.alpha = 1;
+        }
     }
 }
 

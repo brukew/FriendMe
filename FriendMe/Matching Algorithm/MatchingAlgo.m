@@ -31,9 +31,6 @@
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", current.objectId]];
     NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
     NSManagedObject *userData = results[0];
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    NSData *currentArchivedData = [userDefaults objectForKey:current.objectId];
-//    NSDictionary *userData = [NSKeyedUnarchiver unarchiveObjectWithData:currentArchivedData];
     for (PFObject *user in users){
         if (![user.objectId isEqual:[PFUser currentUser].objectId]){
             [MatchingAlgo compare:user withDictionary:matchDict withData:userData];

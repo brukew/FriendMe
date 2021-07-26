@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "MatchesViewController.h"
 #import <CoreData/CoreData.h>
+#import "ConnectViewController.h"
 
 @implementation APIManager
 
@@ -53,6 +54,7 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
         // Use this on iOS versions < 11 to use SFSafariViewController
         [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption presentingViewController:self];
     }
+    completion(nil, nil);
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options

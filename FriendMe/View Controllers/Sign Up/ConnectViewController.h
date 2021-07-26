@@ -10,8 +10,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ConnectViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *spotifyImage;
-@property (weak, nonatomic) IBOutlet UIImageView *twitterImage;
+
+@property (weak, nonatomic) IBOutlet UIView *twitterView;
+@property (weak, nonatomic) IBOutlet UIView *spotifyView;
+@property (weak, nonatomic) IBOutlet UIImageView *twitterCheck;
+@property (weak, nonatomic) IBOutlet UIImageView *spotifyCheck;
 
 @end
 
