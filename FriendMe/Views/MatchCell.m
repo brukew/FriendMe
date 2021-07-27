@@ -26,12 +26,16 @@
         if([current[@"likes"] containsObject:self.currentMatch.objectId]){
             [self bringSubviewToFront:self.heart];
             self.heart.alpha = 1;
+            self.heartNoFill.alpha = 0;
         }
         else{
             [self bringSubviewToFront:self.heartNoFill];
+            self.heart.alpha = 0;
             self.heartNoFill.alpha = 1;
         }
     }
+    
+    
     NSArray *platforms = self.currentMatch[@"platforms"];
     if (platforms.count > 1){
         self.spotifyImage.alpha = 1;
@@ -53,4 +57,3 @@
 }
 
 @end
-

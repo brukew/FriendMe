@@ -18,12 +18,9 @@
 		1A62D54E269CCF40000AA0A2 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D54D269CCF40000AA0A2 /* LogInViewController.m */; };
 		1A62D555269CD9C3000AA0A2 /* GenInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D554269CD9C3000AA0A2 /* GenInfoViewController.m */; };
 		1A62D558269CDDA0000AA0A2 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D557269CDDA0000AA0A2 /* SignUpViewController.m */; };
-		1A62D562269D032D000AA0A2 /* PlatformCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D561269D032D000AA0A2 /* PlatformCell.m */; };
-		1A62D565269D0826000AA0A2 /* PlatformsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D564269D0826000AA0A2 /* PlatformsViewController.m */; };
 		1A62D568269E01E4000AA0A2 /* WeightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D567269E01E4000AA0A2 /* WeightsViewController.m */; };
 		1A62D56B269E06F2000AA0A2 /* PlatformWeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D56A269E06F2000AA0A2 /* PlatformWeightCell.m */; };
 		1A62D56E269E0ACF000AA0A2 /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D56D269E0ACF000AA0A2 /* Platform.m */; };
-		1A62D577269F3DD4000AA0A2 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D576269F3DD4000AA0A2 /* APIManager.m */; };
 		1A62D57A269F68BA000AA0A2 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D579269F68BA000AA0A2 /* ProfileViewController.m */; };
 		1A62D57D269F7C7B000AA0A2 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D57C269F7C7B000AA0A2 /* PhotosViewController.m */; };
 		1A62D580269FB234000AA0A2 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D57F269FB234000AA0A2 /* EditProfileViewController.m */; };
@@ -33,7 +30,6 @@
 		1A62D58C26A23930000AA0A2 /* ManagePlatformsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D58B26A23930000AA0A2 /* ManagePlatformsViewController.m */; };
 		1A62D58F26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D58E26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m */; };
 		1A62D59126A5FA2A000AA0A2 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A62D59026A5FA2A000AA0A2 /* Keys.plist */; };
-		1A62D59426A5FAEB000AA0A2 /* APIManager2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59326A5FAEB000AA0A2 /* APIManager2.m */; };
 		1A62D59726A627E0000AA0A2 /* PlatformChangeWeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59626A627E0000AA0A2 /* PlatformChangeWeightCell.m */; };
 		1A62D59A26A64412000AA0A2 /* MatchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D59926A64412000AA0A2 /* MatchProfileViewController.m */; };
 		1A62D5A326A73E4A000AA0A2 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A62D5A226A73E4A000AA0A2 /* SpotifyiOS.xcframework */; };
@@ -41,8 +37,10 @@
 		1A62D5A926A8BD8F000AA0A2 /* MatchingAlgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D5A826A8BD8F000AA0A2 /* MatchingAlgo.m */; };
 		1A62D5AC26AA226E000AA0A2 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D5AB26AA226E000AA0A2 /* ConnectViewController.m */; };
 		1A62D5AF26AA3440000AA0A2 /* FriendMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D5AD26AA3440000AA0A2 /* FriendMe.xcdatamodeld */; };
-		1A62D68D26AB6AFF000AA0A2 /* HeartButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D68C26AB6AFF000AA0A2 /* HeartButton.m */; };
 		1A62D69026AF6178000AA0A2 /* AssignWeightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D68F26AF6178000AA0A2 /* AssignWeightsViewController.m */; };
+		1A62D69326B08D1B000AA0A2 /* ArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D69226B08D1B000AA0A2 /* ArtistCell.m */; };
+		1A62D69626B0BB52000AA0A2 /* SpotifyAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D69526B0BB52000AA0A2 /* SpotifyAPIManager.m */; };
+		1A62D69926B0BBC4000AA0A2 /* TwitterAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D69826B0BBC4000AA0A2 /* TwitterAPIManager.m */; };
 		314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,18 +99,12 @@
 		1A62D554269CD9C3000AA0A2 /* GenInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenInfoViewController.m; sourceTree = "<group>"; };
 		1A62D556269CDDA0000AA0A2 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		1A62D557269CDDA0000AA0A2 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		1A62D560269D032D000AA0A2 /* PlatformCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformCell.h; sourceTree = "<group>"; };
-		1A62D561269D032D000AA0A2 /* PlatformCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformCell.m; sourceTree = "<group>"; };
-		1A62D563269D0826000AA0A2 /* PlatformsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformsViewController.h; sourceTree = "<group>"; };
-		1A62D564269D0826000AA0A2 /* PlatformsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformsViewController.m; sourceTree = "<group>"; };
 		1A62D566269E01E4000AA0A2 /* WeightsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeightsViewController.h; sourceTree = "<group>"; };
 		1A62D567269E01E4000AA0A2 /* WeightsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeightsViewController.m; sourceTree = "<group>"; };
 		1A62D569269E06F2000AA0A2 /* PlatformWeightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformWeightCell.h; sourceTree = "<group>"; };
 		1A62D56A269E06F2000AA0A2 /* PlatformWeightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformWeightCell.m; sourceTree = "<group>"; };
 		1A62D56C269E0ACF000AA0A2 /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		1A62D56D269E0ACF000AA0A2 /* Platform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Platform.m; sourceTree = "<group>"; };
-		1A62D575269F3DD4000AA0A2 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
-		1A62D576269F3DD4000AA0A2 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		1A62D578269F68BA000AA0A2 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		1A62D579269F68BA000AA0A2 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		1A62D57B269F7C7B000AA0A2 /* PhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
@@ -130,8 +122,6 @@
 		1A62D58D26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BDBOAuth1SessionManager+SFAuthenticationSession.h"; sourceTree = "<group>"; };
 		1A62D58E26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BDBOAuth1SessionManager+SFAuthenticationSession.m"; sourceTree = "<group>"; };
 		1A62D59026A5FA2A000AA0A2 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
-		1A62D59226A5FAEA000AA0A2 /* APIManager2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager2.h; sourceTree = "<group>"; };
-		1A62D59326A5FAEB000AA0A2 /* APIManager2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager2.m; sourceTree = "<group>"; };
 		1A62D59526A627E0000AA0A2 /* PlatformChangeWeightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformChangeWeightCell.h; sourceTree = "<group>"; };
 		1A62D59626A627E0000AA0A2 /* PlatformChangeWeightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformChangeWeightCell.m; sourceTree = "<group>"; };
 		1A62D59826A64412000AA0A2 /* MatchProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchProfileViewController.h; sourceTree = "<group>"; };
@@ -143,10 +133,14 @@
 		1A62D5AA26AA226E000AA0A2 /* ConnectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
 		1A62D5AB26AA226E000AA0A2 /* ConnectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
 		1A62D5AE26AA3440000AA0A2 /* FriendMe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendMe.xcdatamodel; sourceTree = "<group>"; };
-		1A62D68B26AB6AFF000AA0A2 /* HeartButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeartButton.h; sourceTree = "<group>"; };
-		1A62D68C26AB6AFF000AA0A2 /* HeartButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeartButton.m; sourceTree = "<group>"; };
 		1A62D68E26AF6178000AA0A2 /* AssignWeightsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssignWeightsViewController.h; sourceTree = "<group>"; };
 		1A62D68F26AF6178000AA0A2 /* AssignWeightsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssignWeightsViewController.m; sourceTree = "<group>"; };
+		1A62D69126B08D1B000AA0A2 /* ArtistCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArtistCell.h; sourceTree = "<group>"; };
+		1A62D69226B08D1B000AA0A2 /* ArtistCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtistCell.m; sourceTree = "<group>"; };
+		1A62D69426B0BB52000AA0A2 /* SpotifyAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotifyAPIManager.h; sourceTree = "<group>"; };
+		1A62D69526B0BB52000AA0A2 /* SpotifyAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyAPIManager.m; sourceTree = "<group>"; };
+		1A62D69726B0BBC4000AA0A2 /* TwitterAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwitterAPIManager.h; sourceTree = "<group>"; };
+		1A62D69826B0BBC4000AA0A2 /* TwitterAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterAPIManager.m; sourceTree = "<group>"; };
 		7A89400C6FDA2200E862CB7D /* Pods-FriendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.debug.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.debug.xcconfig"; sourceTree = "<group>"; };
 		8C56027D1DDC23A0C7BA7064 /* Pods-FriendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.release.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,29 +247,10 @@
 		1A62D54B269CB4ED000AA0A2 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1A62D54F269CD476000AA0A2 /* Sign Up */,
-				1A62D54C269CCF40000AA0A2 /* LogInViewController.h */,
-				1A62D54D269CCF40000AA0A2 /* LogInViewController.m */,
-				1A62D563269D0826000AA0A2 /* PlatformsViewController.h */,
-				1A62D564269D0826000AA0A2 /* PlatformsViewController.m */,
-				1A62D566269E01E4000AA0A2 /* WeightsViewController.h */,
-				1A62D567269E01E4000AA0A2 /* WeightsViewController.m */,
-				1A62D578269F68BA000AA0A2 /* ProfileViewController.h */,
-				1A62D579269F68BA000AA0A2 /* ProfileViewController.m */,
-				1A62D57B269F7C7B000AA0A2 /* PhotosViewController.h */,
-				1A62D57C269F7C7B000AA0A2 /* PhotosViewController.m */,
-				1A62D57E269FB234000AA0A2 /* EditProfileViewController.h */,
-				1A62D57F269FB234000AA0A2 /* EditProfileViewController.m */,
-				1A62D58126A0C130000AA0A2 /* MatchesViewController.h */,
-				1A62D58226A0C130000AA0A2 /* MatchesViewController.m */,
-				1A62D58426A0C5A7000AA0A2 /* BeginViewController.h */,
-				1A62D58526A0C5A7000AA0A2 /* BeginViewController.m */,
-				1A62D58A26A23930000AA0A2 /* ManagePlatformsViewController.h */,
-				1A62D58B26A23930000AA0A2 /* ManagePlatformsViewController.m */,
-				1A62D59826A64412000AA0A2 /* MatchProfileViewController.h */,
-				1A62D59926A64412000AA0A2 /* MatchProfileViewController.m */,
-				1A62D68E26AF6178000AA0A2 /* AssignWeightsViewController.h */,
-				1A62D68F26AF6178000AA0A2 /* AssignWeightsViewController.m */,
+				1A62D69D26B0BE7D000AA0A2 /* Platforms */,
+				1A62D69C26B0BDD8000AA0A2 /* Set Up */,
+				1A62D69B26B0BDBD000AA0A2 /* Matches */,
+				1A62D69A26B0BD9D000AA0A2 /* Profile */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -296,16 +271,14 @@
 		1A62D55F269D0319000AA0A2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1A62D560269D032D000AA0A2 /* PlatformCell.h */,
-				1A62D561269D032D000AA0A2 /* PlatformCell.m */,
 				1A62D569269E06F2000AA0A2 /* PlatformWeightCell.h */,
 				1A62D56A269E06F2000AA0A2 /* PlatformWeightCell.m */,
 				1A62D58726A0C89E000AA0A2 /* MatchCell.h */,
 				1A62D58826A0C89E000AA0A2 /* MatchCell.m */,
 				1A62D59526A627E0000AA0A2 /* PlatformChangeWeightCell.h */,
 				1A62D59626A627E0000AA0A2 /* PlatformChangeWeightCell.m */,
-				1A62D68B26AB6AFF000AA0A2 /* HeartButton.h */,
-				1A62D68C26AB6AFF000AA0A2 /* HeartButton.m */,
+				1A62D69126B08D1B000AA0A2 /* ArtistCell.h */,
+				1A62D69226B08D1B000AA0A2 /* ArtistCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,12 +286,12 @@
 		1A62D574269F3DC0000AA0A2 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				1A62D575269F3DD4000AA0A2 /* APIManager.h */,
-				1A62D576269F3DD4000AA0A2 /* APIManager.m */,
 				1A62D58D26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.h */,
 				1A62D58E26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m */,
-				1A62D59226A5FAEA000AA0A2 /* APIManager2.h */,
-				1A62D59326A5FAEB000AA0A2 /* APIManager2.m */,
+				1A62D69426B0BB52000AA0A2 /* SpotifyAPIManager.h */,
+				1A62D69526B0BB52000AA0A2 /* SpotifyAPIManager.m */,
+				1A62D69726B0BBC4000AA0A2 /* TwitterAPIManager.h */,
+				1A62D69826B0BBC4000AA0A2 /* TwitterAPIManager.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -330,6 +303,55 @@
 				1A62D5A826A8BD8F000AA0A2 /* MatchingAlgo.m */,
 			);
 			path = "Matching Algorithm";
+			sourceTree = "<group>";
+		};
+		1A62D69A26B0BD9D000AA0A2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1A62D578269F68BA000AA0A2 /* ProfileViewController.h */,
+				1A62D579269F68BA000AA0A2 /* ProfileViewController.m */,
+				1A62D57B269F7C7B000AA0A2 /* PhotosViewController.h */,
+				1A62D57C269F7C7B000AA0A2 /* PhotosViewController.m */,
+				1A62D57E269FB234000AA0A2 /* EditProfileViewController.h */,
+				1A62D57F269FB234000AA0A2 /* EditProfileViewController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		1A62D69B26B0BDBD000AA0A2 /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+				1A62D59826A64412000AA0A2 /* MatchProfileViewController.h */,
+				1A62D59926A64412000AA0A2 /* MatchProfileViewController.m */,
+				1A62D58126A0C130000AA0A2 /* MatchesViewController.h */,
+				1A62D58226A0C130000AA0A2 /* MatchesViewController.m */,
+			);
+			path = Matches;
+			sourceTree = "<group>";
+		};
+		1A62D69C26B0BDD8000AA0A2 /* Set Up */ = {
+			isa = PBXGroup;
+			children = (
+				1A62D54F269CD476000AA0A2 /* Sign Up */,
+				1A62D54C269CCF40000AA0A2 /* LogInViewController.h */,
+				1A62D54D269CCF40000AA0A2 /* LogInViewController.m */,
+				1A62D58426A0C5A7000AA0A2 /* BeginViewController.h */,
+				1A62D58526A0C5A7000AA0A2 /* BeginViewController.m */,
+			);
+			path = "Set Up";
+			sourceTree = "<group>";
+		};
+		1A62D69D26B0BE7D000AA0A2 /* Platforms */ = {
+			isa = PBXGroup;
+			children = (
+				1A62D566269E01E4000AA0A2 /* WeightsViewController.h */,
+				1A62D567269E01E4000AA0A2 /* WeightsViewController.m */,
+				1A62D58A26A23930000AA0A2 /* ManagePlatformsViewController.h */,
+				1A62D58B26A23930000AA0A2 /* ManagePlatformsViewController.m */,
+				1A62D68E26AF6178000AA0A2 /* AssignWeightsViewController.h */,
+				1A62D68F26AF6178000AA0A2 /* AssignWeightsViewController.m */,
+			);
+			path = Platforms;
 			sourceTree = "<group>";
 		};
 		7A6217908209B4B42A319DF2 /* Pods */ = {
@@ -527,29 +549,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A62D56B269E06F2000AA0A2 /* PlatformWeightCell.m in Sources */,
-				1A62D562269D032D000AA0A2 /* PlatformCell.m in Sources */,
 				1A62D5AF26AA3440000AA0A2 /* FriendMe.xcdatamodeld in Sources */,
+				1A62D69926B0BBC4000AA0A2 /* TwitterAPIManager.m in Sources */,
 				1A62D69026AF6178000AA0A2 /* AssignWeightsViewController.m in Sources */,
 				1A62D5AC26AA226E000AA0A2 /* ConnectViewController.m in Sources */,
 				1A62D58326A0C130000AA0A2 /* MatchesViewController.m in Sources */,
 				1A62D58F26A5F916000AA0A2 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
+				1A62D69626B0BB52000AA0A2 /* SpotifyAPIManager.m in Sources */,
+				1A62D69326B08D1B000AA0A2 /* ArtistCell.m in Sources */,
 				1A62D5A926A8BD8F000AA0A2 /* MatchingAlgo.m in Sources */,
 				1A62D54E269CCF40000AA0A2 /* LogInViewController.m in Sources */,
 				1A62D57A269F68BA000AA0A2 /* ProfileViewController.m in Sources */,
 				1A62D58C26A23930000AA0A2 /* ManagePlatformsViewController.m in Sources */,
 				1A62D59726A627E0000AA0A2 /* PlatformChangeWeightCell.m in Sources */,
 				1A62D514269CAE84000AA0A2 /* AppDelegate.m in Sources */,
-				1A62D565269D0826000AA0A2 /* PlatformsViewController.m in Sources */,
 				1A62D555269CD9C3000AA0A2 /* GenInfoViewController.m in Sources */,
 				1A62D59A26A64412000AA0A2 /* MatchProfileViewController.m in Sources */,
 				1A62D525269CAE85000AA0A2 /* main.m in Sources */,
 				1A62D558269CDDA0000AA0A2 /* SignUpViewController.m in Sources */,
-				1A62D68D26AB6AFF000AA0A2 /* HeartButton.m in Sources */,
-				1A62D577269F3DD4000AA0A2 /* APIManager.m in Sources */,
 				1A62D568269E01E4000AA0A2 /* WeightsViewController.m in Sources */,
 				1A62D580269FB234000AA0A2 /* EditProfileViewController.m in Sources */,
 				1A62D58926A0C89E000AA0A2 /* MatchCell.m in Sources */,
-				1A62D59426A5FAEB000AA0A2 /* APIManager2.m in Sources */,
 				1A62D56E269E0ACF000AA0A2 /* Platform.m in Sources */,
 				1A62D57D269F7C7B000AA0A2 /* PhotosViewController.m in Sources */,
 				1A62D58626A0C5A7000AA0A2 /* BeginViewController.m in Sources */,

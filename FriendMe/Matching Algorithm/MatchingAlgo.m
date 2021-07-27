@@ -38,12 +38,7 @@
     }
     NSArray *matches = [[[matchDict keysSortedByValueUsingSelector:@selector(compare:)] reverseObjectEnumerator] allObjects];
     current[@"matches"] = matches;
-    [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (!error){
-            NSLog(@"matches: %@", current[@"matches"]);
-            NSLog(@"matchDict: %@", matchDict);
-        }
-    }];
+    [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {}];
 }
 
 + (double) compareSpotifyData:(PFObject *)potentialMatch withData:(NSManagedObject *)userSpotify{
@@ -78,30 +73,6 @@
             spotifyMatch = (((newGenreCount/genreCount)*0.2) + ((newTrackCount/trackCount)*0.3) + ((newAlbumCount/albumCount)*0.2) + ((newArtistCount/artistCount)*0.3)) * weight;
         }
     }
-//    PFUser *current = [PFUser currentUser];
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    NSData *matchArchivedData = [userDefaults objectForKey:potentialMatch.objectId];
-//    NSDictionary *matchData = [NSKeyedUnarchiver unarchiveObjectWithData:matchArchivedData];
-//    if (userData[@"Spotify"] && matchData[@"Spotify"]){
-//        NSMutableSet *genres = [NSMutableSet setWithSet:userData[@"Spotify"][@"genres"]];
-//        NSMutableSet *albums = [NSMutableSet setWithSet:userData[@"Spotify"][@"albums"]];
-//        NSMutableSet *tracks = [NSMutableSet setWithSet:userData[@"Spotify"][@"tracks"]];
-//        NSMutableSet *artists = [NSMutableSet setWithSet:userData[@"Spotify"][@"artists"]];
-//        NSInteger genreCount = [genres count];
-//        NSInteger albumCount = [albums count];
-//        NSInteger trackCount = [tracks count];
-//        NSInteger artistCount = [artists count];
-//        [genres intersectSet:matchData[@"Spotify"][@"genres"]];
-//        [tracks intersectSet:matchData[@"Spotify"][@"tracks"]];
-//        [albums intersectSet:matchData[@"Spotify"][@"albums"]];
-//        [artists intersectSet:matchData[@"Spotify"][@"artists"]];
-//        double newGenreCount = [genres count];
-//        double newAlbumCount = [albums count];
-//        double newTrackCount = [tracks count];
-//        double newArtistCount = [artists count];
-//        double weight = [current[@"weights"][0] doubleValue];
-//        spotifyMatch = (((newGenreCount/genreCount)*0.2) + ((newTrackCount/trackCount)*0.3) + ((newAlbumCount/albumCount)*0.2) + ((newArtistCount/artistCount)*0.3)) * weight;
-//    }
     return spotifyMatch;
 }
 
@@ -125,22 +96,9 @@
             twitterMatch = ((newCount)/friendCount) * weight;
         }
     }
-    
-    
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    NSData *matchArchivedData = [userDefaults objectForKey:potentialMatch.objectId];
-//    NSDictionary *matchData = [NSKeyedUnarchiver unarchiveObjectWithData:matchArchivedData];
-//    if (userData[@"Twitter"] && matchData[@"Twitter"]){
-//        NSMutableSet *friends = [NSMutableSet setWithSet:userData[@"Twitter"]];
-//        NSInteger friendCount = [friends count];
-//        [friends intersectSet:matchData[@"Twitter"]];
-//        double weight = [current[@"weights"][1] doubleValue];
-//        double newCount = [friends count];
-//        twitterMatch = ((newCount)/friendCount) * weight;
-//    }
     return twitterMatch;
 }
-//
+
 + (void) compare:(PFObject *)potentialMatch withDictionary:(NSMutableDictionary *)matches withData:(NSManagedObject *)data {
     NSManagedObject *twitter = [data valueForKey:@"twitterData"];
     NSManagedObject *spotify = [data valueForKey:@"spotifyData"];

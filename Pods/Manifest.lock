@@ -17,6 +17,27 @@ PODS:
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - Bolts/Tasks (1.9.1)
+  - FontAwesomeKit (2.2.1):
+    - FontAwesomeKit/Core (= 2.2.1)
+    - FontAwesomeKit/FontAwesome (= 2.2.1)
+    - FontAwesomeKit/FoundationIcons (= 2.2.1)
+    - FontAwesomeKit/IonIcons (= 2.2.1)
+    - FontAwesomeKit/Material (= 2.2.1)
+    - FontAwesomeKit/Octicons (= 2.2.1)
+    - FontAwesomeKit/Zocial (= 2.2.1)
+  - FontAwesomeKit/Core (2.2.1)
+  - FontAwesomeKit/FontAwesome (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/FoundationIcons (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/IonIcons (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Material (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Octicons (2.2.1):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Zocial (2.2.1):
+    - FontAwesomeKit/Core
   - GMImagePicker (0.0.2)
   - Parse (1.19.2):
     - Parse/Core (= 1.19.2)
@@ -28,6 +49,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0.0)
   - BDBOAuth1Manager (~> 2.0)
+  - FontAwesomeKit (~> 2.2.0)
   - GMImagePicker (~> 0.0)
   - Parse
   - Parse/UI
@@ -37,6 +59,7 @@ SPEC REPOS:
     - AFNetworking
     - BDBOAuth1Manager
     - Bolts
+    - FontAwesomeKit
     - GMImagePicker
     - Parse
 
@@ -44,9 +67,10 @@ SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
   GMImagePicker: 6438a6764d6280b1dbf19b59140313f5a73daeeb
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
 
-PODFILE CHECKSUM: ee0807929cd718f9457578d5037a4cbfe9c70a65
+PODFILE CHECKSUM: 2078028c8d00c98bd12298c2139fa7b750c1b244
 
 COCOAPODS: 1.10.1
