@@ -24,7 +24,8 @@
 
 - (IBAction)continueTapped:(id)sender {
     PFUser *current = [PFUser currentUser];
-    if (current[@"platforms"]){
+    NSArray *platforms = current[@"platforms"];
+    if (platforms.count > 1){
         [self performSegueWithIdentifier:@"toWeightsSegue" sender:nil];
     }
     else{
@@ -70,4 +71,6 @@
 }
 */
 
+- (IBAction)nextButton:(id)sender {
+}
 @end

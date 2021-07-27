@@ -108,7 +108,7 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
                     // get dictionary of genres, tracks, and artists based on top tracks
                     NSDictionary *tracksDict =[self convertSpotifyTracks:tracksArray];
                     [artistDict[@"artists"] unionSet:tracksDict[@"artists"]];
-                    completion(@{@"artists": artistDict[@"artists"], @"tracks":tracksDict[@"tracks"], @"albums": tracksDict[@"albums"], @"genres": artistDict[@"genres"] }, nil);
+                    completion(@{@"artists": artistDict[@"artists"], @"tracks":tracksDict[@"tracks"], @"albums": tracksDict[@"albums"], @"genres": artistDict[@"genres"], @"images": artistDict[@"images"]}, nil);
                 }
                 else{
                     NSLog(@"Error, Trouble getting tracks: %@", error.localizedDescription);
@@ -147,11 +147,13 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 - (NSDictionary *) convertSpotifyArtists:(NSArray *)artists{
     NSMutableSet *genreSet = [[NSMutableSet alloc] init];
     NSMutableSet *artistSet = [[NSMutableSet alloc] init];
+    NSMutableArray *artistImages = [NSMutableArray new];
     for (NSDictionary *artist in artists){
+        [artistImages addObject:artist[@"images"][2][@"url"]];
         [genreSet addObjectsFromArray:artist[@"genres"]];
         [artistSet addObject:artist[@"id"]];
     }
-    return @{@"genres": genreSet, @"artists": artistSet};
+    return @{@"genres": genreSet, @"artists": artistSet, @"images": artistImages};
 }
 
 - (NSDictionary *) convertSpotifyTracks:(NSArray *)tracks{
@@ -228,6 +230,7 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     [currentSpotify setValue:spotifyData[@"tracks"] forKey:@"tracks"];
     [currentSpotify setValue:spotifyData[@"artists"] forKey:@"artists"];
     [currentSpotify setValue:spotifyData[@"albums"] forKey:@"albums"];
+    [currentSpotify setValue:spotifyData[@"images"] forKey:@"images"];
     [userData setValue:currentSpotify forKey:@"spotifyData"];
     if ([moc save:nil] == NO) {
         NSLog(@"Error saving context");

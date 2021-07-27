@@ -26,6 +26,7 @@
     self.scrollView.showsHorizontalScrollIndicator = false;
     self.scrollView.pagingEnabled = true;
     self.scrollView.delegate = self;
+    self.editButton.layer.cornerRadius = 5;
     [self loadData];
     
 }

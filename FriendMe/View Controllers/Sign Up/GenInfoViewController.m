@@ -20,8 +20,7 @@
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
 
     [datePicker setDate:[NSDate date]];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"dd-MMM-yyyy";
+
     NSDate *theMaximumDate = [NSDate date];
     [datePicker setMaximumDate:theMaximumDate];
     
@@ -32,6 +31,8 @@
     [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
 
     [self.BirthdateTextfield setInputView:datePicker];
+    
+    self.nextButton.layer.cornerRadius = 4;
 
 }
 

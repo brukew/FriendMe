@@ -58,6 +58,7 @@
             [MatchingAlgo lookForMatches];
         }
     }];
+
     [self performSegueWithIdentifier:@"weightsToPicsSegue" sender:nil];
     // segue
 }

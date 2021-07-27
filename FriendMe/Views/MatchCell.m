@@ -14,13 +14,6 @@
 - (void) loadData{
     PFUser *current = [PFUser currentUser];
     self.nameLabel.text = [[self.currentMatch[@"firstName"] stringByAppendingString:@" "] stringByAppendingString:self.currentMatch[@"lastName"]];
-    NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
-                                       components:NSCalendarUnitYear
-                                       fromDate:self.currentMatch[@"DOB"]
-                                       toDate:[NSDate date]
-                                       options:0];
-    NSInteger age = [ageComponents year];
-    self.ageLabel.text = [NSString stringWithFormat:@"%ld",(long)age];
     if (self.currentMatch[@"pictures"]){
         PFFileObject * profileImage = [self.currentMatch[@"pictures"] objectAtIndex:0];
         NSURL * imageURL = [NSURL URLWithString:profileImage.url];
@@ -38,6 +31,24 @@
             [self bringSubviewToFront:self.heartNoFill];
             self.heartNoFill.alpha = 1;
         }
+    }
+    NSArray *platforms = self.currentMatch[@"platforms"];
+    if (platforms.count > 1){
+        self.spotifyImage.alpha = 1;
+        self.twitterImage.alpha = 1;
+    }
+    else{
+        NSString *platformId = platforms[0];
+        PFQuery *query = [PFQuery queryWithClassName:@"Platform"];
+        [query getObjectInBackgroundWithId:platformId block:^(PFObject *platform, NSError *error) {
+            if (!error) {
+                if ([platform[@"name"] isEqual:@"Spotify"]){
+                    self.spotifyImage.alpha = 1;
+                }
+                else{
+                    self.twitterImage.alpha = 1;
+                }
+            }        }];
     }
 }
 

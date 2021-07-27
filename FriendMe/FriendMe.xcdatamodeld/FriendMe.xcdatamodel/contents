@@ -9,6 +9,7 @@
         <attribute name="albums" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="artists" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="genres" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="images" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="tracks" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
     </entity>
     <entity name="Twitter" representedClassName="Twitter" syncable="YES" codeGenerationType="class">
@@ -16,7 +17,7 @@
     </entity>
     <elements>
         <element name="RegUser" positionX="-100.4942016601562" positionY="-171.9329376220703" width="128" height="88"/>
-        <element name="Spotify" positionX="-1.08197021484375" positionY="22.42855834960938" width="128" height="103"/>
+        <element name="Spotify" positionX="-1.08197021484375" positionY="22.42855834960938" width="128" height="118"/>
         <element name="Twitter" positionX="-167.7523193359375" positionY="37.74465942382812" width="128" height="58"/>
     </elements>
 </model>

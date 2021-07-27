@@ -14,9 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MatchCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *heart;
 @property (weak, nonatomic) IBOutlet UIImageView *heartNoFill;
+@property (weak, nonatomic) IBOutlet UIImageView *spotifyImage;
+@property (weak, nonatomic) IBOutlet UIImageView *twitterImage;
 
 @property (weak, nonatomic) PFObject *currentMatch;
 
