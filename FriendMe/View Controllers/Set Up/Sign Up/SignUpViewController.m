@@ -17,6 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.signUpButton.layer.cornerRadius = 4;
+    
+    [self.usernameField setPlaceholder:@"Username" floatingTitle:@"Username"];
+    self.usernameField.floatingLabelYPadding = -15;
+    [self.passwordField setPlaceholder:@"Password" floatingTitle:@"Password"];
+    self.passwordField.floatingLabelYPadding = -15;
+    [self.emailField setPlaceholder:@"Email" floatingTitle:@"Email"];
+    self.emailField.floatingLabelYPadding = -15;
+    
 }
 
 - (IBAction)registerUser:(id)sender {

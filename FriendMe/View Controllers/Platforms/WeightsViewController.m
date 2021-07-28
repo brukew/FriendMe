@@ -41,7 +41,6 @@
     NSMutableArray *weights = [NSMutableArray new];
     for (PlatformWeightCell *cell in cells)
     {
-        NSLog(@"%@", cell);
         if ([cell.platform[@"name"] isEqual:@"Twitter"]){
             twitterWeight =cell.platformSlider.value;
         }
@@ -78,8 +77,6 @@
         if (!error) {
             cell.platform = platform;
             [cell loadData];
-        } else {
-            NSLog(@"Error %@", error.localizedDescription);
         }
     }];
     return cell;

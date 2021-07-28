@@ -6,10 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTPressableButton.h"
+#import "UIColor+HTColor.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BeginViewController : UIViewController
+@property (weak, nonatomic) IBOutlet HTPressableButton *loginButton;
+@property (weak, nonatomic) IBOutlet HTPressableButton *signUpButton;
 
 @end
 

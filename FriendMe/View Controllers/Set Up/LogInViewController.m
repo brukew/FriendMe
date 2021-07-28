@@ -9,7 +9,7 @@
 #import "LogInViewController.h"
 #import <Parse/Parse.h>
 
-@interface LogInViewController ()
+@interface LogInViewController () <UITextFieldDelegate>
 
 @end
 
@@ -17,6 +17,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.view endEditing:TRUE];
+    return false;
 }
 - (IBAction)logIn:(id)sender {
     

@@ -43,23 +43,4 @@ return @"Platform";
     [platform saveInBackgroundWithBlock: completion];
 }
 
-+ (BOOL *) alreadyAdded: ( NSString * )name{
-    //FIX FIX FIX
-    PFUser *current = [PFUser currentUser];
-    __block BOOL *added = FALSE;
-    for (NSString *platformID in current[@"platforms"]){
-        PFQuery *query = [PFQuery queryWithClassName:@"Platform"];
-        [query getObjectInBackgroundWithId:platformID block:^(PFObject *platform, NSError *error) {
-            if (!error) {
-                if ([platform[@"name"] isEqual:name]){
-                    added = TRUE;
-                };
-            } else {
-                NSLog(@"Fail %@", error.localizedDescription);
-            }
-        }];
-    }
-    return added;
-}
-
 @end

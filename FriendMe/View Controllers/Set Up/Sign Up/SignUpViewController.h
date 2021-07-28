@@ -6,14 +6,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <JVFloatLabeledTextField/JVFloatLabeledTextField.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SignUpViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *usernameField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
-@property (weak, nonatomic) IBOutlet UITextField *emailField;
-@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *usernameField;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *passwordField;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *emailField;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *signUpButton;
 
 @end
 

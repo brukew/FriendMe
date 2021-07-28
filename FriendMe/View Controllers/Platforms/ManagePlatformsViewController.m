@@ -37,8 +37,6 @@
         if (!error) {
             cell.platform = platform;
             [cell loadData];
-        } else {
-            NSLog(@"Error %@", error.localizedDescription);
         }
     }];
     return cell;

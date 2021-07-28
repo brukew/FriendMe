@@ -42,6 +42,7 @@
                         [array addObject:[NSNumber numberWithDouble:1.00]];
                         current[@"weights"] = array;
                     }
+                    [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {}];
                 }        }];
         }
         [self performSegueWithIdentifier:@"toWeightsSegue" sender:nil];
@@ -65,7 +66,7 @@
 - (IBAction)twitterConnect:(UITapGestureRecognizer *)sender {
     [[TwitterAPIManager shared] loginWithCompletion:^(BOOL success, NSError *error) {
         if (!error) {
-            [[TwitterAPIManager shared] getFollowersWithCompletion:^(NSMutableArray *data, NSError *error){
+            [[TwitterAPIManager shared] getFollowersWithCompletion:^(NSArray *data, NSError *error){
             }];
             self.twitterCheck.alpha = 1;
             [Platform addPlatform: @"Twitter" withCompletion: nil];

@@ -51,7 +51,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     return self;
 }
 
-- (void)getFollowersWithCompletion:(void(^)(NSMutableArray *tweets, NSError *error))completion {
+- (void)getFollowersWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
     NSDictionary *parameters = @{@"stringify_ids":@"true"};
 
     [self GET:@"1.1/friends/ids.json"
@@ -87,7 +87,6 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     }
     [currentTwitter setValue:twitterData forKey:@"friends"];
     [userData setValue:currentTwitter forKey:@"twitterData"];
-    NSLog(@"%@", [userData valueForKey:@"twitterData"]);
     [moc save:nil];
 }
 

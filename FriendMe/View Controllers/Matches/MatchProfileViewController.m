@@ -79,7 +79,6 @@
         }completion:^(BOOL finished) {
         }];
     }
-    NSLog(@"%@", likes);
     current[@"likes"] = likes;
     [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {}];
     
@@ -149,7 +148,7 @@
 }
 
 -(void) viewDidDisappear:(BOOL)animated{
-    //NSLog(@"hello");
+    [self.delegate didLeave];
 }
 
 /*

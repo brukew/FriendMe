@@ -10,6 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol MatchProfileViewControllerDelegate
+
+- (void)didLeave;
+
+@end
+
 @interface MatchProfileViewController : UIViewController
 
 @property (strong, nonatomic) NSString *userID;
@@ -21,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *heartPopup;
 @property (weak, nonatomic) IBOutlet UIImageView *heart;
+
+@property (nonatomic, weak) id<MatchProfileViewControllerDelegate> delegate;
 
 @end
 

@@ -42,7 +42,6 @@
 - (void)assetsPickerController:(GMImagePickerController *)picker didFinishPickingAssets:(NSArray *)assetArray
 {
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"GMImagePicker: User ended picking assets. Number of selected items is: %lu", (unsigned long)assetArray.count);
     PFUser *current = [PFUser currentUser];
     current[@"pictures"] = [self convertImages: assetArray];
     [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -52,7 +51,6 @@
 
 -(void)assetsPickerControllerDidCancel:(GMImagePickerController *)picker
 {
-    NSLog(@"GMImagePicker: User pressed cancel button");
     [self performSegueWithIdentifier:@"toTabBar" sender:nil];
 }
 

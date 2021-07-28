@@ -16,7 +16,7 @@
 #import "MatchingAlgo.h"
 #import "AppDelegate.h"
 
-@interface MatchesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MatchesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, MatchProfileViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *matches;
 
@@ -108,12 +108,11 @@
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RegUser"];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", current.objectId]];
     NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
-    for (NSManagedObject *obj in results){
-        NSLog(@"%@", [obj valueForKey:@"id"]);
-        NSLog(@"%d", [[[obj valueForKey:@"twitterData"] valueForKey:@"friends"] isKindOfClass:[NSSet class]]);
-    }
 }
 
+- (void)didLeave{
+    [self.collectionView reloadData];
+}
 
 #pragma mark - Navigation
 
@@ -125,6 +124,7 @@
         MatchProfileViewController *matchProfileController = [segue destinationViewController];
         PFUser *current = [PFUser currentUser];
         matchProfileController.userID = current[@"matches"][indexPath.item];
+        matchProfileController.delegate = self;
     }
 }
 

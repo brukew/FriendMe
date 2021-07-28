@@ -17,6 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.BirthdateTextfield.delegate = self;
+    
+    [self.firstNameField setPlaceholder:@"First Name" floatingTitle:@"First"];
+    self.firstNameField.floatingLabelYPadding = -15;
+    [self.lastNameField setPlaceholder:@"Last Name" floatingTitle:@"Last"];
+    self.lastNameField.floatingLabelYPadding = -15;
+    [self.BirthdateTextfield setPlaceholder:@"Date of Birth" floatingTitle:@"DOB"];
+    self.BirthdateTextfield.floatingLabelYPadding = -15;
+    
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
 
     [datePicker setDate:[NSDate date]];
