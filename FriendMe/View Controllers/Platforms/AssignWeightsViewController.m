@@ -25,7 +25,6 @@
     double spotifyWeight = 0.0;
     NSMutableArray *weights = [NSMutableArray new];
     twitterWeight = self.twitterSlider.value;
-//    [Platform updateWeights:@(roundf(cell.platformSlider.value*100)/100) ofPlatform:cell.platform withCompletion:nil];
     spotifyWeight = self.spotifySlider.value;
     [weights addObject:@(twitterWeight)];
     [weights insertObject:@(spotifyWeight) atIndex:0];

@@ -27,6 +27,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIColor *topColor = [UIColor ht_blueJeansDarkColor];
+    UIColor *bottomColor = [UIColor whiteColor];
+        
+    CAGradientLayer *theViewGradient = [CAGradientLayer layer];
+    theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
+    theViewGradient.frame = self.view.bounds;
+
+    [self.view.layer insertSublayer:theViewGradient atIndex:0];
+            
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
@@ -78,7 +88,6 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     PFUser *current = [PFUser currentUser];
-    //TODO: Implement matching algo?
     self.matches = current[@"matches"];
     return self.matches.count; //matches.count
 }

@@ -20,9 +20,6 @@
 
 @implementation ProfileViewController
 
-//TODO: Clean up page
-//TODO: Add api data
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.scrollView.showsHorizontalScrollIndicator = false;
@@ -124,16 +121,27 @@
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RegUser"];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", current.objectId]];
     NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
-    NSManagedObject *userData = results[0];
-    NSManagedObject *spotify = [userData valueForKey:@"spotifyData"];
-    NSArray *artistImages = [spotify valueForKey:@"images"];
-    self.images = artistImages;
-    return self.images.count; //matches.count
+    if (results){
+        NSManagedObject *userData = results[0];
+        NSManagedObject *spotify = [userData valueForKey:@"spotifyData"];
+        NSArray *artistImages = [spotify valueForKey:@"images"];
+        self.images = artistImages;
+    }
+    else{
+        self.images = @[];
+    }
+    if (!self.images){
+        self.spotLabel.alpha = 0;
+        self.topArtistLabel.alpha = 0;
+        self.collectionView.alpha = 0;
+    }
+    return self.images.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ArtistCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"ArtistCell" forIndexPath:indexPath];
-    cell.URLString = self.images[indexPath.row];
+    cell.URLString = self.images[indexPath.row][1];
+    cell.name = self.images[indexPath.row][0];
     [cell loadData];
     return cell;
     

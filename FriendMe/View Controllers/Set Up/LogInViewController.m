@@ -8,6 +8,7 @@
 
 #import "LogInViewController.h"
 #import <Parse/Parse.h>
+#import "UIColor+HTColor.h"
 
 @interface LogInViewController () <UITextFieldDelegate>
 
@@ -17,8 +18,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIColor *topColor = [UIColor ht_blueJeansDarkColor];
+    UIColor *bottomColor = [UIColor whiteColor];
+        
+    CAGradientLayer *theViewGradient = [CAGradientLayer layer];
+    theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
+    theViewGradient.frame = self.view.bounds;
+
+    [self.view.layer insertSublayer:theViewGradient atIndex:0];
+    
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
+    
+    self.logInButton.layer.cornerRadius = 4;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

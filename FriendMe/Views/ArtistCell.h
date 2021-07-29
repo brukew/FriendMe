@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *artistImage;
 
 @property (weak, nonatomic) NSString *URLString;
+@property (weak, nonatomic) NSString *name;
+@property (weak, nonatomic) IBOutlet UILabel *artistName;
+
+
 
 -(void) loadData;
 

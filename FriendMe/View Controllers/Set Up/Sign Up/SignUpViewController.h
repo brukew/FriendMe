@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import <JVFloatLabeledTextField/JVFloatLabeledTextField.h>
+#import <CoreData/CoreData.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray *images;
+@property (weak, nonatomic) IBOutlet UILabel *spotLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topArtistLabel;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

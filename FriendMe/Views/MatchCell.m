@@ -22,6 +22,8 @@
     else{
         [self.profilePicView setImage:[UIImage imageNamed:@"image_placeholder.png"]];
     }
+    self.heartNoFill.alpha = 0;
+    self.heart.alpha = 0;
     if ([self.currentMatch[@"likes"] containsObject:current.objectId]){
         if([current[@"likes"] containsObject:self.currentMatch.objectId]){
             [self bringSubviewToFront:self.heart];
@@ -37,7 +39,7 @@
     
     
     NSArray *platforms = self.currentMatch[@"platforms"];
-    if (platforms.count > 1){
+    if ([current[@"bothPlatforms"] isEqual:@YES]){
         self.spotifyImage.alpha = 1;
         self.twitterImage.alpha = 1;
     }

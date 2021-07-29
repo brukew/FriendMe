@@ -8,6 +8,7 @@
 
 #import "BDBOAuth1SessionManager.h"
 #import "BDBOAuth1SessionManager+SFAuthenticationSession.h"
+#import <CoreData/CoreData.h>
 
 @interface TwitterAPIManager : BDBOAuth1SessionManager
 

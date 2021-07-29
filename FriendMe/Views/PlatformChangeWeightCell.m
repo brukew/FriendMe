@@ -23,7 +23,31 @@
     [self.platformImageView setImage:[UIImage imageNamed:imageName]];
     self.weightSlider.maximumValue = 1;
     self.weightSlider.minimumValue = 0;
-    self.weightSlider.value = [self.platform[@"weight"] floatValue];
+    PFUser *current = [PFUser currentUser];
+    if ([self.platform[@"name"] isEqual:@"Spotify"]){
+        self.weightSlider.value = [current[@"weights"][0] floatValue];
+    }
+    if ([self.platform[@"name"] isEqual:@"Twitter"]){
+        self.weightSlider.value = [current[@"weights"][1] floatValue];
+    }
+    [self.weightSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (IBAction)sliderValueChanged:(UISlider *)sender {
+    NSMutableArray *weights = [NSMutableArray new];
+    PFUser *current = [PFUser currentUser];
+//    NSLog(@"%@", current[@"weights"]);
+    if ([self.platform[@"name"] isEqual:@"Spotify"]){
+        [weights addObject:@(self.weightSlider.value)];
+        [weights addObject:current[@"weights"][1]];
+    }
+    if ([self.platform[@"name"] isEqual:@"Twitter"]){
+        [weights addObject:current[@"weights"][0]];
+        [weights addObject:@(self.weightSlider.value)];
+    }
+    current[@"weights"] = weights;
+    [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    }];
 }
 
 @end

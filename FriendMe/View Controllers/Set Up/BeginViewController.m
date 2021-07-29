@@ -15,16 +15,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Create the colors
     UIColor *topColor = [UIColor ht_blueJeansDarkColor];
     UIColor *bottomColor = [UIColor whiteColor];
         
-    // Create the gradient
     CAGradientLayer *theViewGradient = [CAGradientLayer layer];
     theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
     theViewGradient.frame = self.view.bounds;
 
-    //Add gradient to view
     [self.view.layer insertSublayer:theViewGradient atIndex:0];
     
     

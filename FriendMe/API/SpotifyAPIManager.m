@@ -131,7 +131,8 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     NSMutableArray *artistImages = [NSMutableArray new];
     for (NSDictionary *artist in artists){
         if  (artistImages.count < 10){
-            [artistImages addObject:artist[@"images"][2][@"url"]];
+            NSArray *artistAndImage = [NSArray arrayWithObjects: artist[@"name"],artist[@"images"][2][@"url"], nil];
+            [artistImages addObject:artistAndImage];
         }
         [genreSet addObjectsFromArray:artist[@"genres"]];
         [artistSet addObject:artist[@"id"]];

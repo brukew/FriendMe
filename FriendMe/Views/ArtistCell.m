@@ -12,5 +12,7 @@
 - (void) loadData{
     NSURL *imageURL= [NSURL URLWithString:self.URLString];
     [self.artistImage setImageWithURL:imageURL];
+    self.artistName.text = self.name;
+    
 }
 @end

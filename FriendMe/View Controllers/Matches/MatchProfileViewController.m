@@ -10,8 +10,11 @@
 #import <Parse/Parse.h>
 #import "Parse/PFImageView.h"
 #import "TwitterAPIManager.h"
+#import <CoreData/CoreData.h>
+#import "AppDelegate.h"
+#import "ArtistCell.h"
 
-@interface MatchProfileViewController () <UIScrollViewDelegate>
+@interface MatchProfileViewController () <UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end
 
@@ -22,6 +25,21 @@
     self.scrollView.showsHorizontalScrollIndicator = false;
     self.scrollView.pagingEnabled = true;
     self.scrollView.delegate = self;
+    self.scrollView.layer.cornerRadius = 8;
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
+            
+    layout.minimumInteritemSpacing = 2.5;
+    layout.minimumLineSpacing = 2.5;
+    
+    CGFloat postsPerRow = 2;
+    CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postsPerRow - 1)) / postsPerRow;
+    CGFloat itemHeight = itemWidth;
+    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    [self.collectionView reloadData];
     
     
     PFQuery *query = [PFUser query];
@@ -87,7 +105,7 @@
 -(void) loadData{
     PFUser *current = [PFUser currentUser];
     [self setUpScroll];
-    self.nameLabel.text = [[self.user[@"firstName"] stringByAppendingString:@" "] stringByAppendingString:self.user[@"lastName"]];
+    self.nameLabel.text = [[[self.user[@"firstName"] stringByAppendingString:@" "] stringByAppendingString:self.user[@"lastName"]] stringByAppendingString:@","];
     NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
                                        components:NSCalendarUnitYear
                                        fromDate:self.user[@"DOB"]
@@ -150,6 +168,41 @@
 -(void) viewDidDisappear:(BOOL)animated{
     [self.delegate didLeave];
 }
+
+#pragma mark - Collection View
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *moc = [[delegate persistentContainer] viewContext];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RegUser"];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", self.userID]];
+    NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
+    NSManagedObject *userData = results[0];
+    NSManagedObject *spotify = [userData valueForKey:@"spotifyData"];
+    NSArray *artistImages = [spotify valueForKey:@"images"];
+    self.images = artistImages;
+    if (!self.images){
+        self.spotLabel.alpha = 0;
+        self.topArtistLabel.alpha = 0;
+        self.collectionView.alpha = 0;
+    }
+    return self.images.count; //matches.count
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    ArtistCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"ArtistCell" forIndexPath:indexPath];
+    cell.URLString = self.images[indexPath.row][1];
+    cell.name = self.images[indexPath.row][0];
+    [cell loadData];
+    return cell;
+    
+}
+
 
 /*
 #pragma mark - Navigation

@@ -18,9 +18,6 @@
 @end
 
 @implementation EditProfileViewController
-//TODO: Refactor GMImagePicker so code is only written once
-//TODO: Somehow display all chosen profile pictures and let user change one by one
-//TODO: Be able to delete profile pictures
 
 BOOL changed;
 

@@ -64,7 +64,7 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
     _floatingLabelReductionRatio = 70;
     _floatingLabelFont = [self defaultFloatingLabelFont];
     _floatingLabel.font = _floatingLabelFont;
-    _floatingLabelTextColor = [UIColor grayColor];
+    _floatingLabelTextColor = [UIColor blackColor];
     _floatingLabel.textColor = _floatingLabelTextColor;
     _animateEvenIfNotFirstResponder = NO;
     _floatingLabelShowAnimationDuration = kFloatingLabelShowAnimationDuration;
@@ -113,9 +113,9 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
         return _floatingLabelActiveTextColor;
     }
     else if ([self respondsToSelector:@selector(tintColor)]) {
-        return [self performSelector:@selector(tintColor)];
+        return [UIColor whiteColor];
     }
-    return [UIColor blueColor];
+    return [UIColor whiteColor];
 }
 
 - (void)setFloatingLabelFont:(UIFont *)floatingLabelFont

@@ -26,6 +26,11 @@
     PFUser *current = [PFUser currentUser];
     NSArray *platforms = current[@"platforms"];
     if (platforms.count > 1){
+        current[@"bothPlatforms"] = @YES;
+        [self performSegueWithIdentifier:@"toWeightsSegue" sender:nil];
+    }
+    else{
+        current[@"bothPlatforms"] = @FALSE;
         if (platforms){
             PFQuery *query = [PFQuery queryWithClassName:@"Platform"];
             [query getObjectInBackgroundWithId:platforms[0] block:^(PFObject *platform, NSError *error) {
@@ -45,11 +50,10 @@
                     [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {}];
                 }        }];
         }
-        [self performSegueWithIdentifier:@"toWeightsSegue" sender:nil];
-    }
-    else{
+        
         [self performSegueWithIdentifier:@"toPicsSegue" sender:nil];
     }
+    [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {}];
 }
 
 - (IBAction)spotifyConnect:(UITapGestureRecognizer *)sender {

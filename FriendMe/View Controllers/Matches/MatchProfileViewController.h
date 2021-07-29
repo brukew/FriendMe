@@ -27,6 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *heartPopup;
 @property (weak, nonatomic) IBOutlet UIImageView *heart;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSArray *images;
+@property (weak, nonatomic) IBOutlet UILabel *spotLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topArtistLabel;
 
 @property (nonatomic, weak) id<MatchProfileViewControllerDelegate> delegate;
 
