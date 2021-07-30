@@ -56,7 +56,7 @@
                                 <rect key="frame" x="64" y="497" width="262" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDz-FM-C4I">
                                 <rect key="frame" x="18" y="43" width="42" height="35"/>
@@ -161,7 +161,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="d8y-Dg-3hS"/>
                     <connections>
-                        <outlet property="BirthdateTextfield" destination="Mqu-J2-Hpv" id="7Ij-q8-uUb"/>
+                        <outlet property="birthdateTextField" destination="Mqu-J2-Hpv" id="7Ij-q8-uUb"/>
                         <outlet property="datePicker" destination="8yB-dD-K23" id="fg7-z3-NOo"/>
                         <outlet property="firstNameField" destination="8e8-pE-YHX" id="AlF-as-wik"/>
                         <outlet property="lastNameField" destination="RbZ-Ul-rei" id="NXd-wQ-sDn"/>
@@ -593,11 +593,6 @@
                                 <action selector="onLogout:" destination="CV8-wD-HtD" id="A2c-a8-fRI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add matches" image="shift.fill" catalog="system" id="igK-2j-8EA">
-                            <connections>
-                                <action selector="testAddMatches:" destination="CV8-wD-HtD" id="tBb-GH-9wn"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Llg-as-HTI" id="Zt5-Tm-kae"/>
@@ -961,11 +956,6 @@
                                 <rect key="frame" x="78" y="123" width="230" height="217"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vD0-56-6OS">
-                                <rect key="frame" x="121" y="738" width="149" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add more platforms +"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ci6-Yj-iyI">
                                 <rect key="frame" x="337" y="44" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1180,7 +1170,7 @@
                                 <rect key="frame" x="67" y="308" width="257" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCv-Vo-QSG">
                                 <rect key="frame" x="16" y="44" width="42" height="35"/>
@@ -1231,16 +1221,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Manage Connections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYR-rj-9B4">
-                                <rect key="frame" x="62" y="79" width="266" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mxh-ce-ia9">
-                                <rect key="frame" x="0.0" y="242" width="390" height="519"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="177" width="390" height="584"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlatformChangeWeightCell" rowHeight="113" id="yz0-W9-35u" customClass="PlatformChangeWeightCell">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="113"/>
@@ -1279,6 +1262,7 @@
                                                 <constraint firstItem="VBg-wc-Eee" firstAttribute="top" secondItem="UbT-iP-eQY" secondAttribute="top" constant="-6" id="yfv-da-cBq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="platformImageView" destination="VBg-wc-Eee" id="WQS-GU-yn6"/>
                                             <outlet property="titleLabel" destination="UbT-iP-eQY" id="9GP-rr-GyI"/>
@@ -1287,12 +1271,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcd-kb-clo">
-                                <rect key="frame" x="108" y="156" width="175" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Manage Connections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYR-rj-9B4">
+                                <rect key="frame" x="31" y="91" width="329" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Add more platforms +"/>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="o3c-qD-do0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1300,7 +1285,7 @@
                             <constraint firstItem="Mxh-ce-ia9" firstAttribute="leading" secondItem="o3c-qD-do0" secondAttribute="leading" id="3WU-SA-x3T"/>
                             <constraint firstItem="Mxh-ce-ia9" firstAttribute="bottom" secondItem="o3c-qD-do0" secondAttribute="bottom" id="ZbL-Gs-I2X"/>
                             <constraint firstItem="Mxh-ce-ia9" firstAttribute="trailing" secondItem="o3c-qD-do0" secondAttribute="trailing" id="rbm-lp-aWq"/>
-                            <constraint firstItem="Mxh-ce-ia9" firstAttribute="top" secondItem="UYC-70-cWy" secondAttribute="top" constant="242" id="tsM-Mm-n2h"/>
+                            <constraint firstItem="Mxh-ce-ia9" firstAttribute="top" secondItem="UYC-70-cWy" secondAttribute="top" constant="177" id="tsM-Mm-n2h"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Platforms" image="link" catalog="system" id="xY3-yV-zei"/>
@@ -1370,7 +1355,6 @@
         <image name="link" catalog="system" width="128" height="122"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="shift.fill" catalog="system" width="128" height="106"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

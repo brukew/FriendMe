@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *firstNameField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *lastNameField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *BirthdateTextfield;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *birthdateTextField;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @end

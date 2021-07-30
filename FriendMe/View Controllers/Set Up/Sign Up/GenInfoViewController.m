@@ -28,14 +28,14 @@
 
     [self.view.layer insertSublayer:theViewGradient atIndex:0];
     
-    self.BirthdateTextfield.delegate = self;
+    self.birthdateTextField.delegate = self;
     
     [self.firstNameField setPlaceholder:@"First Name" floatingTitle:@"First"];
     self.firstNameField.floatingLabelYPadding = -15;
     [self.lastNameField setPlaceholder:@"Last Name" floatingTitle:@"Last"];
     self.lastNameField.floatingLabelYPadding = -15;
-    [self.BirthdateTextfield setPlaceholder:@"Date of Birth" floatingTitle:@"DOB"];
-    self.BirthdateTextfield.floatingLabelYPadding = -15;
+    [self.birthdateTextField setPlaceholder:@"Date of Birth" floatingTitle:@"DOB"];
+    self.birthdateTextField.floatingLabelYPadding = -15;
     
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
 
@@ -50,7 +50,7 @@
 
     [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
 
-    [self.BirthdateTextfield setInputView:datePicker];
+    [self.birthdateTextField setInputView:datePicker];
     
     self.nextButton.layer.cornerRadius = 4;
 
@@ -70,12 +70,12 @@
 }
 
 -(void)updateTextField:(id)sender {
-    UIDatePicker *picker = (UIDatePicker*)self.BirthdateTextfield.inputView;
-    self.BirthdateTextfield.text = [self formatDate:picker.date];
+    UIDatePicker *picker = (UIDatePicker*)self.birthdateTextField.inputView;
+    self.birthdateTextField.text = [self formatDate:picker.date];
 }
 
 - (IBAction)addInfo:(id)sender {
-    UIDatePicker *picker = (UIDatePicker*)self.BirthdateTextfield.inputView;
+    UIDatePicker *picker = (UIDatePicker*)self.birthdateTextField.inputView;
     PFUser *current = [PFUser currentUser];
     current[@"firstName"] = self.firstNameField.text;
     current[@"lastName"] = self.lastNameField.text;
@@ -83,15 +83,5 @@
     [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
     }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

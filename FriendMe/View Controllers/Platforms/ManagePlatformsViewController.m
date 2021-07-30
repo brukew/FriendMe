@@ -10,6 +10,7 @@
 #import "Platform.h"
 #import "UIImageView+AFNetworking.h"
 #import "PlatformChangeWeightCell.h"
+#import "UIColor+HTColor.h"
 
 @interface ManagePlatformsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -19,8 +20,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIColor *topColor = [UIColor ht_blueJeansDarkColor];
+    UIColor *bottomColor = [UIColor whiteColor];
+        
+    CAGradientLayer *theViewGradient = [CAGradientLayer layer];
+    theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
+    theViewGradient.frame = self.view.bounds;
+
+    [self.view.layer insertSublayer:theViewGradient atIndex:0];
+    
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -41,16 +54,5 @@
     }];
     return cell;
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ArtistCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *artistImage;
 
-@property (weak, nonatomic) NSString *URLString;
+@property (weak, nonatomic) NSString *urlString;
 @property (weak, nonatomic) NSString *name;
 @property (weak, nonatomic) IBOutlet UILabel *artistName;
 

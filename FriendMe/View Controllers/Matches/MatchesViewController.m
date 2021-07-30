@@ -89,7 +89,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     PFUser *current = [PFUser currentUser];
     self.matches = current[@"matches"];
-    return self.matches.count; //matches.count
+    return self.matches.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -108,15 +108,6 @@
     }];
     return cell;
     
-}
-
-- (IBAction)testAddMatches:(id)sender {
-    PFUser *current = [PFUser currentUser];
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *moc = [[delegate persistentContainer] viewContext];
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RegUser"];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id == %@", current.objectId]];
-    NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
 }
 
 - (void)didLeave{

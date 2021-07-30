@@ -36,7 +36,6 @@
 - (IBAction)sliderValueChanged:(UISlider *)sender {
     NSMutableArray *weights = [NSMutableArray new];
     PFUser *current = [PFUser currentUser];
-//    NSLog(@"%@", current[@"weights"]);
     if ([self.platform[@"name"] isEqual:@"Spotify"]){
         [weights addObject:@(self.weightSlider.value)];
         [weights addObject:current[@"weights"][1]];

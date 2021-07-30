@@ -48,6 +48,25 @@
 
 -(void) loadData{
     PFUser *current = [PFUser currentUser];
+    [self setUpScroll];
+    self.nameLabel.text = [[[current[@"firstName"] stringByAppendingString:@" "] stringByAppendingString:current[@"lastName"]] stringByAppendingString:@","];
+    NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
+                                       components:NSCalendarUnitYear
+                                       fromDate:current[@"DOB"]
+                                       toDate:[NSDate date]
+                                       options:0];
+    NSInteger age = [ageComponents year];
+    self.ageLabel.text = [NSString stringWithFormat:@"%ld",(long)age];
+    if (current[@"bio"]){
+        self.bioLabel.text = current[@"bio"];
+    }
+    self.pageControl.numberOfPages = [current[@"pictures"] count];
+    [self.scrollView bringSubviewToFront:self.pageControl];
+    [self.scrollView bringSubviewToFront:self.editButton];
+}
+
+- (void) setUpScroll{
+    PFUser *current = [PFUser currentUser];
     if (current[@"pictures"]){
         NSMutableArray *images = current[@"pictures"];
         NSInteger ix;
@@ -76,20 +95,6 @@
     }
     
     self.scrollView.delegate = self;
-    self.nameLabel.text = [[[current[@"firstName"] stringByAppendingString:@" "] stringByAppendingString:current[@"lastName"]] stringByAppendingString:@","];
-    NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
-                                       components:NSCalendarUnitYear
-                                       fromDate:current[@"DOB"]
-                                       toDate:[NSDate date]
-                                       options:0];
-    NSInteger age = [ageComponents year];
-    self.ageLabel.text = [NSString stringWithFormat:@"%ld",(long)age];
-    if (current[@"bio"]){
-        self.bioLabel.text = current[@"bio"];
-    }
-    self.pageControl.numberOfPages = [current[@"pictures"] count];
-    [self.scrollView bringSubviewToFront:self.pageControl];
-    [self.scrollView bringSubviewToFront:self.editButton];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
@@ -140,7 +145,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ArtistCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"ArtistCell" forIndexPath:indexPath];
-    cell.URLString = self.images[indexPath.row][1];
+    cell.urlString = self.images[indexPath.row][1];
     cell.name = self.images[indexPath.row][0];
     [cell loadData];
     return cell;

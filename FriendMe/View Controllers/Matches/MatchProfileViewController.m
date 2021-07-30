@@ -191,27 +191,16 @@
         self.topArtistLabel.alpha = 0;
         self.collectionView.alpha = 0;
     }
-    return self.images.count; //matches.count
+    return self.images.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ArtistCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"ArtistCell" forIndexPath:indexPath];
-    cell.URLString = self.images[indexPath.row][1];
+    cell.urlString = self.images[indexPath.row][1];
     cell.name = self.images[indexPath.row][0];
     [cell loadData];
     return cell;
     
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

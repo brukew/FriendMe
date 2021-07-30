@@ -98,7 +98,6 @@ BOOL changed;
     requestOptions.resizeMode   = PHImageRequestOptionsResizeModeExact;
     requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
 
-    // this one is key
     requestOptions.synchronous = YES;
     
     for (int i = 0; i < [assets count]; i++) {
@@ -134,15 +133,5 @@ BOOL changed;
         }
     }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
