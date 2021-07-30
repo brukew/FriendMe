@@ -34,15 +34,13 @@
 }
 
 - (IBAction)sliderValueChanged:(UISlider *)sender {
-    NSMutableArray *weights = [NSMutableArray new];
     PFUser *current = [PFUser currentUser];
+    NSMutableArray *weights = [NSMutableArray arrayWithArray:current[@"weights"]];
     if ([self.platform[@"name"] isEqual:@"Spotify"]){
-        [weights addObject:@(self.weightSlider.value)];
-        [weights addObject:current[@"weights"][1]];
+        weights[0] = @(self.weightSlider.value);
     }
     if ([self.platform[@"name"] isEqual:@"Twitter"]){
-        [weights addObject:current[@"weights"][0]];
-        [weights addObject:@(self.weightSlider.value)];
+        weights[1] = @(self.weightSlider.value);
     }
     current[@"weights"] = weights;
     [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
