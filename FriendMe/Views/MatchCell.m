@@ -39,7 +39,7 @@
     
     
     NSArray *platforms = self.currentMatch[@"platforms"];
-    if ([current[@"bothPlatforms"] isEqual:@YES]){
+    if ([current[@"bothPlatforms"] isEqual:@1]){
         self.spotifyImage.alpha = 1;
         self.twitterImage.alpha = 1;
     }
