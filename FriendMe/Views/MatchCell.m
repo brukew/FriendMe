@@ -8,12 +8,27 @@
 #import "MatchCell.h"
 #import "UIImageView+AFNetworking.h"
 #import <Parse/Parse.h>
+#import "UIColor+HTColor.h"
+
 
 @implementation MatchCell
 
 - (void) loadData{
     PFUser *current = [PFUser currentUser];
+    
+    self.contentView.layer.cornerRadius = 8.0;
+    self.contentView.layer.borderWidth = 1.0;
+    self.contentView.layer.borderColor = [UIColor clearColor].CGColor;
+    self.contentView.layer.masksToBounds = YES;
+    
+    self.layer.shadowColor = [UIColor clearColor].CGColor;
+    self.layer.shadowOffset = CGSizeMake(0, 0);
+    self.layer.shadowRadius = 2.0f;
+    self.layer.shadowOpacity = 0;
+    self.layer.masksToBounds = NO;
+    
     self.nameLabel.text = [[self.currentMatch[@"firstName"] stringByAppendingString:@" "] stringByAppendingString:self.currentMatch[@"lastName"]];
+    self.nameLabel.textColor = [UIColor blackColor];
     if (self.currentMatch[@"pictures"]){
         PFFileObject * profileImage = [self.currentMatch[@"pictures"] objectAtIndex:0];
         NSURL * imageURL = [NSURL URLWithString:profileImage.url];
@@ -27,6 +42,12 @@
     self.heartNoFill.alpha = 0;
     self.heart.alpha = 0;
     if ([self.currentMatch[@"likes"] containsObject:current.objectId]){
+        self.layer.shadowColor = [UIColor redColor].CGColor;
+        self.layer.shadowOffset = CGSizeMake(0, 2.0f);
+        self.layer.shadowRadius = 2.0f;
+        self.layer.shadowOpacity = 0.6f;
+        self.layer.masksToBounds = NO;
+        self.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.contentView.layer.cornerRadius].CGPath;
         if([current[@"likes"] containsObject:self.currentMatch.objectId]){
             [self bringSubviewToFront:self.heart];
             self.heart.alpha = 1;

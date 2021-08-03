@@ -39,6 +39,8 @@
 		1A62D69326B08D1B000AA0A2 /* ArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D69226B08D1B000AA0A2 /* ArtistCell.m */; };
 		1A62D69626B0BB52000AA0A2 /* SpotifyAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D69526B0BB52000AA0A2 /* SpotifyAPIManager.m */; };
 		1A62D69926B0BBC4000AA0A2 /* TwitterAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62D69826B0BBC4000AA0A2 /* TwitterAPIManager.m */; };
+		1AA7EF6C26B9C6FE00D0D08E /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA7EF6B26B9C6FE00D0D08E /* NotificationsViewController.m */; };
+		1AA7EF6F26B9FFD200D0D08E /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA7EF6E26B9FFD200D0D08E /* NotificationCell.m */; };
 		314CD794892085A2D9ADCCF4 /* Pods_FriendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE8443E888CCE15A4AE71C /* Pods_FriendMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +137,10 @@
 		1A62D69526B0BB52000AA0A2 /* SpotifyAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyAPIManager.m; sourceTree = "<group>"; };
 		1A62D69726B0BBC4000AA0A2 /* TwitterAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwitterAPIManager.h; sourceTree = "<group>"; };
 		1A62D69826B0BBC4000AA0A2 /* TwitterAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterAPIManager.m; sourceTree = "<group>"; };
+		1AA7EF6A26B9C6FE00D0D08E /* NotificationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		1AA7EF6B26B9C6FE00D0D08E /* NotificationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
+		1AA7EF6D26B9FFD200D0D08E /* NotificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
+		1AA7EF6E26B9FFD200D0D08E /* NotificationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
 		7A89400C6FDA2200E862CB7D /* Pods-FriendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.debug.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.debug.xcconfig"; sourceTree = "<group>"; };
 		8C56027D1DDC23A0C7BA7064 /* Pods-FriendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendMe.release.xcconfig"; path = "Target Support Files/Pods-FriendMe/Pods-FriendMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +251,8 @@
 				1A62D69C26B0BDD8000AA0A2 /* Set Up */,
 				1A62D69B26B0BDBD000AA0A2 /* Matches */,
 				1A62D69A26B0BD9D000AA0A2 /* Profile */,
+				1AA7EF6A26B9C6FE00D0D08E /* NotificationsViewController.h */,
+				1AA7EF6B26B9C6FE00D0D08E /* NotificationsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -271,6 +279,8 @@
 				1A62D59626A627E0000AA0A2 /* PlatformChangeWeightCell.m */,
 				1A62D69126B08D1B000AA0A2 /* ArtistCell.h */,
 				1A62D69226B08D1B000AA0A2 /* ArtistCell.m */,
+				1AA7EF6D26B9FFD200D0D08E /* NotificationCell.h */,
+				1AA7EF6E26B9FFD200D0D08E /* NotificationCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -558,6 +568,8 @@
 				1A62D558269CDDA0000AA0A2 /* SignUpViewController.m in Sources */,
 				1A62D580269FB234000AA0A2 /* EditProfileViewController.m in Sources */,
 				1A62D58926A0C89E000AA0A2 /* MatchCell.m in Sources */,
+				1AA7EF6F26B9FFD200D0D08E /* NotificationCell.m in Sources */,
+				1AA7EF6C26B9C6FE00D0D08E /* NotificationsViewController.m in Sources */,
 				1A62D56E269E0ACF000AA0A2 /* Platform.m in Sources */,
 				1A62D57D269F7C7B000AA0A2 /* PhotosViewController.m in Sources */,
 				1A62D58626A0C5A7000AA0A2 /* BeginViewController.m in Sources */,

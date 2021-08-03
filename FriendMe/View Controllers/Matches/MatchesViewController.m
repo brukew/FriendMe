@@ -15,15 +15,16 @@
 #import "TwitterAPIManager.h"
 #import "MatchingAlgo.h"
 #import "AppDelegate.h"
+#import "UIImageView+AFNetworking.h"
+#import "NotificationsViewController.h"
 
-@interface MatchesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, MatchProfileViewControllerDelegate>
+@interface MatchesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, MatchProfileViewControllerDelegate, NotificationsViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *matches;
 
 @end
 
 @implementation MatchesViewController
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +35,8 @@
     CAGradientLayer *theViewGradient = [CAGradientLayer layer];
     theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
     theViewGradient.frame = self.view.bounds;
+    
+    self.notificationButton.tintColor = [UIColor grayColor];
 
     [self.view.layer insertSublayer:theViewGradient atIndex:0];
             
@@ -42,8 +45,8 @@
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
             
-    layout.minimumInteritemSpacing = 2.5;
-    layout.minimumLineSpacing = 2.5;
+    layout.minimumInteritemSpacing = 10;
+    layout.minimumLineSpacing = 10;
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
@@ -94,15 +97,20 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MatchCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MatchCell" forIndexPath:indexPath];
-    cell.contentView.layer.cornerRadius = 8.0;
-    cell.contentView.layer.borderWidth = 1.0;
-    cell.contentView.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor clearColor]);
-    cell.contentView.layer.masksToBounds = true;
     PFUser *current = [PFUser currentUser];
     PFQuery *query = [PFUser query];
+    self.likedByNew = [NSMutableArray new];
     [query getObjectInBackgroundWithId:current[@"matches"][indexPath.row] block:^(PFObject *match, NSError *error) {
         if (!error) {
             cell.currentMatch = match;
+            if ([match[@"likes"] containsObject:current.objectId]){
+                if (![current[@"likedBy"] containsObject: match.objectId]){
+                    [self.likedByNew addObject:match.objectId];
+                    
+                    self.notificationButton.tintColor = [UIColor redColor];
+                }
+            }
+            
             [cell loadData];
         }
     }];
@@ -113,6 +121,14 @@
 - (void)didLeave{
     [self.collectionView reloadData];
 }
+
+- (void)didCheck{
+    PFUser *current = [PFUser currentUser];
+    [self.likedByNew addObjectsFromArray:current[@"likedBy"]];
+    current[@"likedBy"] = self.likedByNew;
+    [current saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {}];
+}
+
 
 #pragma mark - Navigation
 
@@ -125,6 +141,15 @@
         PFUser *current = [PFUser currentUser];
         matchProfileController.userID = current[@"matches"][indexPath.item];
         matchProfileController.delegate = self;
+    }
+    if ([segue.identifier isEqual:@"toNoti"]){
+        if (self.notificationButton.tintColor == [UIColor redColor]){
+            NSLog(@"hello");
+            NotificationsViewController *notificationsViewController = [segue destinationViewController];
+            self.notificationButton.tintColor = [UIColor grayColor];
+            notificationsViewController.likedBy = self.likedByNew;
+            notificationsViewController.delegate = self;
+        }
     }
 }
 

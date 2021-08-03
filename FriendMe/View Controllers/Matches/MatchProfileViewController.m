@@ -20,8 +20,11 @@
 
 @implementation MatchProfileViewController
 
+BOOL liked;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    liked = FALSE;
     self.scrollView.showsHorizontalScrollIndicator = false;
     self.scrollView.pagingEnabled = true;
     self.scrollView.delegate = self;
@@ -75,6 +78,7 @@
 }
 
 - (void)updateLikes{
+    liked = TRUE;
     PFUser *current = [PFUser currentUser];
     NSMutableArray *likes;
     if (current[@"likes"]){
@@ -166,7 +170,9 @@
 }
 
 -(void) viewDidDisappear:(BOOL)animated{
-    [self.delegate didLeave];
+    if (liked){
+        [self.delegate didLeave];
+    }
 }
 
 #pragma mark - Collection View

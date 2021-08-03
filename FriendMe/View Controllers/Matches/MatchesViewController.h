@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (strong, nonatomic) NSMutableArray *likedByNew;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *notificationButton;
+
 
 @end
 
