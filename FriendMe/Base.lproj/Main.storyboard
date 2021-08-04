@@ -795,9 +795,10 @@
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="YZD-xL-Myg">
                                     <rect key="frame" x="0.0" y="105.00000034679067" width="390" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.6591014097435306" green="0.6591014097435306" blue="0.6591014097435306" alpha="0.80192798336610094" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" red="0.099801882348879434" green="0.099801882348879434" blue="0.099801882348879434" alpha="0.62297128841576987" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" title="Dismiss">
-                                        <color key="titleColor" systemColor="labelColor"/>
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
                                         <action selector="dismissNotifications:" destination="rqK-3S-1aJ" eventType="touchUpInside" id="eM8-X0-JKm"/>
@@ -845,7 +846,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s3T-pe-1QP"/>
-                        <color key="backgroundColor" white="1" alpha="0.30485807507243379" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7PG-aE-UTf" firstAttribute="trailing" secondItem="s3T-pe-1QP" secondAttribute="trailing" id="CiL-hD-rM4"/>
                             <constraint firstItem="7PG-aE-UTf" firstAttribute="top" secondItem="MjV-p1-Mzw" secondAttribute="top" id="DD0-Ry-bba"/>

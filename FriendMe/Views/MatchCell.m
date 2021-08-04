@@ -41,13 +41,15 @@
     // configure likes
     self.heartNoFill.alpha = 0;
     self.heart.alpha = 0;
-    if ([self.currentMatch[@"likes"] containsObject:current.objectId]){
+    if ([current[@"likes"] containsObject:self.currentMatch.objectId] || [self.currentMatch[@"likes"] containsObject:current.objectId]){
         self.layer.shadowColor = [UIColor redColor].CGColor;
         self.layer.shadowOffset = CGSizeMake(0, 2.0f);
         self.layer.shadowRadius = 2.0f;
         self.layer.shadowOpacity = 0.6f;
         self.layer.masksToBounds = NO;
         self.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.contentView.layer.cornerRadius].CGPath;
+    }
+    if ([self.currentMatch[@"likes"] containsObject:current.objectId]){
         if([current[@"likes"] containsObject:self.currentMatch.objectId]){
             [self bringSubviewToFront:self.heart];
             self.heart.alpha = 1;

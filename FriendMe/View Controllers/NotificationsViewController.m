@@ -10,13 +10,12 @@
 #import "NotificationCell.h"
 #import <Parse/Parse.h>
 
-@interface NotificationsViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
+@interface NotificationsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
 @implementation NotificationsViewController
 
-BOOL isTrackingPanLocation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,44 +25,8 @@ BOOL isTrackingPanLocation;
     self.tableView.backgroundColor = [UIColor clearColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    isTrackingPanLocation = FALSE;
-    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
-    panGestureRecognizer.delegate = self;
-    [self.tableView setUserInteractionEnabled:YES];
-    [self.tableView addGestureRecognizer:panGestureRecognizer];
 }
 
-- (IBAction)panRecognized:(UIPanGestureRecognizer *)recognizer{
-    if (recognizer.state == UIGestureRecognizerStateBegan && self.tableView.contentOffset.y == 0) {
-        [recognizer setTranslation:CGPointZero inView:self.tableView];
-        isTrackingPanLocation = true;
-        }
-    else if (recognizer.state != UIGestureRecognizerStateEnded && recognizer.state != UIGestureRecognizerStateCancelled &&
-             recognizer.state != UIGestureRecognizerStateFailed && isTrackingPanLocation) {
-        CGPoint panOffset = [recognizer translationInView:self.tableView];
-        
-
-        // determine offset of the pan from the start here.
-        // When offset is far enough from table view top edge -
-        // dismiss your view controller. Additionally you can
-        // determine if pan goes in the wrong direction and
-        // then reset flag isTrackingPanLocation to false
-
-        BOOL eligiblePanOffset = panOffset.y > 200;
-        if (eligiblePanOffset) {
-            recognizer.enabled = false;
-            recognizer.enabled = true;
-            [self dismissViewControllerAnimated:true completion: nil];
-        }
-
-        if (panOffset.y < 0) {
-            isTrackingPanLocation = false;
-        }
-    }
-    else {
-        isTrackingPanLocation = false;
-    }
-}
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.likedBy.count;
